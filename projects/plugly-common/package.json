@@ -1,8 +1,8 @@
 {
-  "name": "@2121tech/plugly-common",
-  "version": "0.0.2",
+  "name": "common",
+  "version": "0.0.0",
   "scripts": {
-    "build": "ng build plugly-common",
+    "build": "ng build common",
     "postpublish": "rm -rf dist/"
   },
   "peerDependencies": {
