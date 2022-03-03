@@ -47,3 +47,4 @@ Thumbs.db
 **/dist/
 .npmrc
 lerna-debug.log
+projects/*/node_modules
