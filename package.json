@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prepublish": "lerna run build --since HEAD~1 --concurrency=1"
   },
   "private": true,
   "dependencies": {
