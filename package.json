@@ -12,7 +12,7 @@
     "lerna:publish": "npx lerna publish --contents dist",
     "prepublish": "lerna run build --since HEAD~1 --concurrency=1"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~11.2.9",
     "@angular/common": "~11.2.9",
