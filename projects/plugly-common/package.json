@@ -1,5 +1,5 @@
 {
-  "name": "plugly-common",
+  "name": "@2121tech/plugly-common",
   "version": "0.0.0",
   "scripts": {
     "build": "ng build plugly-common",
@@ -11,5 +11,9 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:2121tech/plugly.git"
   }
 }
