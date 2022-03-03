@@ -1,6 +1,6 @@
 {
   "name": "@2121tech/plugly-common",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "build": "ng build plugly-common",
     "postpublish": "rm -rf dist/"
