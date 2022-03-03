@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PluglyCommonComponent } from './common.component';
+import { PluggularCommonComponent } from './common.component';
 
-describe('PluglyCommonComponent', () => {
-  let component: PluglyCommonComponent;
-  let fixture: ComponentFixture<PluglyCommonComponent>;
+describe('PluggularCommonComponent', () => {
+  let component: PluggularCommonComponent;
+  let fixture: ComponentFixture<PluggularCommonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PluglyCommonComponent ]
+      declarations: [ PluggularCommonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PluglyCommonComponent);
+    fixture = TestBed.createComponent(PluggularCommonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

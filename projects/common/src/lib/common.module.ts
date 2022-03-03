@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { PluglyCommonComponent } from './common.component';
+import { PluggularCommonComponent } from './common.component';
 
 
 
 @NgModule({
   declarations: [
-    PluglyCommonComponent
+    PluggularCommonComponent
   ],
   imports: [
   ],
   exports: [
-    PluglyCommonComponent
+    PluggularCommonComponent
   ]
 })
-export class PluglyCommonModule { }
+export class PluggularCommonModule { }

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PluglyCommonService } from './common.service';
+import { PluggularCommonService } from './common.service';
 
-describe('PluglyCommonService', () => {
-  let service: PluglyCommonService;
+describe('PluggularCommonService', () => {
+  let service: PluggularCommonService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PluglyCommonService);
+    service = TestBed.inject(PluggularCommonService);
   });
 
   it('should be created', () => {

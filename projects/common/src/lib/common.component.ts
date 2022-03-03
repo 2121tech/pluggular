@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'plugly-common',
+  selector: 'pluggular-common',
   template: `
     <p>
-      plugly-common works!
+      pluggular-common works!
     </p>
   `,
   styles: [
   ]
 })
-export class PluglyCommonComponent implements OnInit {
+export class PluggularCommonComponent implements OnInit {
 
   constructor() { }
 

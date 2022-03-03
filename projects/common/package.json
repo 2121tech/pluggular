@@ -1,6 +1,6 @@
 {
-  "name": "common",
-  "version": "0.0.1",
+  "name": "@pluggular/common",
+  "version": "0.0.0",
   "scripts": {
     "build": "ng build common --prod",
     "postpublish": "rm -rf dist/"
@@ -14,6 +14,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:2121tech/plugly.git"
+    "url": "git@github.com:2121tech/pluggular.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
