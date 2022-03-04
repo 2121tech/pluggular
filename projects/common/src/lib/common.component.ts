@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'pluggular-common',
   template: `
-    <p>
+    <div>
       pluggular-common works!
-    </p>
+    </div>
   `,
   styles: [
   ]
