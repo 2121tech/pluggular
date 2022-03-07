@@ -1,20 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'pluggular-button',
-  template: `
-    <a>
-      hyperlink works!
-  </a>
-  `,
-  styles: [
-  ]
+  template: `<p [ngClass]="class">Button works!!!!</p>`,
+  styles: [],
 })
 export class PluggularButtonComponent implements OnInit {
+  @Input() class: string = '';
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
