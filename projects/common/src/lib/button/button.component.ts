@@ -6,13 +6,15 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-export type TButtonType =
+export type TButtonType = 'button' | 'submit' | undefined;
+
+export type TButtonFillType =
   | 'primary'
   | 'success'
   | 'warning'
   | 'danger'
   | undefined;
-  
+
 export type TRoleType = 'edit' | 'delete' | 'view' | '' | undefined;
 export type TButtonSizeType = 'small' | 'default' | 'large' | undefined;
 export type TButtonExpandType = 'full' | 'block' | undefined;
@@ -24,10 +26,8 @@ export type TButtonRoundnessType =
   | undefined;
 
 export enum EButtonTypeEnum {
-  PRIMARY = 'primary',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
+  BUTTON = 'button',
+  SUBMIT = 'submit',
 }
 
 export enum ERoleEnum {
@@ -54,13 +54,21 @@ export enum EButtonRoundnessEnum {
   NONE = 'none',
 }
 
+export enum EButtonFillEnum {
+  PRIMARY = 'primary',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
+}
+
 @Component({
   selector: 'pluggular-button',
   templateUrl: './button.component.html',
   styles: [],
 })
 export class PluggularButtonComponent implements OnInit {
-  @Input() type: TButtonType = 'primary';
+  @Input() type: TButtonType = EButtonTypeEnum.BUTTON;
+  @Input() fill: TButtonFillType = EButtonFillEnum.PRIMARY;
   @Input() role: TRoleType = '';
   @Input() size: TButtonSizeType = 'default';
   @Input() expand: TButtonExpandType = 'block';
@@ -78,29 +86,29 @@ export class PluggularButtonComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.bgClass = this.constructColor(this.type);
+    this.bgClass = this.constructColor(this.fill);
     this.icon = this.constructIcon(this.role);
     this.sizeClass = this.constructSize(this.size);
     this.expandClass = this.constructExpand(this.expand);
     this.roundnessClass = this.constructRoundness(this.roundness);
   }
 
-  constructColor(type: TButtonType): string {
+  constructColor(fill: TButtonFillType): string {
     let color = '';
-    switch (type) {
-      case EButtonTypeEnum.PRIMARY:
+    switch (fill) {
+      case EButtonFillEnum.PRIMARY:
         color = 'blue';
         break;
 
-      case EButtonTypeEnum.SUCCESS:
+      case EButtonFillEnum.SUCCESS:
         color = 'green';
         break;
 
-      case EButtonTypeEnum.WARNING:
+      case EButtonFillEnum.WARNING:
         color = 'yellow';
         break;
 
-      case EButtonTypeEnum.DANGER:
+      case EButtonFillEnum.DANGER:
         color = 'red';
         break;
 
