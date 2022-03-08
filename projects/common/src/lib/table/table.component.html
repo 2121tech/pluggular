@@ -1,0 +1,58 @@
+<div class="flex-col">
+  <div class="-my-2 overflow-x-auto">
+    <div class="py-2 align-middle inline-block min-w-full">
+      <div
+        class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+      >
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th
+                *ngFor="let field of fields"
+                scope="col"
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                {{ field.label }}
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let item of data">
+              <td
+                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                *ngFor="let field of fields"
+              >
+                {{ item[field.key] }}
+              </td>
+              <td class="flex flex-wrap">
+                <pluggular-button
+                  *ngFor="let button of buttons"
+                  [type]="button.type"
+                  (onClick)="button.action(item.first_name)"
+                  [role]="button.role"
+                  class="mx-2"
+                  size="small"
+                  >{{ button.text }}</pluggular-button
+                >
+              </td>
+            </tr>
+          </tbody>
+          <tr *ngIf="data && data.length < 1" id="noDataAvailable">
+            <td
+              class="text-center py-3 text-sm text-gray-400"
+              [colSpan]="fields.length + 1"
+            >
+              NO DATA AVAILABLE
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

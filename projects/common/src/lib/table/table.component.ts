@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ButtonType, RoleType } from '../button/button.component';
+
+export type FieldType = {
+  label: string;
+  key: string;
+};
+
+export interface Data extends Record<string, any> {
+  first_name: string;
+  last_name: string;
+  email: string;
+}
+
+export type TableButtonType = {
+  text: string;
+  type: ButtonType;
+  action: (data: any) => void;
+  role?: RoleType;
+};
 
 @Component({
   selector: 'pluggular-table',
-  template: `
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  `,
-  styles: [
-  ]
+  templateUrl: './table.component.html',
+  styles: [],
 })
 export class PluggularTableComponent implements OnInit {
+  @Input() data: any = [];
+  @Input() buttons: TableButtonType[] = [];
+  @Input() fields: FieldType[] = [];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
