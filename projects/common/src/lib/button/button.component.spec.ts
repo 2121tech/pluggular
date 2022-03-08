@@ -1,13 +1,18 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { PluggularButtonComponent } from './button.component';
 
 describe('PluggularButtonComponent', () => {
   let component: PluggularButtonComponent;
   let fixture: ComponentFixture<PluggularButtonComponent>;
   let de: DebugElement;
+  let router: Router;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes([])],
       declarations: [PluggularButtonComponent],
     }).compileComponents();
   });
@@ -17,6 +22,7 @@ describe('PluggularButtonComponent', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement;
     fixture.detectChanges();
+    router = TestBed.inject(Router);
   });
 
   it('should create', () => {
@@ -79,5 +85,25 @@ describe('PluggularButtonComponent', () => {
     button.click();
 
     expect(component.onClickEvent).toHaveBeenCalled();
+  });
+
+  it('should call navigate function when button is clicked', () => {
+    spyOn(component, 'navigate');
+
+    let button = de.nativeElement.querySelector('button');
+
+    button.click();
+
+    expect(component.navigate).toHaveBeenCalled();
+  });
+
+  it('should navigate when href props is provided', () => {
+    const url = '/home';
+    component.href = url;
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.navigate();
+
+    expect(navigateSpy).toHaveBeenCalledWith([url]);
   });
 });
