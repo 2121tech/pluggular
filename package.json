@@ -10,7 +10,8 @@
     "commit": "git add . & npx git-cz",
     "lerna:build": "npx lerna run build",
     "lerna:publish": "npx lerna publish --contents dist",
-    "prepublish": "lerna run build --since HEAD~1 --concurrency=1"
+    "prepublish": "lerna run build --since HEAD~1 --concurrency=1",
+    "prepare": "husky install"
   },
   "private": false,
   "dependencies": {
@@ -63,8 +64,5 @@
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
-  },
-  "husky": {
-    "pre-push": "ng lint"
   }
 }
