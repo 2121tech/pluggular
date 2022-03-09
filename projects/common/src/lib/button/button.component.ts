@@ -1,29 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  faEye,
-  faPenSquare,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPenSquare, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 export type TButton = 'button' | 'submit' | undefined;
 
-export type TButtonFill =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | undefined;
+export type TButtonFill = 'primary' | 'success' | 'warning' | 'danger' | undefined;
 
 export type TRole = 'edit' | 'delete' | 'view' | '' | undefined;
 export type TButtonSize = 'small' | 'default' | 'large' | undefined;
 export type TButtonExpand = 'full' | 'block' | undefined;
-export type TButtonRoundness =
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'none'
-  | undefined;
+export type TButtonRoundness = 'small' | 'medium' | 'large' | 'none' | undefined;
 
 export enum EButtonType {
   BUTTON = 'button',
