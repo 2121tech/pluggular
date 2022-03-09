@@ -1,22 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ButtonType, RoleType } from '../button/button.component';
+import { Component, Input } from '@angular/core';
+import { TButtonFill, TRole } from '../button/button.component';
 
-export type FieldType = {
+export type TField = {
   label: string;
   key: string;
 };
 
-export interface Data extends Record<string, any> {
+export interface IData extends Record<string, string | number | boolean> {
   first_name: string;
   last_name: string;
   email: string;
 }
 
-export type TableButtonType = {
+export type TTableButton = {
   text: string;
-  type: ButtonType;
+  fill: TButtonFill;
   action: (data: any) => void;
-  role?: RoleType;
+  role?: TRole;
 };
 
 @Component({
@@ -24,11 +24,8 @@ export type TableButtonType = {
   templateUrl: './table.component.html',
   styles: [],
 })
-export class PluggularTableComponent implements OnInit {
+export class PluggularTableComponent {
   @Input() data: any = [];
-  @Input() buttons: TableButtonType[] = [];
-  @Input() fields: FieldType[] = [];
-  constructor() {}
-
-  ngOnInit(): void {}
+  @Input() buttons: TTableButton[] = [];
+  @Input() fields: TField[] = [];
 }

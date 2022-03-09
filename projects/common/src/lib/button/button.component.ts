@@ -1,55 +1,50 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  faEye,
-  faPenSquare,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faEye, faPenSquare, faTrashAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-export type ButtonType =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | undefined;
-export type RoleType = 'edit' | 'delete' | 'view' | '' | undefined;
-export type ButtonSizeType = 'small' | 'default' | 'large' | undefined;
-export type ButtonExpandType = 'full' | 'block' | undefined;
-export type ButtonRoundnessType =
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'none'
-  | undefined;
+export type TButtonType = 'button' | 'submit' | undefined;
 
-export enum ButtonTypeEnum {
-  PRIMARY = 'primary',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  DANGER = 'danger',
+export type TButtonFill = 'primary' | 'success' | 'warning' | 'danger' | undefined;
+
+export type TRole = 'edit' | 'delete' | 'view' | '' | undefined;
+export type TButtonSize = 'small' | 'default' | 'large' | undefined;
+export type TButtonExpand = 'full' | 'block' | undefined;
+export type TButtonRoundness = 'small' | 'medium' | 'large' | 'none' | undefined;
+
+export enum EButtonType {
+  BUTTON = 'button',
+  SUBMIT = 'submit',
 }
 
-export enum RoleEnum {
+export enum ERole {
   EDIT = 'edit',
   DELETE = 'delete',
   VIEW = 'view',
 }
 
-export enum ButtonSizeEnum {
+export enum EButtonSize {
   SMALL = 'small',
   DEFAULT = 'default',
   LARGE = 'large',
 }
 
-export enum ButtonExpandEnum {
+export enum EButtonExpand {
   FULL = 'full',
   BLOCK = 'block',
 }
 
-export enum ButtonRoundnessEnum {
+export enum EButtonRoundness {
   SMALL = 'small',
   MEDIUM = 'medium',
   LARGE = 'large',
   NONE = 'none',
+}
+
+export enum EButtonFill {
+  PRIMARY = 'primary',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
 }
 
 @Component({
@@ -58,46 +53,48 @@ export enum ButtonRoundnessEnum {
   styles: [],
 })
 export class PluggularButtonComponent implements OnInit {
-  @Input() type: ButtonType = 'primary';
-  @Input() role: RoleType = '';
-  @Input() size: ButtonSizeType = 'default';
-  @Input() expand: ButtonExpandType = 'block';
-  @Input() roundness: ButtonRoundnessType = 'small';
-  @Input() class: string = '';
-  @Output() onClick = new EventEmitter<string>();
+  @Input() type: TButtonType = EButtonType.BUTTON;
+  @Input() fill: TButtonFill = EButtonFill.PRIMARY;
+  @Input() role: TRole = '';
+  @Input() size: TButtonSize = 'default';
+  @Input() expand: TButtonExpand = 'block';
+  @Input() roundness: TButtonRoundness = 'small';
+  @Input() class = '';
+  @Input() href = '';
+  @Output() byClick = new EventEmitter<string>();
 
-  bgClass: string = '';
-  sizeClass: string = '';
-  expandClass: string = '';
-  roundnessClass: string = '';
-  icon: any;
+  bgClass = '';
+  sizeClass = '';
+  expandClass = '';
+  roundnessClass = '';
+  icon: IconDefinition | undefined = undefined;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.bgClass = this.constructColor(this.type);
+    this.bgClass = this.constructColor(this.fill);
     this.icon = this.constructIcon(this.role);
     this.sizeClass = this.constructSize(this.size);
     this.expandClass = this.constructExpand(this.expand);
     this.roundnessClass = this.constructRoundness(this.roundness);
   }
 
-  constructColor(type: ButtonType): string {
+  constructColor(fill: TButtonFill): string {
     let color = '';
-    switch (type) {
-      case ButtonTypeEnum.PRIMARY:
+    switch (fill) {
+      case EButtonFill.PRIMARY:
         color = 'blue';
         break;
 
-      case ButtonTypeEnum.SUCCESS:
+      case EButtonFill.SUCCESS:
         color = 'green';
         break;
 
-      case ButtonTypeEnum.WARNING:
+      case EButtonFill.WARNING:
         color = 'yellow';
         break;
 
-      case ButtonTypeEnum.DANGER:
+      case EButtonFill.DANGER:
         color = 'red';
         break;
 
@@ -108,7 +105,7 @@ export class PluggularButtonComponent implements OnInit {
     return `bg-${color}-500 hover:bg-${color}-600`;
   }
 
-  constructIcon(role: RoleType) {
+  constructIcon(role: TRole): IconDefinition | undefined {
     let icon;
     switch (role) {
       case 'edit':
@@ -127,16 +124,16 @@ export class PluggularButtonComponent implements OnInit {
     return icon;
   }
 
-  constructSize(size: ButtonSizeType): string {
+  constructSize(size: TButtonSize): string {
     let sizeClass = '';
     switch (size) {
-      case ButtonSizeEnum.SMALL:
+      case EButtonSize.SMALL:
         sizeClass = 'px-6 py-2 text-xs';
         break;
-      case ButtonSizeEnum.DEFAULT:
+      case EButtonSize.DEFAULT:
         sizeClass = 'px-8 py-3 text-sm';
         break;
-      case ButtonSizeEnum.LARGE:
+      case EButtonSize.LARGE:
         sizeClass = 'px-10 py-4 text-lg';
         break;
       default:
@@ -145,15 +142,15 @@ export class PluggularButtonComponent implements OnInit {
     return sizeClass;
   }
 
-  constructExpand(expand: ButtonExpandType): string {
+  constructExpand(expand: TButtonExpand): string {
     let expandClass = '';
 
     switch (expand) {
-      case ButtonExpandEnum.FULL:
+      case EButtonExpand.FULL:
         expandClass = 'w-full';
         break;
 
-      case ButtonExpandEnum.BLOCK:
+      case EButtonExpand.BLOCK:
         expandClass = 'w-auto';
         break;
       default:
@@ -163,20 +160,20 @@ export class PluggularButtonComponent implements OnInit {
     return expandClass;
   }
 
-  constructRoundness(roundness: ButtonRoundnessType): string {
+  constructRoundness(roundness: TButtonRoundness): string {
     let roundnessClass = '';
 
     switch (roundness) {
-      case ButtonRoundnessEnum.SMALL:
+      case EButtonRoundness.SMALL:
         roundnessClass = 'rounded-sm';
         break;
-      case ButtonRoundnessEnum.MEDIUM:
+      case EButtonRoundness.MEDIUM:
         roundnessClass = 'rounded-md';
         break;
-      case ButtonRoundnessEnum.LARGE:
+      case EButtonRoundness.LARGE:
         roundnessClass = 'rounded-full';
         break;
-      case ButtonRoundnessEnum.NONE:
+      case EButtonRoundness.NONE:
         roundnessClass = 'rounded-none';
         break;
       default:
@@ -186,7 +183,14 @@ export class PluggularButtonComponent implements OnInit {
     return roundnessClass;
   }
 
-  onClickEvent() {
-    this.onClick.emit();
+  onClickEvent(): void {
+    this.byClick.emit();
+  }
+
+  navigate(): void {
+    if (!this.href) {
+      return;
+    }
+    this.router.navigate([this.href]);
   }
 }
