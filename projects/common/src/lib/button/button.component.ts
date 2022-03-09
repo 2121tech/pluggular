@@ -105,7 +105,7 @@ export class PluggularButtonComponent implements OnInit {
     return `bg-${color}-500 hover:bg-${color}-600`;
   }
 
-  constructIcon(role: TRole) {
+  constructIcon(role: TRole): string {
     let icon;
     switch (role) {
       case 'edit':
@@ -183,11 +183,11 @@ export class PluggularButtonComponent implements OnInit {
     return roundnessClass;
   }
 
-  onClickEvent() {
+  onClickEvent(): void {
     this.byClick.emit();
   }
 
-  navigate() {
+  navigate(): void {
     if (!this.href) {
       return;
     }
