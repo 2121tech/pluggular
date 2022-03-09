@@ -6,7 +6,7 @@ export type TField = {
   key: string;
 };
 
-export interface IData extends Record<string, string | number | boolean> {
+export interface IData extends Record<string, unknown> {
   first_name: string;
   last_name: string;
   email: string;
@@ -15,7 +15,7 @@ export interface IData extends Record<string, string | number | boolean> {
 export type TTableButton = {
   text: string;
   fill: TButtonFill;
-  action: (data: any) => void;
+  action: (data: Record<string, unknown>) => void;
   role?: TRole;
 };
 
@@ -25,7 +25,7 @@ export type TTableButton = {
   styles: [],
 })
 export class PluggularTableComponent {
-  @Input() data: any = [];
+  @Input() data: Record<string, unknown>[] = [];
   @Input() buttons: TTableButton[] = [];
   @Input() fields: TField[] = [];
 }
