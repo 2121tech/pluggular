@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { faEye, faPenSquare, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPenSquare, faTrashAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 export type TButton = 'button' | 'submit' | undefined;
 
@@ -67,7 +67,7 @@ export class PluggularButtonComponent implements OnInit {
   sizeClass = '';
   expandClass = '';
   roundnessClass = '';
-  icon: any;
+  icon: IconDefinition | undefined = undefined;
 
   constructor(private router: Router) {}
 
