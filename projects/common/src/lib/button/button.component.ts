@@ -105,7 +105,7 @@ export class PluggularButtonComponent implements OnInit {
     return `bg-${color}-500 hover:bg-${color}-600`;
   }
 
-  constructIcon(role: TRole): string {
+  constructIcon(role: TRole): IconDefinition | undefined {
     let icon;
     switch (role) {
       case 'edit':
