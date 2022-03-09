@@ -187,7 +187,7 @@ export class PluggularButtonComponent implements OnInit {
     this.byClick.emit();
   }
 
-  navigate(): void {
+  navigate() {
     if (!this.href) {
       return;
     }
