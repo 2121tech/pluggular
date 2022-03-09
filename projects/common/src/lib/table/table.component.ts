@@ -6,12 +6,6 @@ export type TField = {
   key: string;
 };
 
-export interface IData extends Record<string, unknown> {
-  first_name: string;
-  last_name: string;
-  email: string;
-}
-
 export type TTableButton = {
   text: string;
   fill: TButtonFill;
