@@ -59,14 +59,14 @@ export class PluggularButtonComponent implements OnInit {
   @Input() size: TButtonSize = 'default';
   @Input() expand: TButtonExpand = 'block';
   @Input() roundness: TButtonRoundness = 'small';
-  @Input() class: string = '';
-  @Input() href: string = '';
-  @Output() onClick = new EventEmitter<string>();
+  @Input() class = '';
+  @Input() href = '';
+  @Output() byClick = new EventEmitter<string>();
 
-  bgClass: string = '';
-  sizeClass: string = '';
-  expandClass: string = '';
-  roundnessClass: string = '';
+  bgClass = '';
+  sizeClass = '';
+  expandClass = '';
+  roundnessClass = '';
   icon: any;
 
   constructor(private router: Router) {}
@@ -184,7 +184,7 @@ export class PluggularButtonComponent implements OnInit {
   }
 
   onClickEvent() {
-    this.onClick.emit();
+    this.byClick.emit();
   }
 
   navigate() {

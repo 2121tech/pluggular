@@ -80,7 +80,7 @@ describe('PluggularButtonComponent', () => {
   it('should call onClickEvent when button is clicked', () => {
     spyOn(component, 'onClickEvent');
 
-    let button = de.nativeElement.querySelector('button');
+    const button = de.nativeElement.querySelector('button');
 
     button.click();
 
@@ -90,7 +90,7 @@ describe('PluggularButtonComponent', () => {
   it('should call navigate function when button is clicked', () => {
     spyOn(component, 'navigate');
 
-    let button = de.nativeElement.querySelector('button');
+    const button = de.nativeElement.querySelector('button');
 
     button.click();
 
