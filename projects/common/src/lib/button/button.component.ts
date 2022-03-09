@@ -67,7 +67,7 @@ export class PluggularButtonComponent implements OnInit {
   sizeClass = '';
   expandClass = '';
   roundnessClass = '';
-  icon: IconDefinition | undefined;
+  icon: IconDefinition | undefined = undefined;
 
   constructor(private router: Router) {}
 
