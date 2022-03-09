@@ -124,7 +124,7 @@ export class PluggularButtonComponent implements OnInit {
     return icon;
   }
 
-  constructSize(size: TButtonSize): string {
+  constructSize(size: TButtonSize) {
     let sizeClass = '';
     switch (size) {
       case EButtonSize.SMALL:
