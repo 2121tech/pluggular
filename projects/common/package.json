@@ -6,6 +6,7 @@
     "postpublish": "rm -rf dist/"
   },
   "peerDependencies": {
+    "@angular/common": "~13.2.5",
     "@angular/compiler": "~13.2.5",
     "@angular/core": "~13.2.5",
     "@fortawesome/angular-fontawesome": "^0.10.1",

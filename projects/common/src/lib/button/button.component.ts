@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faEye, faPenSquare, faTrashAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-export type TButton = 'button' | 'submit' | undefined;
+export type TButtonType = 'button' | 'submit' | undefined;
 
 export type TButtonFill = 'primary' | 'success' | 'warning' | 'danger' | undefined;
 
@@ -53,7 +53,7 @@ export enum EButtonFill {
   styles: [],
 })
 export class PluggularButtonComponent implements OnInit {
-  @Input() type: TButton = EButtonType.BUTTON;
+  @Input() type: TButtonType = EButtonType.BUTTON;
   @Input() fill: TButtonFill = EButtonFill.PRIMARY;
   @Input() role: TRole = '';
   @Input() size: TButtonSize = 'default';

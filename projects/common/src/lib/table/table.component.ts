@@ -1,8 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TButtonFill, TRole } from '../button/button.component';
+
+export type TField = {
+  label: string;
+  key: string;
+};
+
+export type TTableButton = {
+  text: string;
+  fill: TButtonFill;
+  action: (data: Record<string, unknown>) => void;
+  role?: TRole;
+};
 
 @Component({
   selector: 'pluggular-table',
-  template: ` <h1 class="text-3xl font-bold underline">Hello world!</h1> `,
+  templateUrl: './table.component.html',
   styles: [],
 })
-export class PluggularTableComponent {}
+export class PluggularTableComponent {
+  @Input() data: Record<string, unknown>[] = [];
+  @Input() buttons: TTableButton[] = [];
+  @Input() fields: TField[] = [];
+  @Input() noDataMsg = 'No Data';
+}

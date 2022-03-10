@@ -1,7 +1,7 @@
 <button
   class="my-2 flex transition duration-150 ease-in-out text-white py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 justify-center"
   [ngClass]="[bgClass, sizeClass, expandClass, roundnessClass, class]"
-  [type]=""
+  [type]="type"
   (click)="onClickEvent(); navigate()"
 >
   <span class="h-4 w-4 mr-2 -ml-3" *ngIf="icon">
