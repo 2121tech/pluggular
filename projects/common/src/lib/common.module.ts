@@ -4,9 +4,11 @@ import { PluggularButtonComponent } from './button/button.component';
 
 import { PluggularTableComponent } from './table/table.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InputComponent } from './input/input.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [PluggularButtonComponent, PluggularTableComponent],
-  imports: [CommonModule, FontAwesomeModule],
+  declarations: [PluggularButtonComponent, PluggularTableComponent, InputComponent],
+  imports: [CommonModule, FontAwesomeModule, FormsModule],
   exports: [PluggularButtonComponent, PluggularTableComponent],
 })
 export class PluggularCommonModule {}
