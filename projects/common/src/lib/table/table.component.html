@@ -36,7 +36,9 @@
             </tr>
           </tbody>
           <tr *ngIf="data && data.length < 1" id="noDataAvailable">
-            <td class="text-center py-3 text-sm text-gray-400" [colSpan]="fields.length + 1">NO DATA AVAILABLE</td>
+            <td class="text-center py-3 text-sm text-gray-400 uppercase" [colSpan]="fields.length + 1" id="noDataMsg">
+              {{ noDataMsg }}
+            </td>
           </tr>
         </table>
       </div>

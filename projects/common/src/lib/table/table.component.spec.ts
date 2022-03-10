@@ -39,4 +39,15 @@ describe('PluggularTableComponent', () => {
 
     expect(noDataAvailable).toBeFalsy();
   });
+
+  it('should display the passed noDataMsg props when data is empty', () => {
+    const message = 'NO DATA AVAILABLE';
+    component.noDataMsg = message;
+
+    fixture.detectChanges();
+
+    const noDataMsg = de.query(By.css('#noDataMsg')).nativeElement;
+
+    expect(noDataMsg.innerHTML.trim()).toEqual(message);
+  });
 });
