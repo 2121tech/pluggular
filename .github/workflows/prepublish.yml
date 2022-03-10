@@ -5,7 +5,7 @@ name: NodeJS Prepublish
 
 on:
   pull_request:
-    branches: [feature/github-action] # Should be release-* branch
+    branches: [release-**] # Should be release-* branch
 
 jobs:
   build-to-lint:
