@@ -8,7 +8,7 @@ export type TInputType = 'text' | 'number';
   templateUrl: './input.component.html',
   styles: [],
 })
-export class InputComponent implements ControlValueAccessor {
+export class PluggularInputComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
