@@ -22,4 +22,5 @@ export class PluggularTableComponent {
   @Input() data: Record<string, unknown>[] = [];
   @Input() buttons: TTableButton[] = [];
   @Input() fields: TField[] = [];
+  @Input() noDataMsg = 'No Data';
 }
