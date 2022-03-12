@@ -10,7 +10,6 @@
     "commit": "git add . & npx git-cz",
     "lerna:build": "npx lerna run build",
     "lerna:publish": "npx lerna publish --contents dist",
-    "prepublish": "lerna run build --since HEAD~1 --concurrency=1",
     "prepare": "husky install"
   },
   "private": false,
