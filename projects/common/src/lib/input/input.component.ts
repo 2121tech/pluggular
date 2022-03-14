@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export type TInputType = 'text' | 'number' | 'password';
 
@@ -31,8 +32,14 @@ export class PluggularInputComponent implements ControlValueAccessor {
 
   value = '';
 
+  isVisible = false;
+
+  icon = faEye;
+
+  _type = 'text';
   constructor(@Self() @Optional() public control: NgControl) {
     this.control && (this.control.valueAccessor = this);
+    this._type = this.type;
   }
 
   public get invalid(): boolean | null {
@@ -79,5 +86,17 @@ export class PluggularInputComponent implements ControlValueAccessor {
 
   blur(): void {
     this.hasBlurred?.emit(true);
+  }
+
+  onEyeClick() {
+    this.isVisible = !this.isVisible;
+
+    if (this.isVisible) {
+      this._type = 'text';
+      this.icon = faEyeSlash;
+    } else {
+      this._type = 'password';
+      this.icon = faEye;
+    }
   }
 }

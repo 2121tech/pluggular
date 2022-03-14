@@ -2,20 +2,29 @@
   <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1" for="grid-first-name">
     {{ label }}
   </label>
-  <input
-    class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white"
-    [type]="type"
-    [placeholder]="placeholder"
-    (input)="setValue()"
-    (change)="setValue()"
-    (blur)="blur()"
-    [required]="required"
-    [disabled]="disabled"
-    [(ngModel)]="value"
-    [ngModelOptions]="{ standalone: true }"
-    [maxlength]="maxLength"
-    [minLength]="minLength"
-  />
+  <div
+    class="appearance-none flex flex-row items-center w-full bg-gray-200 text-gray-700 border rounded mb-3 leading-tight focus:outline-none focus:bg-white"
+  >
+    <input
+      class="block w-full py-2 px-3 bg-transparent"
+      [type]="_type"
+      [placeholder]="placeholder"
+      (input)="setValue()"
+      (change)="setValue()"
+      (blur)="blur()"
+      [required]="required"
+      [disabled]="disabled"
+      [(ngModel)]="value"
+      [ngModelOptions]="{ standalone: true }"
+      [maxlength]="maxLength"
+      [minLength]="minLength"
+    />
+
+    <span *ngIf="type === 'password'" class="pl-5 pr-3 cursor-pointer" (click)="onEyeClick()"
+      ><fa-icon [icon]="icon"></fa-icon
+    ></span>
+  </div>
+
   <div class="flex flex-col" *ngIf="showError">
     <p class="text-red-500 text-xs italic">
       *
