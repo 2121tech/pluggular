@@ -14,20 +14,20 @@ export class PluggularInputComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() placeholder = '';
   @Input() disabled = false;
-  @Input() maxLength = 0;
+  @Input() maxLength = 524288;
   @Input() minLength = 0;
 
-  errorMessages = new Map();
+  errorMessages = new Map<string, string>();
 
-  onChange = (value: string): void => {
-    console.log(value);
+  onChange: (value: string) => void = (): void => {
+    return;
   };
 
-  onTouch = (): void => {
-    console.log('On Touch');
+  onTouch: () => void = (): void => {
+    return;
   };
 
-  @Output() byBlur: EventEmitter<boolean> = new EventEmitter();
+  @Output() hasBlurred: EventEmitter<boolean> = new EventEmitter();
 
   value = '';
 
@@ -49,16 +49,14 @@ export class PluggularInputComponent implements ControlValueAccessor {
     return this.invalid ? dirty || touched : false;
   }
 
-  public get errors(): Array<string> {
+  public get errors(): string[] {
     if (!this.control) {
       return [];
     }
 
     const { errors } = this.control;
 
-    return Object.keys(errors || {}).map((key) =>
-      this.errorMessages.has(key) ? this.errorMessages.get(key)() : <string>errors?.[key] || key,
-    );
+    return Object.keys(errors || {}).map((key) => <string>errors?.[key] || key);
   }
 
   setValue(): void {
@@ -80,6 +78,6 @@ export class PluggularInputComponent implements ControlValueAccessor {
   }
 
   blur(): void {
-    this.byBlur?.emit(true);
+    this.hasBlurred?.emit(true);
   }
 }
