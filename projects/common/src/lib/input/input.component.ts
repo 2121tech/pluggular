@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-export type TInputType = 'text' | 'number';
+export type TInputType = 'text' | 'number' | 'password';
 
 @Component({
   selector: 'pluggular-input',
