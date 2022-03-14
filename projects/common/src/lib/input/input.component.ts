@@ -88,7 +88,7 @@ export class PluggularInputComponent implements ControlValueAccessor {
     this.hasBlurred?.emit(true);
   }
 
-  onEyeClick() {
+  onEyeClick(): void {
     this.isVisible = !this.isVisible;
 
     if (this.isVisible) {

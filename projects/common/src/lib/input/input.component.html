@@ -16,6 +16,7 @@
       [disabled]="disabled"
       [(ngModel)]="value"
       [ngModelOptions]="{ standalone: true }"
+      [ngClass]="{ 'border-red-500': showError || maxLength }"
       [maxlength]="maxLength"
       [minLength]="minLength"
     />
