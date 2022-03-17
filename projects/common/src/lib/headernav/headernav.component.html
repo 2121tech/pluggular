@@ -1,0 +1,13 @@
+<nav class="bg-white shadow-sm pt-4 pb-2 px-8">
+  <div class="flex flex-row items-center">
+    <button id="menu" class="items-center justify-start pr-5" (click)="handleMenuClick()">
+      <span>
+        <fa-icon [icon]="menuIcon" class="text-lg"></fa-icon>
+      </span>
+    </button>
+    <div class="flex flex-1 items-center" [ngClass]="[alignClass]">
+      <ng-content></ng-content>
+    </div>
+    <ng-content select="[slot=userProfileTab]"></ng-content>
+  </div>
+</nav>

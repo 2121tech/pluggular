@@ -1,0 +1,17 @@
+<div
+  id="navItem"
+  class="relative cursor-pointer outline-none"
+  (click)="handleClick()"
+  tabindex="-1"
+  (blur)="handleBlur($event)"
+>
+  <ng-content select="[slot=label]"></ng-content>
+  <div
+    *ngIf="showContent"
+    [ngClass]="{ 'animate-fade-in-down': showContent }"
+    [class]="alignClass"
+    class="absolute bg-white shadow-sm flex flex-col border border-gray-100 top-10 min-w-[200px] pt-3 pb-2 divide-y divide-slate-00"
+  >
+    <ng-content select="[slot=content]"></ng-content>
+  </div>
+</div>
