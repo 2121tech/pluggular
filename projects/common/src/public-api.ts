@@ -7,4 +7,7 @@ export * from './lib/table/table.component';
 export * from './lib/input/input.component';
 export * from './lib/headernav/headernav.component';
 export * from './lib/header-nav-item/header-nav-item.component';
+export * from './lib/sidenav/sidenav.component';
+export * from './lib/sidenav-dropdown/sidenav-dropdown.component';
+export * from './lib/sidenav-item/sidenav-item.component';
 export * from './lib/common.module';
