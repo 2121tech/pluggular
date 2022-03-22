@@ -4,8 +4,12 @@
   (click)="handleClick()"
   tabindex="-1"
   (blur)="handleBlur($event)"
+  [attr.aria-expanded]="isExpanded"
 >
-  <ng-content select="[slot=label]"></ng-content>
+  <button (click)="handleLabelClick()">
+    <ng-content select="[slot=label]"></ng-content>
+  </button>
+
   <div
     *ngIf="showContent"
     [ngClass]="{ 'animate-fade-in-down': showContent }"
