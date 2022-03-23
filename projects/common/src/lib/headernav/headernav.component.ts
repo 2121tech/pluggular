@@ -8,7 +8,7 @@ export type TAlignment = 'left' | 'center' | 'right';
   templateUrl: './headernav.component.html',
   styleUrls: ['./headernav.component.css'],
 })
-export class PluggularHeadernavComponent implements OnInit {
+export class PluggularHeaderNavComponent implements OnInit {
   menuIcon = faBars;
   alignClass = '';
   @Input() alignItems: TAlignment = 'right';
@@ -19,7 +19,7 @@ export class PluggularHeadernavComponent implements OnInit {
     this.alignClass = this.constructItemsAlignmentClass(this.alignItems);
   }
 
-  constructItemsAlignmentClass(alignment: TAlignment): string {
+  private constructItemsAlignmentClass(alignment: TAlignment): string {
     let alignClass = '';
     switch (alignment) {
       case 'left':

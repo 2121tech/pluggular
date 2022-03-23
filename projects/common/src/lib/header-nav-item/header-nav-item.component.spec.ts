@@ -18,6 +18,7 @@ describe('HeaderNavItemComponent', () => {
     fixture = TestBed.createComponent(PluggularHeaderNavItemComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement;
+
     fixture.detectChanges();
   });
 
@@ -46,11 +47,15 @@ describe('HeaderNavItemComponent', () => {
     expect(component.handleBlur).toHaveBeenCalled();
   });
 
-  it('should call constructContentAlignmentClass', () => {
-    spyOn(component, 'constructContentAlignmentClass').and.callThrough();
+  it('alignClass should have a value of left-0', () => {
+    component.alignContent = 'left';
+    component.ngOnInit();
+    expect(component.alignClass).toEqual('left-0');
+  });
 
-    component.constructContentAlignmentClass('left');
-
-    expect(component.constructContentAlignmentClass).toHaveBeenCalled();
+  it('clickEventListener should be defined after component initilization', () => {
+    component.clickEventListener = undefined;
+    component.ngOnInit();
+    expect(component.clickEventListener).toBeDefined();
   });
 });
