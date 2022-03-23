@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css'],
 })
-export class PluggularSidenavComponent {
+export class PluggularSideNavComponent {
   @Input() show = false;
   @Input() brandClass = '';
   @Input() closeIconClass = '';

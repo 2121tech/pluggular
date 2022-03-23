@@ -8,10 +8,10 @@ import { PluggularInputComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PluggularHeadernavComponent } from './headernav/headernav.component';
 import { PluggularHeaderNavItemComponent } from './header-nav-item/header-nav-item.component';
-import { PluggularSidenavComponent } from './sidenav/sidenav.component';
-import { PluggularSidenavDropdownComponent } from './sidenav-dropdown/sidenav-dropdown.component';
+import { PluggularSideNavComponent } from './sidenav/sidenav.component';
+import { PluggularSideNavDropdownComponent } from './sidenav-dropdown/sidenav-dropdown.component';
 import { RouterModule } from '@angular/router';
-import { PluggularSidenavItemComponent } from './sidenav-item/sidenav-item.component';
+import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { PluggularSidenavItemComponent } from './sidenav-item/sidenav-item.compo
     PluggularInputComponent,
     PluggularHeadernavComponent,
     PluggularHeaderNavItemComponent,
-    PluggularSidenavComponent,
-    PluggularSidenavDropdownComponent,
-    PluggularSidenavItemComponent,
+    PluggularSideNavComponent,
+    PluggularSideNavDropdownComponent,
+    PluggularSideNavItemComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -31,9 +31,9 @@ import { PluggularSidenavItemComponent } from './sidenav-item/sidenav-item.compo
     PluggularInputComponent,
     PluggularHeadernavComponent,
     PluggularHeaderNavItemComponent,
-    PluggularSidenavComponent,
-    PluggularSidenavDropdownComponent,
-    PluggularSidenavItemComponent,
+    PluggularSideNavComponent,
+    PluggularSideNavDropdownComponent,
+    PluggularSideNavItemComponent,
   ],
 })
 export class PluggularCommonModule {}

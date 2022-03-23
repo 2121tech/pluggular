@@ -6,7 +6,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.css'],
 })
-export class PluggularSidenavItemComponent {
+export class PluggularSideNavItemComponent {
   @Input() label = '';
   @Input() icon?: IconProp;
   @Input() link = '#';

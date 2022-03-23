@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PluggularSidenavDropdownComponent } from './sidenav-dropdown.component';
+import { PluggularSideNavDropdownComponent } from './sidenav-dropdown.component';
 
 describe('SidenavDropdownComponent', () => {
-  let component: PluggularSidenavDropdownComponent;
-  let fixture: ComponentFixture<PluggularSidenavDropdownComponent>;
+  let component: PluggularSideNavDropdownComponent;
+  let fixture: ComponentFixture<PluggularSideNavDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PluggularSidenavDropdownComponent],
+      declarations: [PluggularSideNavDropdownComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PluggularSidenavDropdownComponent);
+    fixture = TestBed.createComponent(PluggularSideNavDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

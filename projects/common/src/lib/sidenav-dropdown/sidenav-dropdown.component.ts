@@ -12,7 +12,7 @@ type TDropdownItem = {
   templateUrl: './sidenav-dropdown.component.html',
   styleUrls: ['./sidenav-dropdown.component.css'],
 })
-export class PluggularSidenavDropdownComponent {
+export class PluggularSideNavDropdownComponent {
   @Input() show = false;
   @Input() label = '';
   @Input() items: TDropdownItem[] = [];
