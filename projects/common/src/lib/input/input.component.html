@@ -3,10 +3,11 @@
     {{ label }}
   </label>
   <div
-    class="appearance-none flex flex-row items-center w-full bg-gray-200 text-gray-700 border rounded mb-3 leading-tight focus:outline-none focus:bg-white"
+    class="appearance-none flex flex-row items-center w-full bg-gray-200 text-gray-700 border rounded mb-3 focus:bg-white"
+    [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
   >
     <input
-      class="block w-full py-2 px-3 bg-transparent"
+      class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight"
       [type]="_type"
       [placeholder]="placeholder"
       (input)="setValue()"
@@ -16,11 +17,9 @@
       [disabled]="disabled"
       [(ngModel)]="value"
       [ngModelOptions]="{ standalone: true }"
-      [ngClass]="{ 'border-red-500': showError || maxLength }"
       [maxlength]="maxLength"
       [minLength]="minLength"
     />
-
     <span *ngIf="type === 'password'" class="pl-5 pr-3 cursor-pointer" (click)="onEyeClick()"
       ><fa-icon [icon]="icon"></fa-icon
     ></span>

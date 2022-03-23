@@ -1,0 +1,27 @@
+<div class="w-full mb-6 md:mb-0">
+  <label class="block uppercase font-semibold tracking-wide text-gray-500 text-sm mb-1" for="grid-first-name">
+    {{ label }}
+  </label>
+  <textarea
+    class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-2 px-3 mb-3 leading-tight focus:outline-none focus:bg-white"
+    [placeholder]="placeholder"
+    [(ngModel)]="value"
+    (change)="setValue()"
+    (input)="setValue()"
+    (blur)="blur()"
+    [required]="required"
+    [disabled]="disabled"
+    [ngModelOptions]="{ standalone: true }"
+    [rows]="rows"
+    [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
+    [maxlength]="maxLength"
+    [minlength]="minLength"
+  >
+  </textarea>
+  <div class="flex flex-col" *ngIf="showError">
+    <p class="text-red-500 text-xs italic">
+      *
+      {{ errors[0] }}
+    </p>
+  </div>
+</div>
