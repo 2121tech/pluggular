@@ -7,12 +7,12 @@ import { TInputType } from '../input/input.component';
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.css'],
 })
-export class PluggularTextareaComponent implements OnInit, ControlValueAccessor {
-  @Input() label: string = '';
+export class PluggularTextareaComponent implements ControlValueAccessor {
+  @Input() label = '';
   @Input() type: TInputType = 'text';
-  @Input() required: boolean = false;
-  @Input() placeholder: string = '';
-  @Input() disabled: boolean = false;
+  @Input() required = false;
+  @Input() placeholder = '';
+  @Input() disabled = false;
   @Input() rows: string | number | undefined;
   @Input() maxLength = 524288;
   @Input() minLength = 0;
@@ -80,6 +80,4 @@ export class PluggularTextareaComponent implements OnInit, ControlValueAccessor 
   blur(): void {
     this.hasBlurred?.emit(true);
   }
-
-  ngOnInit(): void {}
 }
