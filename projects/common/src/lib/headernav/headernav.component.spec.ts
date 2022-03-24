@@ -1,21 +1,21 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PluggularHeadernavComponent } from './headernav.component';
+import { PluggularHeaderNavComponent } from './headernav.component';
 
-describe('PluggularHeadernavComponent', () => {
-  let component: PluggularHeadernavComponent;
-  let fixture: ComponentFixture<PluggularHeadernavComponent>;
+describe('PluggularHeaderNavComponent', () => {
+  let component: PluggularHeaderNavComponent;
+  let fixture: ComponentFixture<PluggularHeaderNavComponent>;
   let de: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PluggularHeadernavComponent],
+      declarations: [PluggularHeaderNavComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PluggularHeadernavComponent);
+    fixture = TestBed.createComponent(PluggularHeaderNavComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement;
     fixture.detectChanges();
@@ -25,12 +25,10 @@ describe('PluggularHeadernavComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call constructItemsAlignmentClass', () => {
-    spyOn(component, 'constructItemsAlignmentClass').and.callThrough();
-
-    component.constructItemsAlignmentClass('left');
-
-    expect(component.constructItemsAlignmentClass).toHaveBeenCalled();
+  it('alignClass should have a value of justify-start', () => {
+    component.alignItems = 'left';
+    component.ngOnInit();
+    expect(component.alignClass).toEqual('justify-start');
   });
 
   it('should call handleMenuClick when menu button in headernav is clicked', () => {
