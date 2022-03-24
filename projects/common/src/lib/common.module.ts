@@ -6,7 +6,7 @@ import { PluggularTableComponent } from './table/table.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PluggularInputComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PluggularHeadernavComponent } from './headernav/headernav.component';
+import { PluggularHeaderNavComponent } from './headernav/headernav.component';
 import { PluggularHeaderNavItemComponent } from './header-nav-item/header-nav-item.component';
 import { PluggularSideNavComponent } from './sidenav/sidenav.component';
 import { PluggularSideNavDropdownComponent } from './sidenav-dropdown/sidenav-dropdown.component';
@@ -18,7 +18,7 @@ import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.compo
     PluggularButtonComponent,
     PluggularTableComponent,
     PluggularInputComponent,
-    PluggularHeadernavComponent,
+    PluggularHeaderNavComponent,
     PluggularHeaderNavItemComponent,
     PluggularSideNavComponent,
     PluggularSideNavDropdownComponent,
@@ -29,7 +29,7 @@ import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.compo
     PluggularButtonComponent,
     PluggularTableComponent,
     PluggularInputComponent,
-    PluggularHeadernavComponent,
+    PluggularHeaderNavComponent,
     PluggularHeaderNavItemComponent,
     PluggularSideNavComponent,
     PluggularSideNavDropdownComponent,

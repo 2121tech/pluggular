@@ -3,21 +3,15 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export type TAlignment = 'left' | 'center' | 'right';
 
-export enum EAlignment {
-  LEFT = 'left',
-  CENTER = 'center',
-  RIGHT = 'right',
-}
-
 @Component({
   selector: 'pluggular-headernav',
   templateUrl: './headernav.component.html',
   styleUrls: ['./headernav.component.css'],
 })
-export class PluggularHeadernavComponent implements OnInit {
+export class PluggularHeaderNavComponent implements OnInit {
   menuIcon = faBars;
   alignClass = '';
-  @Input() alignItems: TAlignment = EAlignment.RIGHT;
+  @Input() alignItems: TAlignment = 'right';
   @Output() menuClicked = new EventEmitter<boolean>();
   showSideNav = false;
 
@@ -25,16 +19,16 @@ export class PluggularHeadernavComponent implements OnInit {
     this.alignClass = this.constructItemsAlignmentClass(this.alignItems);
   }
 
-  constructItemsAlignmentClass(alignment: TAlignment): string {
+  private constructItemsAlignmentClass(alignment: TAlignment): string {
     let alignClass = '';
     switch (alignment) {
-      case EAlignment.LEFT:
+      case 'left':
         alignClass = 'justify-start';
         break;
-      case EAlignment.CENTER:
+      case 'center':
         alignClass = 'justify-center';
         break;
-      case EAlignment.RIGHT:
+      case 'right':
         alignClass = 'justify-end';
         break;
       default:
