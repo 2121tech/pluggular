@@ -68,7 +68,6 @@ export class PluggularInputComponent implements ControlValueAccessor {
   }
 
   setValue(): void {
-    console.log('set value');
     this.writeValue(this.value);
     this.onTouch();
   }
