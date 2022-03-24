@@ -7,7 +7,7 @@ import { TInputType } from '../input/input.component';
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.css'],
 })
-export class PluggularTextareaComponent implements ControlValueAccessor {
+export class PluggularTextAreaComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
