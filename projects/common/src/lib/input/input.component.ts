@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +9,7 @@ export type TInputType = 'text' | 'number' | 'password';
   templateUrl: './input.component.html',
   styles: [],
 })
-export class PluggularInputComponent implements ControlValueAccessor {
+export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
@@ -40,6 +40,9 @@ export class PluggularInputComponent implements ControlValueAccessor {
 
   constructor(@Self() @Optional() public control: NgControl) {
     this.control && (this.control.valueAccessor = this);
+  }
+
+  ngOnInit(): void {
     this._type = this.type;
   }
 
