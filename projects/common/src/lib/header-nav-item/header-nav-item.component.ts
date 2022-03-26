@@ -19,11 +19,10 @@ export class PluggularHeaderNavItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createClickEventListener();
-
     this.alignClass = this.constructContentAlignmentClass(this.alignContent);
   }
 
-  createClickEventListener(): void {
+  private createClickEventListener(): void {
     const onClick$ = fromEvent(document, 'click');
     this.clickEventListener = onClick$.subscribe((event) => {
       const element = this.currentTarget as HTMLElement;
@@ -34,7 +33,7 @@ export class PluggularHeaderNavItemComponent implements OnInit, OnDestroy {
     });
   }
 
-  constructContentAlignmentClass(alignment: TAlignment): string {
+  private constructContentAlignmentClass(alignment: TAlignment): string {
     let alignClass = '';
     switch (alignment) {
       case 'left':
