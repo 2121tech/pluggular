@@ -1,0 +1,41 @@
+<li [ngClass]="{ 'mb-2': !isChild }">
+  <div class="flex-row w-full relative cursor-pointer" (click)="show = !show" [ngClass]="{ 'mb-3': !isChild }">
+    <div class="flex items-center">
+      <span class="mr-2" *ngIf="!isChild && icon">
+        <fa-icon [icon]="icon" class="w-6 h-6"></fa-icon>
+      </span>
+      <span>
+        <a class="text-sm cursor-pointer w-full inline-block"> {{ label }}</a>
+      </span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 absolute top-0 right-0 transition-all"
+        [ngClass]="{ 'rotate-180': show }"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <ul
+    #content
+    class="text-sm overflow-hidden transition-all duration-500 pl-[33px]"
+    [ngClass]="{ 'max-h-72': show, 'max-h-0': !show }"
+  >
+    <li class="py-2" *ngFor="let item of items">
+      <a class="w-full inline-block cursor-pointer" [routerLink]="[item.link]" *ngIf="!item.items">{{ item.label }}</a>
+      <pluggular-sidenav-dropdown
+        [label]="item.label"
+        [isChild]="true"
+        [items]="item.items"
+        *ngIf="item.items && item.items.length > 0"
+      ></pluggular-sidenav-dropdown>
+    </li>
+  </ul>
+</li>
