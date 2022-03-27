@@ -61,12 +61,14 @@ export class PluggularButtonComponent implements OnInit {
   @Input() roundness: TButtonRoundness = 'small';
   @Input() class = '';
   @Input() href = '';
+  @Input() disabled = false;
   @Output() hasClicked = new EventEmitter<string>();
 
   bgClass = '';
   sizeClass = '';
   expandClass = '';
   roundnessClass = '';
+  disabledClass = '';
   icon: IconDefinition | undefined = undefined;
 
   constructor(private router: Router) {}
@@ -77,6 +79,7 @@ export class PluggularButtonComponent implements OnInit {
     this.sizeClass = this.constructSize(this.size);
     this.expandClass = this.constructExpand(this.expand);
     this.roundnessClass = this.constructRoundness(this.roundness);
+    this.disabledClass = this.constructDisabledClass(this.disabled);
   }
 
   constructColor(fill: TButtonFill): string {
@@ -181,6 +184,10 @@ export class PluggularButtonComponent implements OnInit {
     }
 
     return roundnessClass;
+  }
+
+  constructDisabledClass(disabled: boolean): string {
+    return disabled ? 'bg-gray-400' : '';
   }
 
   onClickEvent(): void {
