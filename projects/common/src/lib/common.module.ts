@@ -8,6 +8,10 @@ import { PluggularInputComponent } from './input/input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PluggularHeaderNavComponent } from './headernav/headernav.component';
 import { PluggularHeaderNavItemComponent } from './header-nav-item/header-nav-item.component';
+import { PluggularSideNavComponent } from './sidenav/sidenav.component';
+import { PluggularSideNavDropdownComponent } from './sidenav-dropdown/sidenav-dropdown.component';
+import { RouterModule } from '@angular/router';
+import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +20,20 @@ import { PluggularHeaderNavItemComponent } from './header-nav-item/header-nav-it
     PluggularInputComponent,
     PluggularHeaderNavComponent,
     PluggularHeaderNavItemComponent,
+    PluggularSideNavComponent,
+    PluggularSideNavDropdownComponent,
+    PluggularSideNavItemComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
     PluggularButtonComponent,
     PluggularTableComponent,
     PluggularInputComponent,
     PluggularHeaderNavComponent,
     PluggularHeaderNavItemComponent,
+    PluggularSideNavComponent,
+    PluggularSideNavDropdownComponent,
+    PluggularSideNavItemComponent,
   ],
 })
 export class PluggularCommonModule {}
