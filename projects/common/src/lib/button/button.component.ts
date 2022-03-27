@@ -61,7 +61,7 @@ export class PluggularButtonComponent implements OnInit {
   @Input() roundness: TButtonRoundness = 'small';
   @Input() class = '';
   @Input() href = '';
-  @Output() byClick = new EventEmitter<string>();
+  @Output() hasClicked = new EventEmitter<string>();
 
   bgClass = '';
   sizeClass = '';
@@ -184,7 +184,7 @@ export class PluggularButtonComponent implements OnInit {
   }
 
   onClickEvent(): void {
-    this.byClick.emit();
+    this.hasClicked.emit();
   }
 
   navigate(): void {

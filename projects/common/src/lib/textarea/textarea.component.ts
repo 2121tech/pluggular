@@ -1,24 +1,25 @@
-import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
-export type TInputType = 'text' | 'number' | 'password';
+import { TInputType } from '../input/input.component';
 
 @Component({
-  selector: 'pluggular-input',
-  templateUrl: './input.component.html',
-  styles: [],
+  selector: 'pluggular-textarea',
+  templateUrl: './textarea.component.html',
+  styleUrls: ['./textarea.component.css'],
 })
-export class PluggularInputComponent implements ControlValueAccessor, OnInit {
+export class PluggularTextAreaComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
   @Input() placeholder = '';
   @Input() disabled = false;
+  @Input() rows: string | number | undefined;
   @Input() maxLength = 524288;
   @Input() minLength = 0;
 
   errorMessages = new Map<string, string>();
+
+  @Output() hasBlurred: EventEmitter<boolean> = new EventEmitter();
 
   onChange: (value: string) => void = (): void => {
     return;
@@ -28,22 +29,10 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
     return;
   };
 
-  @Output() hasBlurred: EventEmitter<boolean> = new EventEmitter();
-
   value = '';
-
-  isVisible = false;
-
-  icon = faEye;
-
-  _type = 'text';
 
   constructor(@Self() @Optional() public control: NgControl) {
     this.control && (this.control.valueAccessor = this);
-  }
-
-  ngOnInit(): void {
-    this._type = this.type;
   }
 
   public get invalid(): boolean | null {
@@ -90,17 +79,5 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
 
   blur(): void {
     this.hasBlurred?.emit(true);
-  }
-
-  onEyeClick(): void {
-    this.isVisible = !this.isVisible;
-
-    if (this.isVisible) {
-      this._type = 'text';
-      this.icon = faEyeSlash;
-    } else {
-      this._type = 'password';
-      this.icon = faEye;
-    }
   }
 }
