@@ -1,10 +1,13 @@
-<nav class="bg-white shadow-sm pt-4 pb-2 pr-8">
+<nav class="bg-white shadow-sm pt-4 pb-2 pr-8 relative flex-1">
   <div class="flex flex-row items-center">
     <button id="menu" class="items-center justify-start px-5" (click)="handleMenuClick()">
       <span>
         <fa-icon [icon]="menuIcon" class="text-lg"></fa-icon>
       </span>
     </button>
+    <div class="transition-all duration-500" [ngClass]="{ 'opacity-0': !showSideNav, 'opacity-100': showSideNav }">
+      <ng-content select="[slot=brand]"></ng-content>
+    </div>
     <div class="flex flex-1 items-center" [ngClass]="[alignClass]">
       <ng-content></ng-content>
     </div>
