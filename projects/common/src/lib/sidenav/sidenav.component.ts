@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class PluggularSideNavComponent {
   @Input() show = false;
   @Input() brandClass = '';
-  @Input() closeIconClass = '';
+  @Input() closeIconClass = 'text-gray-400';
   @Output() hasClosed: EventEmitter<boolean> = new EventEmitter();
 
   handleClose(): void {

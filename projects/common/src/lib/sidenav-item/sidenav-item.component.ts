@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCircleDot, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'pluggular-sidenav-item',
@@ -8,6 +8,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 })
 export class PluggularSideNavItemComponent {
   @Input() label = '';
-  @Input() icon?: IconProp;
+  @Input() icon: IconDefinition = faCircleDot;
   @Input() link = '#';
 }
