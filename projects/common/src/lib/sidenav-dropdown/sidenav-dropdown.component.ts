@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCircleDot, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-type TDropdownItem = {
+export type TDropdownItem = {
   label: string;
   link: string;
   items?: TDropdownItem[];
@@ -17,5 +17,5 @@ export class PluggularSideNavDropdownComponent {
   @Input() label = '';
   @Input() items: TDropdownItem[] = [];
   @Input() isChild = false;
-  @Input() icon?: IconProp;
+  @Input() icon: IconDefinition = faCircleDot;
 }
