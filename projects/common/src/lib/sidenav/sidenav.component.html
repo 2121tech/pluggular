@@ -1,10 +1,10 @@
 <div
-  class="h-full fixed top-0 bg-white overflow-x-hidden overflow-y-auto shadow-md transition-all duration-500 w-60"
-  [ngClass]="{ 'left-0': show, '-left-60': !show }"
+  class="h-screen relative flex-1 top-0 bg-white overflow-x-hidden overflow-y-auto shadow-md transition-all duration-500 w-60"
+  [ngClass]="{ 'ml-0': show, '-ml-60': !show }"
 >
   <div class="brand flex flex-row items-center px-4 py-5" [ngClass]="brandClass">
     <div class="flex-1"><ng-content select="[slot=brand]"></ng-content></div>
-    <button (click)="handleClose()">
+    <button (click)="handleClose()" *ngIf="showCloseIcon" id="closeIcon">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6"

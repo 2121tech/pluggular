@@ -39,6 +39,7 @@ export class PluggularHeaderNavComponent implements OnInit {
   }
 
   handleMenuClick(): void {
-    this.menuClicked.emit(!this.showSideNav);
+    this.showSideNav = !this.showSideNav;
+    this.menuClicked.emit(this.showSideNav);
   }
 }
