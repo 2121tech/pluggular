@@ -1,5 +1,5 @@
 <div
-  class="h-screen relative flex-1 top-0 bg-white overflow-x-hidden overflow-y-auto shadow-md transition-all duration-500 w-60"
+  class="h-screen relative flex-1 top-0 bg-white overflow-x-hidden overflow-y-auto shadow-md transition-all duration-500 w-60 no-scrollbar"
   [ngClass]="{ 'ml-0': show, '-ml-60': !show }"
 >
   <div class="brand flex flex-row items-center px-4 py-5" [ngClass]="brandClass">
@@ -18,7 +18,32 @@
       </svg>
     </button>
   </div>
-  <ul class="px-4 py-3">
-    <ng-content></ng-content>
-  </ul>
+  <div>
+    <div *ngFor="let group of items; index as groupIndex">
+      <div *ngIf="group.label && group.label !== ''" class="text-sm font-bold text-gray-400 mb-2 px-4">
+        {{ group.label }}
+      </div>
+      <div *ngFor="let item of group.items; index as itemIndex">
+        <pluggular-sidenav-item
+          *ngIf="!item.items"
+          [label]="item.label"
+          [link]="item.link"
+          [icon]="item.icon"
+        ></pluggular-sidenav-item>
+
+        <pluggular-sidenav-dropdown
+          *ngIf="item.items"
+          [items]="item.items"
+          [label]="item.label"
+          [icon]="item.icon"
+          [isSelected]="item.isSelected"
+          (hasSelected)="onDropDownSelected(groupIndex, itemIndex)"
+        >
+        </pluggular-sidenav-dropdown>
+      </div>
+
+      <!-- TODO: Use tailwind pseudo class -->
+      <hr class="my-5" *ngIf="groupIndex < items.length - 1" />
+    </div>
+  </div>
 </div>

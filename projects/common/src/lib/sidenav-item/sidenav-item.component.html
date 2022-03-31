@@ -1,8 +1,14 @@
-<div class="flex items-center relative py-3">
-  <span class="mr-2">
-    <fa-icon [icon]="icon" class="w-6 h-6 text-gray-500"></fa-icon>
-  </span>
+<div class="flex items-center relative px-4 py-3">
   <span class="flex-1 z-10">
-    <a class="text-sm cursor-pointer w-full inline-block text-gray-500" [routerLink]="[link]"> {{ label }}</a>
+    <a
+      class="text-sm cursor-pointer w-full inline-block text-gray-500"
+      [routerLink]="[link]"
+      [routerLinkActive]="['text-green-500']"
+    >
+      <span class="mr-2" *ngIf="icon">
+        <fa-icon [icon]="icon" class="w-6 h-6"></fa-icon>
+      </span>
+      {{ label }}</a
+    >
   </span>
 </div>

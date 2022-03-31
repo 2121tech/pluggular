@@ -8,6 +8,6 @@ import { faCircleDot, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class PluggularSideNavItemComponent {
   @Input() label = '';
-  @Input() icon: IconDefinition = faCircleDot;
+  @Input() icon: IconDefinition | null | undefined = faCircleDot;
   @Input() link = '#';
 }
