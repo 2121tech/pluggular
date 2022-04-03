@@ -14,7 +14,7 @@ export type TTableButton = {
 };
 
 @Component({
-  selector: 'pluggular-table',
+  selector: 'plg-table',
   templateUrl: './table.component.html',
   styles: [],
 })

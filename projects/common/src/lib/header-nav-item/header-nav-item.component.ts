@@ -3,7 +3,7 @@ import { fromEvent, Subscription } from 'rxjs';
 import { TAlignment } from '../headernav/headernav.component';
 
 @Component({
-  selector: 'pluggular-header-nav-item',
+  selector: 'plg-header-nav-item',
   templateUrl: './header-nav-item.component.html',
   styleUrls: ['./header-nav-item.component.css'],
 })

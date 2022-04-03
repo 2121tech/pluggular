@@ -4,7 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 export type TAlignment = 'left' | 'center' | 'right';
 
 @Component({
-  selector: 'pluggular-headernav',
+  selector: 'plg-headernav',
   templateUrl: './headernav.component.html',
   styleUrls: ['./headernav.component.css'],
 })

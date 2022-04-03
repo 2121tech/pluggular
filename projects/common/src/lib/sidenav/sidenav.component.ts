@@ -15,7 +15,7 @@ export interface ISideNavGroup {
 }
 
 @Component({
-  selector: 'pluggular-sidenav',
+  selector: 'plg-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css'],
 })

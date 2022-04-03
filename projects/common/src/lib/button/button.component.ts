@@ -48,7 +48,7 @@ export enum EButtonFill {
 }
 
 @Component({
-  selector: 'pluggular-button',
+  selector: 'plg-button',
   templateUrl: './button.component.html',
   styles: [],
 })

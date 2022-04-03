@@ -9,7 +9,7 @@ export type TDropdownItem = {
 };
 
 @Component({
-  selector: 'pluggular-sidenav-dropdown',
+  selector: 'plg-sidenav-dropdown',
   templateUrl: './sidenav-dropdown.component.html',
   styleUrls: ['./sidenav-dropdown.component.css'],
 })

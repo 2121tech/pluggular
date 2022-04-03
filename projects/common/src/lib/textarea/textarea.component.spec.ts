@@ -5,9 +5,9 @@ import { MockBuilder, MockInstance, MockRender, ngMocks } from 'ng-mocks';
 import { PluggularTextAreaComponent } from './textarea.component';
 
 @Component({
-  selector: 'pluggular-tested',
+  selector: 'plg-tested',
   template: `<form [formGroup]="form">
-    <pluggular-textarea formControlName="firstName"></pluggular-textarea>
+    <plg-textarea formControlName="firstName"></plg-textarea>
   </form> `,
 })
 class TestedComponent {
