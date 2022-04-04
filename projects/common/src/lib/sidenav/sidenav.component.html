@@ -24,14 +24,14 @@
         {{ group.label }}
       </div>
       <div *ngFor="let item of group.items; index as itemIndex">
-        <pluggular-sidenav-item
+        <plg-sidenav-item
           *ngIf="!item.items"
           [label]="item.label"
           [link]="item.link"
           [icon]="item.icon"
-        ></pluggular-sidenav-item>
+        ></plg-sidenav-item>
 
-        <pluggular-sidenav-dropdown
+        <plg-sidenav-dropdown
           *ngIf="item.items"
           [items]="item.items"
           [label]="item.label"
@@ -39,7 +39,7 @@
           [isSelected]="item.isSelected"
           (hasSelected)="onDropDownSelected(groupIndex, itemIndex)"
         >
-        </pluggular-sidenav-dropdown>
+        </plg-sidenav-dropdown>
       </div>
 
       <!-- TODO: Use tailwind pseudo class -->

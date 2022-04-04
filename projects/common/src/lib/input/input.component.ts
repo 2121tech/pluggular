@@ -5,7 +5,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export type TInputType = 'text' | 'number' | 'password';
 
 @Component({
-  selector: 'pluggular-input',
+  selector: 'plg-input',
   templateUrl: './input.component.html',
   styles: [],
 })

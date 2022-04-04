@@ -5,9 +5,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'pluggular-tested',
+  selector: 'plg-tested',
   template: `<form [formGroup]="form">
-    <pluggular-input formControlName="firstName"></pluggular-input>
+    <plg-input formControlName="firstName"></plg-input>
   </form> `,
 })
 class TestedComponent {

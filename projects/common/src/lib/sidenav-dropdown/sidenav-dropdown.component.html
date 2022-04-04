@@ -36,13 +36,13 @@
       <a class="w-full inline-block cursor-pointer text-gray-500" [routerLink]="[item.link]" *ngIf="!item.items">{{
         item.label
       }}</a>
-      <pluggular-sidenav-dropdown
+      <plg-sidenav-dropdown
         *ngIf="item.items && item.items.length > 0"
         [label]="item.label"
         [isChild]="true"
         [items]="item.items"
         [isSelected]="show"
-      ></pluggular-sidenav-dropdown>
+      ></plg-sidenav-dropdown>
     </div>
   </div>
 </div>

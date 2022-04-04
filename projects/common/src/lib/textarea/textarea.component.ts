@@ -3,7 +3,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { TInputType } from '../input/input.component';
 
 @Component({
-  selector: 'pluggular-textarea',
+  selector: 'plg-textarea',
   templateUrl: './textarea.component.html',
   styleUrls: ['./textarea.component.css'],
 })

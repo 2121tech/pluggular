@@ -23,14 +23,14 @@
                 {{ item[field.key] }}
               </td>
               <td class="flex flex-wrap">
-                <pluggular-button
+                <plg-button
                   *ngFor="let button of buttons"
                   [fill]="button.fill"
                   (onClick)="button.action(item)"
                   [role]="button.role"
                   class="mx-2"
                   size="small"
-                  >{{ button.text }}</pluggular-button
+                  >{{ button.text }}</plg-button
                 >
               </td>
             </tr>

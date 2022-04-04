@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { faCircleDot, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'pluggular-sidenav-item',
+  selector: 'plg-sidenav-item',
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.css'],
 })
