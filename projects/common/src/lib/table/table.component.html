@@ -23,19 +23,23 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <tr *ngFor="let item of data">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500" *ngFor="let field of fields">
-                {{ item[field.key] }}
-              </td>
-              <td class="flex flex-wrap" *ngIf="buttons && buttons.length > 0">
-                <plg-button
-                  *ngFor="let button of buttons"
-                  [fill]="button.fill"
-                  (onClick)="button.action(item)"
-                  [role]="button.role"
-                  class="mx-2"
-                  size="small"
-                  >{{ button.text }}</plg-button
-                >
+              <td
+                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                *ngFor="let field of fields"
+                [innerHtml]="item[field.key]"
+              ></td>
+              <td *ngIf="buttons && buttons.length > 0">
+                <div class="flex">
+                  <plg-button
+                    *ngFor="let button of buttons"
+                    [fill]="button.fill"
+                    (onClick)="button.action(item)"
+                    [role]="button.role"
+                    class="mx-2"
+                    size="small"
+                    >{{ button.text }}</plg-button
+                  >
+                </div>
               </td>
             </tr>
           </tbody>
