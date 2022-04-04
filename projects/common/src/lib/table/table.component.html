@@ -23,11 +23,9 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <tr *ngFor="let item of data">
-              <td
-                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                *ngFor="let field of fields"
-                [innerHtml]="item[field.key]"
-              ></td>
+              <td class="px-6 py-4 whitespace-normal text-sm text-gray-500" *ngFor="let field of fields">
+                <div [innerHtml]="item[field.key]"></div>
+              </td>
               <td *ngIf="buttons && buttons.length > 0">
                 <div class="flex">
                   <plg-button
