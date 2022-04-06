@@ -1,0 +1,31 @@
+<div class="w-full mb-6 md:mb-0">
+  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1" for="grid-first-name">
+    {{ label }}
+  </label>
+  <div
+    class="appearance-none flex flex-row items-center w-full bg-gray-200 text-gray-700 border rounded mb-3 focus:bg-white"
+    [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
+  >
+    <input
+      class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight"
+      type="date"
+      [placeholder]="placeholder"
+      (input)="setValue()"
+      (change)="setValue()"
+      (blur)="blur()"
+      [required]="required"
+      [disabled]="disabled"
+      [(ngModel)]="value"
+      [ngModelOptions]="{ standalone: true }"
+      [maxlength]="maxLength"
+      [minLength]="minLength"
+    />
+  </div>
+
+  <div class="flex flex-col mb-2" *ngIf="showError">
+    <p class="text-red-500 text-xs italic">
+      *
+      {{ errors[0] }}
+    </p>
+  </div>
+</div>
