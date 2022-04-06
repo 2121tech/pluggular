@@ -1,4 +1,4 @@
-import { Component, OnInit, Optional, Self } from '@angular/core';
+import { Component, Optional, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { PluggularInputComponent } from '../input/input.component';
 
