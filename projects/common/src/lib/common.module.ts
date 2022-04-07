@@ -14,6 +14,7 @@ import { PluggularSideNavDropdownComponent } from './sidenav-dropdown/sidenav-dr
 import { RouterModule } from '@angular/router';
 import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.component';
 import { PluggularDatePickerComponent } from './datepicker/datepicker.component';
+import { PluggularSelectComponent } from './select/select.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PluggularDatePickerComponent } from './datepicker/datepicker.component'
     PluggularSideNavDropdownComponent,
     PluggularSideNavItemComponent,
     PluggularDatePickerComponent,
+    PluggularSelectComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -39,7 +41,8 @@ import { PluggularDatePickerComponent } from './datepicker/datepicker.component'
     PluggularSideNavComponent,
     PluggularSideNavDropdownComponent,
     PluggularSideNavItemComponent,
-    PluggularDatePickerComponent
+    PluggularDatePickerComponent,
+    PluggularSelectComponent,
   ],
 })
 export class PluggularCommonModule {}
