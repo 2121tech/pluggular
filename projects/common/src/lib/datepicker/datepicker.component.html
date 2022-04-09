@@ -7,7 +7,7 @@
     [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
   >
     <input
-      class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight"
+      class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight max-h-9"
       type="date"
       [placeholder]="placeholder"
       (input)="setValue()"
