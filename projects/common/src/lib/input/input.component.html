@@ -9,7 +9,7 @@
     <input
       class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight"
       [type]="_type"
-      [placeholder]="placeholder"
+      [placeholder]="placeholder || ''"
       (input)="setValue()"
       (change)="setValue()"
       (blur)="blur()"
