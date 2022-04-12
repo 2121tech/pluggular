@@ -13,7 +13,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
-  @Input() placeholder = '';
+  @Input() placeholder: string | undefined | null = '';
   @Input() disabled = false;
   @Input() maxLength = 524288;
   @Input() minLength = 0;

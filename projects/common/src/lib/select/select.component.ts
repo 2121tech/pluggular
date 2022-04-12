@@ -13,10 +13,10 @@ export type TSelectOption = {
 })
 export class PluggularSelectComponent extends SelectControlValueAccessor {
   @Input() label = '';
-  @Input() options: TSelectOption[] = [];
+  @Input() options: TSelectOption[] | null | undefined = [];
   @Input() required = false;
   @Input() disabled = false;
-  @Input() placeholder = 'Choose from options';
+  @Input() placeholder: string | undefined | null = 'Choose from options';
   value = '';
 
   onChange: (value: string) => void = (): void => {
