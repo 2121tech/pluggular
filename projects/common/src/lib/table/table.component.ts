@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { TButtonFill, TRole } from '../button/button.component';
 
 export type TField = {
@@ -11,6 +12,7 @@ export type TTableButton = {
   fill: TButtonFill;
   action: (data: Record<string, unknown>) => void;
   role?: TRole;
+  icon?: IconDefinition;
 };
 
 @Component({

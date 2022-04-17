@@ -4,7 +4,7 @@ import { faEye, faPenSquare, faTrashAlt, IconDefinition } from '@fortawesome/fre
 
 export type TButtonType = 'button' | 'submit' | undefined;
 
-export type TButtonFill = 'primary' | 'success' | 'warning' | 'danger' | undefined;
+export type TButtonFill = 'primary' | 'success' | 'warning' | 'danger' | 'default' | undefined;
 
 export type TRole = 'edit' | 'delete' | 'view' | '' | undefined;
 export type TButtonSize = 'small' | 'default' | 'large' | undefined;
@@ -45,6 +45,7 @@ export enum EButtonFill {
   SUCCESS = 'success',
   WARNING = 'warning',
   DANGER = 'danger',
+  DEFAULT = 'default',
 }
 
 @Component({
@@ -62,6 +63,7 @@ export class PluggularButtonComponent implements OnInit {
   @Input() class = '';
   @Input() href = '';
   @Input() disabled = false;
+  @Input() icon: IconDefinition | undefined = undefined;
   @Output() hasClicked = new EventEmitter<string>();
 
   bgClass = '';
@@ -69,13 +71,20 @@ export class PluggularButtonComponent implements OnInit {
   expandClass = '';
   roundnessClass = '';
   disabledClass = '';
-  icon: IconDefinition | undefined = undefined;
+
+  _icon?: IconDefinition | undefined = undefined;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.bgClass = this.constructColor(this.fill);
-    this.icon = this.constructIcon(this.role);
+
+    if (this.role) {
+      this._icon = this.constructIcon(this.role);
+    } else {
+      this._icon = this.icon;
+    }
+
     this.sizeClass = this.constructSize(this.size);
     this.expandClass = this.constructExpand(this.expand);
     this.roundnessClass = this.constructRoundness(this.roundness);
@@ -101,6 +110,9 @@ export class PluggularButtonComponent implements OnInit {
         color = 'red';
         break;
 
+      case EButtonFill.DEFAULT:
+        color = 'gray';
+        break;
       default:
         break;
     }
