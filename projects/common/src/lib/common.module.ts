@@ -16,6 +16,7 @@ import { PluggularSideNavItemComponent } from './sidenav-item/sidenav-item.compo
 import { PluggularDatePickerComponent } from './datepicker/datepicker.component';
 import { PluggularSelectComponent } from './select/select.component';
 import { PluggularTableFilterComponent } from './table-filter/table-filter.component';
+import { PluggularTabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PluggularTableFilterComponent } from './table-filter/table-filter.compo
     PluggularDatePickerComponent,
     PluggularSelectComponent,
     PluggularTableFilterComponent,
+    PluggularTabsComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -46,6 +48,7 @@ import { PluggularTableFilterComponent } from './table-filter/table-filter.compo
     PluggularDatePickerComponent,
     PluggularSelectComponent,
     PluggularTableFilterComponent,
+    PluggularTabsComponent,
   ],
 })
 export class PluggularCommonModule {}

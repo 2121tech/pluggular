@@ -14,4 +14,5 @@ export * from './lib/sidenav-item/sidenav-item.component';
 export * from './lib/datepicker/datepicker.component';
 export * from './lib/select/select.component';
 export * from './lib/table-filter/table-filter.component';
+export * from './lib/tabs/tabs.component';
 export * from './lib/common.module';
