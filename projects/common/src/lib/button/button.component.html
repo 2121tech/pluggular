@@ -1,12 +1,12 @@
 <button
-  class="my-2 flex transition duration-150 ease-in-out text-white py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 justify-center cursor-pointer items-center"
+  class="my-2 flex transition duration-150 ease-in-out text-white py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 justify-center cursor-pointer items-center whitespace-nowrap"
   [ngClass]="[sizeClass, expandClass, roundnessClass, class, !disabled ? bgClass : disabledClass]"
   [type]="type"
   (click)="onClickEvent(); navigate()"
   [disabled]="disabled"
 >
-  <span class="h-4 w-4 mr-2 -ml-3" *ngIf="icon">
-    <fa-icon [icon]="icon"></fa-icon>
+  <span class="h-4 w-4 mr-2 -ml-3" *ngIf="buttonIcon">
+    <fa-icon [icon]="buttonIcon"></fa-icon>
   </span>
   <ng-content></ng-content>
 </button>
