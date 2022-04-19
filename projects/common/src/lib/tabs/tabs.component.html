@@ -1,12 +1,18 @@
 <ul
-  class="hidden text-sm font-medium text-center text-gray-500 rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400"
+  class="text-sm font-medium text-center text-gray-500 rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400 rounded-l-lg overflow-hidden"
 >
-  <li class="w-full" *ngFor="let tab of tabs">
-    <a
-      [routerLink]="tab.link"
-      class="inline-block p-4 w-full text-gray-900 bg-gray-100 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+  <li class="w-full" *ngFor="let tab of tabs; let i = index" (click)="handleTabClick(i)">
+    <div
+      [ngClass]="{ 'bg-green-400': tab.isActive, 'bg-white': !tab.isActive }"
+      class="inline-block p-4 w-full text-gray-900 focus:outline-none cursor-pointer transition-all duration-300"
       aria-current="page"
-      >{{ tab.label }}</a
     >
+      <div
+        [ngClass]="{ 'text-gray-500': !tab.isActive, 'text-white': tab.isActive }"
+        class="transition-all duration-300"
+      >
+        {{ tab.label }}
+      </div>
+    </div>
   </li>
 </ul>
