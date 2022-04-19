@@ -72,7 +72,7 @@ export class PluggularButtonComponent implements OnInit {
   roundnessClass = '';
   disabledClass = '';
 
-  _icon?: IconDefinition | undefined = undefined;
+  buttonIcon?: IconDefinition | undefined = undefined;
 
   constructor(private router: Router) {}
 
@@ -80,9 +80,9 @@ export class PluggularButtonComponent implements OnInit {
     this.bgClass = this.constructColor(this.fill);
 
     if (this.role) {
-      this._icon = this.constructIcon(this.role);
+      this.buttonIcon = this.constructIcon(this.role);
     } else {
-      this._icon = this.icon;
+      this.buttonIcon = this.icon;
     }
 
     this.sizeClass = this.constructSize(this.size);

@@ -5,8 +5,8 @@
   (click)="onClickEvent(); navigate()"
   [disabled]="disabled"
 >
-  <span class="h-4 w-4 mr-2 -ml-3" *ngIf="_icon">
-    <fa-icon [icon]="_icon"></fa-icon>
+  <span class="h-4 w-4 mr-2 -ml-3" *ngIf="buttonIcon">
+    <fa-icon [icon]="buttonIcon"></fa-icon>
   </span>
   <ng-content></ng-content>
 </button>
