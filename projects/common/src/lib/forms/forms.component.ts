@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { TSelectOption } from '../select/select.component';
 
@@ -25,7 +25,7 @@ export type TFormFields = {
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css'],
 })
-export class PluggularFormsComponent implements OnInit {
+export class PluggularFormsComponent {
   @Output() hasSubmitted = new EventEmitter<Record<string, string | number>>();
   @Input() fields?: TFormFields[] = undefined;
   @Input() formGroup!: FormGroup;
@@ -34,7 +34,4 @@ export class PluggularFormsComponent implements OnInit {
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);
   }
-  constructor() {}
-
-  ngOnInit(): void {}
 }
