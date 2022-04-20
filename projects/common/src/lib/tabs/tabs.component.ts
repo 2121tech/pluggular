@@ -14,7 +14,6 @@ export type TTab = {
 export class PluggularTabsComponent implements OnInit {
   @Input() tabs: TTab[] = [];
   @Output() hasClicked = new EventEmitter<TTab>();
-  constructor() {}
 
   ngOnInit(): void {
     this.setFirstIndexActive();
@@ -26,7 +25,7 @@ export class PluggularTabsComponent implements OnInit {
     }
   }
 
-  handleTabClick(tabIndex: number) {
+  handleTabClick(tabIndex: number): void {
     let activeTab;
     this.tabs.forEach((item, index) => {
       if (tabIndex === index) {
