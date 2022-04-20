@@ -17,6 +17,7 @@ import { PluggularDatePickerComponent } from './datepicker/datepicker.component'
 import { PluggularSelectComponent } from './select/select.component';
 import { PluggularTableFilterComponent } from './table-filter/table-filter.component';
 import { PluggularTabsComponent } from './tabs/tabs.component';
+import { PluggularFormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PluggularTabsComponent } from './tabs/tabs.component';
     PluggularSelectComponent,
     PluggularTableFilterComponent,
     PluggularTabsComponent,
+    PluggularFormsComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -49,6 +51,7 @@ import { PluggularTabsComponent } from './tabs/tabs.component';
     PluggularSelectComponent,
     PluggularTableFilterComponent,
     PluggularTabsComponent,
+    PluggularFormsComponent,
   ],
 })
 export class PluggularCommonModule {}

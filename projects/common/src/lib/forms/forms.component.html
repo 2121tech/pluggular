@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-5 gap-2">
+    <div *ngFor="let column of field.row" class="flex-1">
+      <div class="flex flex-col">
+        <div
+          class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1"
+          [innerHtml]="column.label"
+        ></div>
+        <div class="flex flex-row gap-5">
+          <div *ngFor="let control of column.fields" class="flex-1">
+            <plg-datepicker
+              [formControlName]="control.name"
+              *ngIf="control.type === 'date'"
+              [disabled]="control.disabled ? control.disabled : false"
+            ></plg-datepicker>
+            <plg-input
+              *ngIf="control.type === 'text' || control.type === 'number'"
+              [formControlName]="control.name"
+              [placeholder]="control.placeholder"
+              [type]="control.type"
+              [disabled]="control.disabled ? control.disabled : false"
+            ></plg-input>
+            <plg-select
+              *ngIf="control.type === 'select'"
+              [placeholder]="control.placeholder"
+              [options]="control.options"
+              [formControlName]="control.name"
+              [disabled]="control.disabled ? control.disabled : false"
+            ></plg-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-end pb-1">
+    <plg-button fill="success" roundness="medium" type="submit" [disabled]="formGroup.invalid">{{
+      submitText
+    }}</plg-button>
+  </div>
+</form>

@@ -146,7 +146,7 @@ export class PluggularButtonComponent implements OnInit {
         sizeClass = 'px-6 py-2 text-xs';
         break;
       case EButtonSize.DEFAULT:
-        sizeClass = 'px-8 py-3 text-sm';
+        sizeClass = 'px-8 py-3 text-md';
         break;
       case EButtonSize.LARGE:
         sizeClass = 'px-10 py-4 text-lg';

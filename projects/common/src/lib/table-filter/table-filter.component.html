@@ -12,6 +12,7 @@
               *ngIf="control.type === 'text' || control.type === 'number'"
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
+              [type]="control.type"
             ></plg-input>
             <plg-select
               *ngIf="control.type === 'select'"
