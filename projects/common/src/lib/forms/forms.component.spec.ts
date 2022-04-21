@@ -27,8 +27,8 @@ describe('PluggularFormsComponent', () => {
 
   it('should call onSubmit() when form is submitted', () => {
     spyOn(component, 'onSubmit').and.callThrough();
-    const fakeEvent = { preventDefault: () => console.log('preventDefault') };
-    fixture.debugElement.query(By.css('form')).triggerEventHandler('submit', fakeEvent);
+    const fakeEvent = { preventDefault: (): void => {} };
+    de.query(By.css('form')).triggerEventHandler('submit', fakeEvent);
 
     expect(component.onSubmit).toHaveBeenCalled();
   });
