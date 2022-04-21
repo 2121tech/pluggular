@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="flex items-end pb-1">
-    <plg-button fill="success" roundness="medium" type="submit" [disabled]="formGroup.invalid">{{
+    <plg-button fill="success" roundness="medium" type="submit" [disabled]="formGroup?.invalid ? true : false">{{
       submitText
     }}</plg-button>
   </div>
