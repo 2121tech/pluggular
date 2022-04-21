@@ -27,7 +27,11 @@ describe('PluggularFormsComponent', () => {
 
   it('should call onSubmit() when form is submitted', () => {
     spyOn(component, 'onSubmit').and.callThrough();
-    const fakeEvent = { preventDefault: (): void => {} };
+    const fakeEvent = {
+      preventDefault: (): void => {
+        return;
+      },
+    };
     de.query(By.css('form')).triggerEventHandler('submit', fakeEvent);
 
     expect(component.onSubmit).toHaveBeenCalled();
