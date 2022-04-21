@@ -20,13 +20,14 @@ export type TFormFields = {
   row: TFormColumn[];
 };
 
+export type TFormBody = Record<string, string | number>;
 @Component({
   selector: 'plg-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css'],
 })
 export class PluggularFormsComponent {
-  @Output() hasSubmitted = new EventEmitter<Record<string, string | number>>();
+  @Output() hasSubmitted = new EventEmitter<TFormBody>();
   @Input() fields?: TFormFields[] = undefined;
   @Input() formGroup!: FormGroup;
   @Input() submitText? = 'Submit';
