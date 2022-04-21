@@ -18,16 +18,16 @@ describe('PluggularTabsComponent', () => {
     component = fixture.componentInstance;
     component.tabs = [
       {
-        label: 'Total Compost Made',
-        tab: 'total_compost',
+        label: 'Tab 1',
+        tab: 'tab_1',
       },
       {
-        label: 'Soilmate Members',
-        tab: 'soilmate_members',
+        label: 'Tab 2',
+        tab: 'tab_2',
       },
       {
-        label: 'GHG Avoidance',
-        tab: 'ghg_avoidance',
+        label: 'Tab 3',
+        tab: 'tab_3',
       },
     ];
 
