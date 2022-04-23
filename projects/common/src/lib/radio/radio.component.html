@@ -1,0 +1,9 @@
+<div *ngFor="let item of items" class="flex items-center gap-2 mb-2" (focus)="setValue(item.value)" tabindex="0">
+  <div
+    class="rounded-full border-2 inline-flex p-1"
+    [ngClass]="{ 'bg-green-400 border-green-400': item.value === value }"
+  >
+    <div class="p-1 rounded-full bg-white"></div>
+  </div>
+  <label class="custom-control-label" for="female">{{ item.label }}</label>
+</div>
