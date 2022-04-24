@@ -21,6 +21,11 @@
               [options]="control.options"
               [formControlName]="control.name"
             ></plg-select>
+            <plg-textarea
+              *ngIf="control.type === 'textarea'"
+              [formControlName]="control.name"
+              [placeholder]="control.placeholder"
+            ></plg-textarea>
           </div>
         </div>
       </div>

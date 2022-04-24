@@ -11,7 +11,7 @@ export class PluggularTextAreaComponent implements ControlValueAccessor {
   @Input() label = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
-  @Input() placeholder = '';
+  @Input() placeholder: string | undefined | null = '';
   @Input() disabled = false;
   @Input() rows: string | number | undefined;
   @Input() maxLength = 524288;
