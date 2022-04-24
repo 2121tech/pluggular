@@ -14,7 +14,7 @@ export type TRadioValue = string | number | boolean;
 })
 export class PluggularRadioComponent implements ControlValueAccessor {
   @Input() label = '';
-  @Input() items: TRadioItem[] = [];
+  @Input() items: TRadioItem[] | null | undefined = [];
   @Input() required = true;
   @Input() disabled = false;
 
