@@ -26,6 +26,11 @@
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
             ></plg-textarea>
+            <plg-radio
+              *ngIf="control.type === 'radio'"
+              [formControlName]="control.name"
+              [items]="control.radioOptions"
+            ></plg-radio>
           </div>
         </div>
       </div>

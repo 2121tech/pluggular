@@ -18,6 +18,7 @@ import { PluggularSelectComponent } from './select/select.component';
 import { PluggularTableFilterComponent } from './table-filter/table-filter.component';
 import { PluggularTabsComponent } from './tabs/tabs.component';
 import { PluggularFormsComponent } from './forms/forms.component';
+import { PluggularRadioComponent } from './radio/radio.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PluggularFormsComponent } from './forms/forms.component';
     PluggularTableFilterComponent,
     PluggularTabsComponent,
     PluggularFormsComponent,
+    PluggularRadioComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -52,6 +54,7 @@ import { PluggularFormsComponent } from './forms/forms.component';
     PluggularTableFilterComponent,
     PluggularTabsComponent,
     PluggularFormsComponent,
+    PluggularRadioComponent,
   ],
 })
 export class PluggularCommonModule {}
