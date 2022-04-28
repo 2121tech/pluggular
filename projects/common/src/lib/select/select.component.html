@@ -9,7 +9,7 @@
       [required]="required"
       [disabled]="disabled"
     >
-      <option value="">---{{ placeholder }}---</option>
+      <option value="">{{ placeholder }}</option>
       <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

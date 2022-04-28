@@ -19,6 +19,7 @@ import { PluggularTableFilterComponent } from './table-filter/table-filter.compo
 import { PluggularTabsComponent } from './tabs/tabs.component';
 import { PluggularFormsComponent } from './forms/forms.component';
 import { PluggularRadioComponent } from './radio/radio.component';
+import { PluggularTablePaginationComponent } from './table-pagination/table-pagination.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PluggularRadioComponent } from './radio/radio.component';
     PluggularTabsComponent,
     PluggularFormsComponent,
     PluggularRadioComponent,
+    PluggularTablePaginationComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -55,6 +57,7 @@ import { PluggularRadioComponent } from './radio/radio.component';
     PluggularTabsComponent,
     PluggularFormsComponent,
     PluggularRadioComponent,
+    PluggularTablePaginationComponent,
   ],
 })
 export class PluggularCommonModule {}

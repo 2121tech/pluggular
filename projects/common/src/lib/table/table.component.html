@@ -1,54 +1,66 @@
-<div class="flex-col">
-  <div class="-my-2 overflow-x-auto">
-    <div class="py-2 align-middle inline-block min-w-full">
-      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th
-                *ngFor="let field of fields"
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                {{ field.label }}
-              </th>
-              <th
-                scope="col"
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                *ngIf="buttons && buttons.length > 0"
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr *ngFor="let item of data">
-              <td class="px-6 py-4 whitespace-normal text-sm text-gray-500" *ngFor="let field of fields">
-                <div [innerHtml]="item[field.key]"></div>
+<div class="flex flex-col">
+  <div class="inline-flex flex-row items-center gap-1">
+    <span class="text-gray-500 font-medium">Show</span>
+    <plg-select [options]="perPageOptions" [(ngModel)]="perPage" (ngModelChange)="onPerPageChange()"></plg-select>
+    <span class="text-gray-500 font-medium">entries</span>
+  </div>
+
+  <div class="flex-col">
+    <div class="-my-2 overflow-x-auto">
+      <div class="py-2 align-middle inline-block min-w-full">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  *ngFor="let field of fields"
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  {{ field.label }}
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  *ngIf="buttons && buttons.length > 0"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let item of data">
+                <td class="px-6 py-4 whitespace-normal text-sm text-gray-500" *ngFor="let field of fields">
+                  <div [innerHtml]="item[field.key]"></div>
+                </td>
+                <td *ngIf="buttons && buttons.length > 0">
+                  <div class="flex">
+                    <plg-button
+                      *ngFor="let button of buttons"
+                      [fill]="button.fill"
+                      (onClick)="button.action(item)"
+                      [role]="button.role"
+                      class="ml-2"
+                      size="small"
+                      [icon]="button.icon"
+                      >{{ button.text }}</plg-button
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tr *ngIf="data && data.length < 1" id="noDataAvailable">
+              <td class="text-center py-3 text-sm text-gray-400 uppercase" [colSpan]="fields.length + 1" id="noDataMsg">
+                {{ noDataMsg }}
               </td>
-              <td *ngIf="buttons && buttons.length > 0">
-                <div class="flex">
-                  <plg-button
-                    *ngFor="let button of buttons"
-                    [fill]="button.fill"
-                    (onClick)="button.action(item)"
-                    [role]="button.role"
-                    class="ml-2"
-                    size="small"
-                    [icon]="button.icon"
-                    >{{ button.text }}</plg-button
-                  >
-                </div>
-              </td>
             </tr>
-          </tbody>
-          <tr *ngIf="data && data.length < 1" id="noDataAvailable">
-            <td class="text-center py-3 text-sm text-gray-400 uppercase" [colSpan]="fields.length + 1" id="noDataMsg">
-              {{ noDataMsg }}
-            </td>
-          </tr>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0">
+    <plg-table-pagination [pages]="pages" (hasPageClicked)="onPageClick($event)"></plg-table-pagination>
   </div>
 </div>

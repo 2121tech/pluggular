@@ -18,3 +18,4 @@ export * from './lib/tabs/tabs.component';
 export * from './lib/forms/forms.component';
 export * from './lib/radio/radio.component';
 export * from './lib/common.module';
+export * from './lib/table-pagination/table-pagination.component';

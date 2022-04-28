@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 import { TButtonFill, TRole } from '../button/button.component';
+import { TSelectOption } from '../select/select.component';
 
 export type TField = {
   label: string;
@@ -25,4 +27,30 @@ export class PluggularTableComponent {
   @Input() buttons: TTableButton[] = [];
   @Input() fields: TField[] = [];
   @Input() noDataMsg = 'No Data';
+  @Input() pages = 1;
+  @Output() hasPageChanged = new EventEmitter<number>();
+  @Output() hasPerPageChanged = new EventEmitter<string>();
+  perPage = '10';
+  perPageOptions: TSelectOption[] = [
+    {
+      label: '10',
+      value: '10',
+    },
+    {
+      label: '20',
+      value: '20',
+    },
+    {
+      label: '50',
+      value: '50',
+    },
+  ];
+
+  onPageClick(event: number): void {
+    this.hasPageChanged.emit(event);
+  }
+
+  onPerPageChange(): void {
+    this.hasPerPageChanged.emit(this.perPage);
+  }
 }
