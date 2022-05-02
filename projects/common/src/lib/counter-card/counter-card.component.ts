@@ -8,8 +8,19 @@ import { faPowerOff, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class PluggularCounterCardComponent implements OnInit {
   @Input() icon: IconDefinition = faPowerOff;
-  @Input() title: st
+  @Input() title = '';
+  @Input() subText = '';
+  @Input() description: string | null | undefined = '';
+  @Input() color = '';
+
+  bgClass = '';
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bgClass = this.constructIconColor(this.color);
+  }
+
+  constructIconColor(color: string) {
+    return `bg-${color}-400`;
+  }
 }

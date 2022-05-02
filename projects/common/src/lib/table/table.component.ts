@@ -50,7 +50,7 @@ export class PluggularTableComponent {
     this.hasPageChanged.emit(event);
   }
 
-  onHasPageLimitChange(): void {
+  onPageLimitChange(): void {
     this.hasPageLimitChanged.emit(this.pageLimit);
   }
 }

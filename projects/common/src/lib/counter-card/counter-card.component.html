@@ -1,9 +1,15 @@
-<div class="flex flex-row py-5 px-10 shadow-md gap-3">
-  <div>
-    <fa-icon [icon]="icon" class="text-xxl"></fa-icon>
-  </div>
-  <div class="flex-flex-col text-gray-400">
-    <div class="text-lg font-bold">1000</div>
-    <div class="text-sm font-medium">Lorem Ipsum Dolor Sit.</div>
+<div class="flex-1 h-full">
+  <div class="flex flex-row h-full py-8 px-5 mx-3 shadow-md gap-5 rounded-lg">
+    <div
+      class="inline-flex items-center justify-center shadow-md p-3 rounded-full bg-gray-400 overflow-hidden w-[60px] h-[60px] text-white"
+      [ngClass]="[bgClass]"
+    >
+      <fa-icon [icon]="icon" class="font-bold text-2xl"></fa-icon>
+    </div>
+    <div class="flex-flex-col text-gray-400">
+      <div class="text-3xl font-medium">{{ title }}</div>
+      <div class="text-md">{{ subText }}</div>
+      <div class="text-sm italic">{{ description }}</div>
+    </div>
   </div>
 </div>
