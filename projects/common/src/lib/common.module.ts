@@ -20,7 +20,7 @@ import { PluggularTabsComponent } from './tabs/tabs.component';
 import { PluggularFormsComponent } from './forms/forms.component';
 import { PluggularRadioComponent } from './radio/radio.component';
 import { PluggularTablePaginationComponent } from './table-pagination/table-pagination.component';
-import { CounterCardComponent } from './counter-card/counter-card.component';
+import { PluggularCounterCardComponent } from './counter-card/counter-card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { CounterCardComponent } from './counter-card/counter-card.component';
     PluggularFormsComponent,
     PluggularRadioComponent,
     PluggularTablePaginationComponent,
-    CounterCardComponent,
+    PluggularCounterCardComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
@@ -60,6 +60,7 @@ import { CounterCardComponent } from './counter-card/counter-card.component';
     PluggularFormsComponent,
     PluggularRadioComponent,
     PluggularTablePaginationComponent,
+    PluggularCounterCardComponent,
   ],
 })
 export class PluggularCommonModule {}

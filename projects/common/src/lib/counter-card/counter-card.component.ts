@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { faPowerOff, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'lib-counter-card',
+  selector: 'plg-counter-card',
   templateUrl: './counter-card.component.html',
-  styleUrls: ['./counter-card.component.css']
+  styleUrls: ['./counter-card.component.css'],
 })
-export class CounterCardComponent implements OnInit {
+export class PluggularCounterCardComponent implements OnInit {
+  @Input() icon: IconDefinition = faPowerOff;
+  @Input() title: st
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

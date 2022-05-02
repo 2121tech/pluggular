@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CounterCardComponent } from './counter-card.component';
+import { PluggularCounterCardComponent } from './counter-card.component';
 
-describe('CounterCardComponent', () => {
-  let component: CounterCardComponent;
-  let fixture: ComponentFixture<CounterCardComponent>;
+describe('PluggularCounterCardComponent', () => {
+  let component: PluggularCounterCardComponent;
+  let fixture: ComponentFixture<PluggularCounterCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CounterCardComponent ]
-    })
-    .compileComponents();
+      declarations: [PluggularCounterCardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CounterCardComponent);
+    fixture = TestBed.createComponent(PluggularCounterCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
