@@ -29,7 +29,7 @@ export class PluggularTableComponent {
   @Input() noDataMsg = 'No Data';
   @Input() pages = 1;
   @Output() hasPageChanged = new EventEmitter<number>();
-  @Output() haspageLimitChanged = new EventEmitter<string>();
+  @Output() hasPageLimitChanged = new EventEmitter<string>();
   pageLimit = '10';
   pageLimitOptions: TSelectOption[] = [
     {
@@ -51,6 +51,6 @@ export class PluggularTableComponent {
   }
 
   onPageLimitChange(): void {
-    this.haspageLimitChanged.emit(this.pageLimit);
+    this.hasPageLimitChanged.emit(this.pageLimit);
   }
 }
