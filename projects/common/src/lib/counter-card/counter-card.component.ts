@@ -12,6 +12,7 @@ export class PluggularCounterCardComponent implements OnInit {
   @Input() subText = '';
   @Input() description: string | null | undefined = '';
   @Input() color = '';
+  @Input() link = '';
 
   bgClass = '';
   constructor() {}
@@ -20,7 +21,7 @@ export class PluggularCounterCardComponent implements OnInit {
     this.bgClass = this.constructIconColor(this.color);
   }
 
-  constructIconColor(color: string) {
+  private constructIconColor(color: string): string {
     return `bg-${color}-400`;
   }
 }

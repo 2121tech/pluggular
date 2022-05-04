@@ -21,4 +21,12 @@ describe('PluggularCounterCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have proper bgClass base on user input', () => {
+    component.color = 'red';
+
+    component.ngOnInit();
+
+    expect(component.bgClass).toEqual('bg-red-400');
+  });
 });
