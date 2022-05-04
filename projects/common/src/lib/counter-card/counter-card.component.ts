@@ -15,7 +15,6 @@ export class PluggularCounterCardComponent implements OnInit {
   @Input() link = '';
 
   bgClass = '';
-  constructor() {}
 
   ngOnInit(): void {
     this.bgClass = this.constructIconColor(this.color);
