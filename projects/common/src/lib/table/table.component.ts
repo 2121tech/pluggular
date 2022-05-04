@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
@@ -17,6 +17,11 @@ export type TTableButton = {
   icon?: IconDefinition;
 };
 
+export type TSortEvent = {
+  sortField: string;
+  sortMethod: 'ascending' | 'descending';
+};
+
 @Component({
   selector: 'plg-table',
   templateUrl: './table.component.html',
@@ -30,6 +35,7 @@ export class PluggularTableComponent {
   @Input() pages = 1;
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
+  @Output() hasTableSorted = new EventEmitter<TSortEvent>();
   pageLimit = '10';
   pageLimitOptions: TSelectOption[] = [
     {
@@ -46,11 +52,34 @@ export class PluggularTableComponent {
     },
   ];
 
+  sortIcon = faSort;
+  sortUpIcon = faSortUp;
+  sortDownIcon = faSortDown;
+
+  activeSortField = '';
+  isAscending = false;
+
   onPageClick(event: number): void {
     this.hasPageChanged.emit(event);
   }
 
   onPageLimitChange(): void {
     this.hasPageLimitChanged.emit(this.pageLimit);
+  }
+
+  onHeaderSortClick(event: string): void {
+    if (event !== this.activeSortField) {
+      this.activeSortField = event;
+      this.isAscending = true;
+    } else {
+      this.isAscending = !this.isAscending;
+    }
+
+    const sortEvent: TSortEvent = {
+      sortField: this.activeSortField,
+      sortMethod: this.isAscending ? 'ascending' : 'descending',
+    };
+
+    this.hasTableSorted.emit(sortEvent);
   }
 }
