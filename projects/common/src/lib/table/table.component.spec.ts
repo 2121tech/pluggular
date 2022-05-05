@@ -50,4 +50,26 @@ describe('PluggularTableComponent', () => {
 
     expect(noDataMsg.innerHTML.trim()).toEqual(message);
   });
+
+  it('should set specific table header as active sorting field and set proper sorting method when specific table header is clicked', () => {
+    component.fields = [
+      { label: 'Apple', key: 'apple' },
+      { label: 'Orange', key: 'orange' },
+      { label: 'Lemon', key: 'lemon' },
+    ];
+    spyOn(component, 'onHeaderSortClick').and.callThrough();
+
+    fixture.detectChanges();
+
+    const firstHeader = fixture.debugElement.queryAll(By.css('th'))[0].nativeElement;
+
+    firstHeader.click();
+
+    expect(component.activeSortField).toEqual('Apple');
+    expect(component.isAscending).toEqual(true);
+
+    firstHeader.click();
+
+    expect(component.isAscending).toEqual(false);
+  });
 });
