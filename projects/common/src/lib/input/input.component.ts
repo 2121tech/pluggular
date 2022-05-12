@@ -109,7 +109,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  constructRoundness(roundness: TRoundness): string {
+  private constructRoundness(roundness: TRoundness): string {
     let roundedClass = '';
     switch (roundness) {
       case 'small':
