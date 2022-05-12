@@ -1,10 +1,11 @@
 <div class="w-full mb-6 md:mb-0">
-  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1">
+  <label class="block uppercase font-bold tracking-wide text-sm mb-1" [ngClass]="labelStyle">
     {{ label }}
   </label>
   <div
-    class="appearance-none flex flex-row items-center w-full bg-gray-100 text-gray-700 border rounded mb-3 overflow-hidden"
+    class="appearance-none flex flex-row items-center w-full bg-gray-100 text-gray-700 border mb-3 overflow-hidden"
     [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
+    [class]="roundedClass"
   >
     <input
       class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight focus:bg-white"
