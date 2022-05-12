@@ -3,6 +3,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export type TInputType = 'text' | 'number' | 'password';
+export type TRoundness = 'small' | 'medium' | 'large' | undefined | null;
 
 @Component({
   selector: 'plg-input',
@@ -17,8 +18,11 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() disabled = false;
   @Input() maxLength = 524288;
   @Input() minLength = 0;
+  @Input() labelStyle = 'text-gray-500';
+  @Input() roundness: TRoundness = 'small';
 
   errorMessages = new Map<string, string>();
+  roundedClass = '';
 
   onChange: (value: string) => void = (): void => {
     return;
@@ -44,6 +48,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     this._type = this.type;
+    this.roundedClass = this.constructRoundness(this.roundness);
   }
 
   public get invalid(): boolean | null {
@@ -102,5 +107,24 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
       this._type = 'password';
       this.icon = faEye;
     }
+  }
+
+  constructRoundness(roundness: TRoundness): string {
+    let roundedClass = '';
+    switch (roundness) {
+      case 'small':
+        roundedClass = 'rounded';
+        break;
+      case 'medium':
+        roundedClass = 'rounded-md';
+        break;
+      case 'large':
+        roundedClass = 'rounded-lg';
+        break;
+      default:
+        break;
+    }
+
+    return roundedClass;
   }
 }
