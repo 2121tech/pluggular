@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Optional, Output, Self } from '
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-export type TInputType = 'text' | 'number' | 'password';
+export type TInputType = 'text' | 'number' | 'password' | 'file';
 export type TRoundness = 'small' | 'medium' | 'large' | undefined | null;
 
 @Component({

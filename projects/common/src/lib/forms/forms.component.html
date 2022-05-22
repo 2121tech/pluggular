@@ -10,7 +10,7 @@
           <div *ngFor="let control of column.fields" class="flex-1">
             <plg-datepicker [formControlName]="control.name" *ngIf="control.type === 'date'"></plg-datepicker>
             <plg-input
-              *ngIf="control.type === 'text' || control.type === 'number'"
+              *ngIf="control.type === 'text' || control.type === 'number' || control.type === 'file'"
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
               [type]="control.type"
