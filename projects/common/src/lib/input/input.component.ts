@@ -8,7 +8,7 @@ export type TRoundness = 'small' | 'medium' | 'large' | undefined | null;
 @Component({
   selector: 'plg-input',
   templateUrl: './input.component.html',
-  styles: [],
+  styleUrls: ['./input.component.scss'],
 })
 export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() label = '';
