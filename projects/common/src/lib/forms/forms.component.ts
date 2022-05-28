@@ -33,6 +33,8 @@ export class PluggularFormsComponent {
   @Input() fields?: TFormFields[] = undefined;
   @Input() formGroup!: FormGroup;
   @Input() submitText? = 'Submit';
+  @Input() labelStyle? = '';
+  @Input() hideSubmitButton? = false;
 
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);

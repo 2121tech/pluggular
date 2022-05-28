@@ -1,8 +1,9 @@
 <form [formGroup]="formGroup" (submit)="onSubmit()">
-  <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-5 gap-2">
+  <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-0 md:mt-5 gap-2">
     <div *ngFor="let column of field.row" class="flex-1">
       <div class="flex flex-col">
         <div
+          [ngClass]="[labelStyle]"
           class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1"
           [innerHtml]="column.label"
         ></div>
@@ -14,6 +15,7 @@
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
               [type]="control.type"
+              [label]="control.label"
             ></plg-input>
             <plg-select
               *ngIf="control.type === 'select'"
@@ -36,7 +38,7 @@
       </div>
     </div>
   </div>
-  <div class="flex items-end pb-1">
+  <div class="flex items-end pb-1" *ngIf="!hideSubmitButton">
     <plg-button fill="success" roundness="medium" type="submit" [disabled]="formGroup?.invalid ? true : false">{{
       submitText
     }}</plg-button>
