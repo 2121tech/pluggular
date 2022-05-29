@@ -34,7 +34,7 @@ export class PluggularFormsComponent {
   @Input() formGroup!: FormGroup;
   @Input() submitText? = 'Submit';
   @Input() labelStyle? = '';
-  @Input() hideSubmitButton? = false;
+  @Input() showSubmitButton: boolean | null | undefined = true;
 
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);
