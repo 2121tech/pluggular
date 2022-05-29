@@ -32,6 +32,7 @@ export class PluggularTableComponent {
   @Input() buttons: TTableButton[] = [];
   @Input() fields: TField[] = [];
   @Input() noDataMsg = 'No Data';
+  @Input() showPageLimit = true;
   @Input() pages = 1;
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
