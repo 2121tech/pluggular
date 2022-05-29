@@ -11,7 +11,7 @@ export type TRoundness = 'small' | 'medium' | 'large' | undefined | null;
   styleUrls: ['./input.component.scss'],
 })
 export class PluggularInputComponent implements ControlValueAccessor, OnInit {
-  @Input() label = '';
+  @Input() label: string | undefined = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
   @Input() placeholder: string | undefined | null = '';
