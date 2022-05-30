@@ -7,6 +7,7 @@ import { TSelectOption } from '../select/select.component';
 export type TField = {
   label: string;
   key: string;
+  sortable?: boolean;
 };
 
 export type TTableButton = {
@@ -68,19 +69,21 @@ export class PluggularTableComponent {
     this.hasPageLimitChanged.emit(this.pageLimit);
   }
 
-  onHeaderSortClick(event: string): void {
-    if (event !== this.activeSortField) {
-      this.activeSortField = event;
-      this.isAscending = true;
-    } else {
-      this.isAscending = !this.isAscending;
+  onHeaderSortClick(event: TField): void {
+    if (event.sortable) {
+      if (event.label !== this.activeSortField) {
+        this.activeSortField = event.label;
+        this.isAscending = true;
+      } else {
+        this.isAscending = !this.isAscending;
+      }
+
+      const sortEvent: TSortEvent = {
+        sortField: this.activeSortField,
+        sortMethod: this.isAscending ? 'ascending' : 'descending',
+      };
+
+      this.hasTableSorted.emit(sortEvent);
     }
-
-    const sortEvent: TSortEvent = {
-      sortField: this.activeSortField,
-      sortMethod: this.isAscending ? 'ascending' : 'descending',
-    };
-
-    this.hasTableSorted.emit(sortEvent);
   }
 }
