@@ -31,7 +31,7 @@ export type TSortOption = {
 @Component({
   selector: 'plg-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css'],
+  styles: [],
 })
 export class PluggularTableComponent {
   @Input() data: Record<string, unknown>[] = [];
@@ -43,6 +43,7 @@ export class PluggularTableComponent {
   @Input() sortOptions?: TSortOption[] = [];
   @Input() headerContainerStyle?: string;
   @Input() headerItemStyle?: string;
+  @Input() dataItemStyle?: string;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
