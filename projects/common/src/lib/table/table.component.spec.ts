@@ -53,9 +53,9 @@ describe('PluggularTableComponent', () => {
 
   it('should set specific table header as active sorting field and set proper sorting method when specific table header is clicked', () => {
     component.fields = [
-      { label: 'Apple', key: 'apple' },
-      { label: 'Orange', key: 'orange' },
-      { label: 'Lemon', key: 'lemon' },
+      { label: 'Apple', key: 'apple', sortable: true },
+      { label: 'Orange', key: 'orange', sortable: true },
+      { label: 'Lemon', key: 'lemon', sortable: true },
     ];
     spyOn(component, 'onHeaderSortClick').and.callThrough();
 
@@ -71,5 +71,28 @@ describe('PluggularTableComponent', () => {
     firstHeader.click();
 
     expect(component.isAscending).toEqual(false);
+  });
+
+  it('should call onSortOptionChange when sort selection changed', () => {
+    spyOn(component, 'onSortOptionChange').and.callThrough();
+    component.sortOptions = [
+      {
+        label: 'Ascending',
+        value: '1',
+      },
+      {
+        label: 'Descending',
+        value: '0',
+      },
+    ];
+
+    fixture.detectChanges();
+    const select: HTMLSelectElement = de.query(By.css('#sortSelector')).nativeElement;
+    select.value = select.options[1].value;
+
+    select.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+
+    expect(component.onSortOptionChange).toHaveBeenCalled();
   });
 });
