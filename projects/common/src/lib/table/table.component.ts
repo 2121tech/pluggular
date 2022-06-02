@@ -97,7 +97,7 @@ export class PluggularTableComponent {
     }
   }
 
-  onSortOptionChange(event: Event) {
+  onSortOptionChange(event: Event): void  {
     const element = event.currentTarget as HTMLSelectElement;
     this.hasSortOptionChanged.emit(element.value);
   }
