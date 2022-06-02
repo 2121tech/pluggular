@@ -23,10 +23,15 @@ export type TSortEvent = {
   sortMethod: 'ascending' | 'descending';
 };
 
+export type TSortOption = {
+  label: string;
+  value: string;
+};
+
 @Component({
   selector: 'plg-table',
   templateUrl: './table.component.html',
-  styles: [],
+  styleUrls: ['./table.component.css'],
 })
 export class PluggularTableComponent {
   @Input() data: Record<string, unknown>[] = [];
@@ -35,6 +40,10 @@ export class PluggularTableComponent {
   @Input() noDataMsg = 'No Data';
   @Input() showPageLimit = true;
   @Input() pages = 1;
+  @Input() sortOptions?: TSortOption[] = [];
+  @Input() headerContainerStyle?: string;
+  @Input() headerItemStyle?: string;
+  @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
   @Output() hasTableSorted = new EventEmitter<TSortEvent>();
@@ -85,5 +94,10 @@ export class PluggularTableComponent {
 
       this.hasTableSorted.emit(sortEvent);
     }
+  }
+
+  onSortOptionChange(event: Event) {
+    const element = event.currentTarget as HTMLSelectElement;
+    this.hasSortOptionChanged.emit(element.value);
   }
 }
