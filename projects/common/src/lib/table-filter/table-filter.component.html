@@ -2,23 +2,38 @@
   <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-5 gap-10">
     <div *ngFor="let column of field.row">
       <div class="flex flex-col">
-        <div class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1">
+        <div class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1" [ngClass]="labelStyle">
           {{ column.label }}
         </div>
         <div class="flex flex-row gap-5">
           <div *ngFor="let control of column.fields">
-            <plg-datepicker [formControlName]="control.name" *ngIf="control.type === 'date'"></plg-datepicker>
+            <plg-datepicker
+              [formControlName]="control.name"
+              *ngIf="control.type === 'date'"
+              [roundness]="inputRoundness"
+              [containerStyle]="inputCustomStyle?.containerStyle || ''"
+              [inputStyle]="inputCustomStyle?.inputStyle || ''"
+              [labelStyle]="inputCustomStyle?.labelStyle || ''"
+            ></plg-datepicker>
             <plg-input
               *ngIf="control.type === 'text' || control.type === 'number'"
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
               [type]="control.type"
+              [roundness]="inputRoundness"
+              [containerStyle]="inputCustomStyle?.containerStyle || ''"
+              [inputStyle]="inputCustomStyle?.inputStyle || ''"
+              [labelStyle]="inputCustomStyle?.labelStyle || ''"
             ></plg-input>
             <plg-select
               *ngIf="control.type === 'select'"
               [placeholder]="control.placeholder"
               [options]="control.options"
               [formControlName]="control.name"
+              [roundness]="inputRoundness"
+              [containerStyle]="selectInputCustomStyle?.containerStyle || ''"
+              [inputStyle]="selectInputCustomStyle?.inputStyle || ''"
+              [labelStyle]="selectInputCustomStyle?.labelStyle || ''"
             ></plg-select>
           </div>
         </div>

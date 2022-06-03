@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, Optional, Renderer2, Self } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Optional, Renderer2, Self } from '@angular/core';
 import { NgControl, SelectControlValueAccessor } from '@angular/forms';
+import { TRoundness } from '../input/input.component';
 
 export type TSelectOption = {
   label: string;
@@ -11,13 +12,19 @@ export type TSelectOption = {
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css'],
 })
-export class PluggularSelectComponent extends SelectControlValueAccessor {
+export class PluggularSelectComponent extends SelectControlValueAccessor implements OnInit {
   @Input() label = '';
   @Input() options: TSelectOption[] | null | undefined = [];
   @Input() required = false;
   @Input() disabled = false;
   @Input() placeholder: string | undefined | null = '';
+  @Input() roundness: TRoundness = 'small';
+  @Input() labelStyle = '';
+  @Input() containerStyle = '';
+  @Input() inputStyle = '';
+  @Input() optionItemStyle = '';
 
+  roundedClass = '';
   value = '';
 
   onChange: (value: string) => void = (): void => {
@@ -27,6 +34,15 @@ export class PluggularSelectComponent extends SelectControlValueAccessor {
   onTouch: () => void = (): void => {
     return;
   };
+
+  constructor(_renderer: Renderer2, _elementRef: ElementRef, @Self() @Optional() public control: NgControl) {
+    super(_renderer, _elementRef);
+    this.control && (this.control.valueAccessor = this);
+  }
+
+  ngOnInit(): void {
+    this.roundedClass = this.constructRoundness(this.roundness);
+  }
 
   writeValue(obj: string): void {
     this.onChange(obj);
@@ -65,8 +81,25 @@ export class PluggularSelectComponent extends SelectControlValueAccessor {
     return this.invalid ? dirty || touched : false;
   }
 
-  constructor(_renderer: Renderer2, _elementRef: ElementRef, @Self() @Optional() public control: NgControl) {
-    super(_renderer, _elementRef);
-    this.control && (this.control.valueAccessor = this);
+  private constructRoundness(roundness: TRoundness): string {
+    let roundedClass = '';
+    switch (roundness) {
+      case 'small':
+        roundedClass = 'rounded';
+        break;
+      case 'medium':
+        roundedClass = 'rounded-md';
+        break;
+      case 'large':
+        roundedClass = 'rounded-lg';
+        break;
+      case 'full':
+        roundedClass = 'rounded-3xl';
+        break;
+      default:
+        break;
+    }
+
+    return roundedClass;
   }
 }

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { TInputStyle, TSelectInputStyle } from '../forms/forms.component';
+import { TRoundness } from '../input/input.component';
 import { TSelectOption } from '../select/select.component';
 
 export type TFilterField = {
@@ -30,6 +32,10 @@ export class PluggularTableFilterComponent {
   @Output() hasSubmitted = new EventEmitter<Record<string, string | number>>();
   @Input() fields?: TFilterFields[] = undefined;
   @Input() formGroup!: FormGroup;
+  @Input() inputRoundness: TRoundness = 'small';
+  @Input() inputCustomStyle?: TInputStyle;
+  @Input() selectInputCustomStyle?: TSelectInputStyle;
+  @Input() labelStyle = '';
 
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);

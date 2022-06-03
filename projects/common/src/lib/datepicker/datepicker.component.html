@@ -1,13 +1,19 @@
 <div class="w-full mb-6 md:mb-0">
-  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1" for="grid-first-name">
+  <label
+    [ngClass]="labelStyle"
+    class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1"
+    for="grid-first-name"
+  >
     {{ label }}
   </label>
   <div
     class="appearance-none flex flex-row items-center w-full bg-gray-100 text-gray-700 border rounded mb-3 overflow-hidden"
-    [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
+    [ngClass]="[containerStyle, showError || value.length === maxLength ? 'border-red-500' : '']"
+    [class]="roundedClass"
   >
     <input
       class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight max-h-9 focus:bg-white"
+      [ngClass]="inputStyle"
       type="date"
       [placeholder]="placeholder"
       (input)="setValue()"

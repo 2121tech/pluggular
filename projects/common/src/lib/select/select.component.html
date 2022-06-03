@@ -1,16 +1,21 @@
 <div class="w-full mb-6 md:mb-0">
-  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1"> {{ label }} </label>
-  <div class="relative">
+  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-2" [ngClass]="labelStyle">
+    {{ label }}
+  </label>
+  <div class="relative min-h-10" [ngClass]="containerStyle">
     <select
-      class="block appearance-none w-full bg-gray-100 border text-gray-700 py-2 px-3 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white"
-      [ngClass]="{ 'border-red-500': showError }"
+      class="block appearance-none w-full bg-gray-100 border text-gray-700 py-2 px-3 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white h-full"
+      [ngClass]="[inputStyle, showError ? 'border-red-500' : '']"
+      [class]="roundedClass"
       [(ngModel)]="value"
       [ngModelOptions]="{ standalone: true }"
       [required]="required"
       [disabled]="disabled"
     >
-      <option value="">{{ placeholder }}</option>
-      <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+      <option value="" [ngClass]="optionItemStyle || ''">{{ placeholder }}</option>
+      <option *ngFor="let option of options" [value]="option.value" [ngClass]="optionItemStyle">
+        {{ option.label }}
+      </option>
     </select>
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

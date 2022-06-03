@@ -3,7 +3,8 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export type TInputType = 'text' | 'number' | 'password' | 'file';
-export type TRoundness = 'small' | 'medium' | 'large' | undefined | null;
+export type TRoundness = 'small' | 'medium' | 'large' | 'full' | undefined | null;
+
 
 @Component({
   selector: 'plg-input',
@@ -19,6 +20,8 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() maxLength = 524288;
   @Input() minLength = 0;
   @Input() labelStyle = 'text-gray-500';
+  @Input() containerStyle = '';
+  @Input() inputStyle = '';
   @Input() roundness: TRoundness = 'small';
 
   errorMessages = new Map<string, string>();
@@ -109,7 +112,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  private constructRoundness(roundness: TRoundness): string {
+  public constructRoundness(roundness: TRoundness): string {
     let roundedClass = '';
     switch (roundness) {
       case 'small':
@@ -120,6 +123,9 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
         break;
       case 'large':
         roundedClass = 'rounded-lg';
+        break;
+      case 'full':
+        roundedClass = 'rounded-3xl';
         break;
       default:
         break;
