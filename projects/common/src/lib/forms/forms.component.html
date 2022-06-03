@@ -9,19 +9,33 @@
         ></div>
         <div class="flex flex-row gap-5">
           <div *ngFor="let control of column.fields" class="flex-1">
-            <plg-datepicker [formControlName]="control.name" *ngIf="control.type === 'date'"></plg-datepicker>
+            <plg-datepicker
+              [formControlName]="control.name"
+              *ngIf="control.type === 'date'"
+              [containerStyle]="inputCustomStyle?.containerStyle || ''"
+              [inputStyle]="inputCustomStyle?.inputStyle || ''"
+              [labelStyle]="inputCustomStyle?.labelStyle || ''"
+            ></plg-datepicker>
             <plg-input
               *ngIf="control.type === 'text' || control.type === 'number' || control.type === 'file'"
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
               [type]="control.type"
               [label]="control.label"
+              [roundness]="inputRoundness"
+              [containerStyle]="inputCustomStyle?.containerStyle || ''"
+              [inputStyle]="inputCustomStyle?.inputStyle || ''"
+              [labelStyle]="inputCustomStyle?.labelStyle || ''"
             ></plg-input>
             <plg-select
               *ngIf="control.type === 'select'"
               [placeholder]="control.placeholder"
               [options]="control.options"
               [formControlName]="control.name"
+              [roundness]="inputRoundness"
+              [containerStyle]="selectInputCustomStyle?.containerStyle || ''"
+              [inputStyle]="selectInputCustomStyle?.inputStyle || ''"
+              [labelStyle]="selectInputCustomStyle?.labelStyle || ''"
             ></plg-select>
             <plg-textarea
               *ngIf="control.type === 'textarea'"

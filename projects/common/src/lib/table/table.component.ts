@@ -41,9 +41,9 @@ export class PluggularTableComponent {
   @Input() showPageLimit = true;
   @Input() pages = 1;
   @Input() sortOptions?: TSortOption[] = [];
-  @Input() headerContainerStyle?: string;
-  @Input() headerItemStyle?: string;
-  @Input() dataItemStyle?: string;
+  @Input() headerContainerStyle = '';
+  @Input() headerItemStyle = '';
+  @Input() dataItemStyle = '';
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
@@ -97,7 +97,7 @@ export class PluggularTableComponent {
     }
   }
 
-  onSortOptionChange(event: Event): void  {
+  onSortOptionChange(event: Event): void {
     const element = event.currentTarget as HTMLSelectElement;
     this.hasSortOptionChanged.emit(element.value);
   }
