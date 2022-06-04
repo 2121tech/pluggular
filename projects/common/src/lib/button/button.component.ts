@@ -64,6 +64,8 @@ export class PluggularButtonComponent implements OnInit {
   @Input() href = '';
   @Input() disabled = false;
   @Input() icon: IconDefinition | undefined = undefined;
+  @Input() buttonStyle = '';
+  @Input() buttonIconStyle = '';
   @Output() hasClicked = new EventEmitter<string>();
 
   bgClass = '';

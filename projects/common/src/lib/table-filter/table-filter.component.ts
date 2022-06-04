@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { TInputStyle, TSelectInputStyle } from '../forms/forms.component';
+import { TButtonStyle, TInputStyle, TSelectInputStyle } from '../forms/forms.component';
 import { TRoundness } from '../input/input.component';
 import { TSelectOption } from '../select/select.component';
 
@@ -35,6 +35,7 @@ export class PluggularTableFilterComponent {
   @Input() inputRoundness: TRoundness = 'small';
   @Input() inputCustomStyle?: TInputStyle;
   @Input() selectInputCustomStyle?: TSelectInputStyle;
+  @Input() buttonCustomStyle?: TButtonStyle;
   @Input() labelStyle = '';
 
   onSubmit(): void {

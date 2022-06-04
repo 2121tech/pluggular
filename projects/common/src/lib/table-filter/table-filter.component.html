@@ -40,7 +40,14 @@
       </div>
     </div>
     <div class="flex items-end pb-1" *ngIf="last">
-      <plg-button fill="success" roundness="small" type="submit">Search</plg-button>
+      <plg-button
+        fill="success"
+        roundness="small"
+        type="submit"
+        [buttonStyle]="buttonCustomStyle?.buttonStyle || ''"
+        [buttonIconStyle]="buttonCustomStyle?.buttonIconStyle || ''"
+        >Search</plg-button
+      >
     </div>
   </div>
 </form>
