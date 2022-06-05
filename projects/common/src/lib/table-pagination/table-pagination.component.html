@@ -32,10 +32,22 @@
     <fa-icon [icon]="ellipsisIcon"></fa-icon>
   </div>
   <div
+    id="ellipsisBtn"
+    class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
+    *ngIf="isInfinite"
+    (click)="onNextSetClick()"
+  >
+    <fa-icon [icon]="ellipsisIcon"></fa-icon>
+  </div>
+  <div
     id="nextPageBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onNextPageClick()"
-    [ngClass]="{ 'text-gray-300': currentSet === this.numbersSet.length - 1 }"
+    [ngClass]="{
+      'text-gray-300':
+        (!isInfinite && currentSet === this.numbersSet.length - 1) ||
+        (isInfinite && currentSet !== 0 && currentSet === this.numbersSet.length - 1)
+    }"
   >
     <fa-icon [icon]="angleRightIcon"></fa-icon>
   </div>

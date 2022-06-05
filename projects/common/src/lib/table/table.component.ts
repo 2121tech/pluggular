@@ -44,6 +44,8 @@ export class PluggularTableComponent {
   @Input() headerContainerStyle = '';
   @Input() headerItemStyle = '';
   @Input() dataItemStyle = '';
+  @Input() isInfinitePagination = false;
+  @Input() isLastPage = false;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();

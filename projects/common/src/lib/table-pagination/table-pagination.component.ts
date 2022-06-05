@@ -15,6 +15,8 @@ import {
 export class PluggularTablePaginationComponent implements OnInit {
   @Input() pages = 1;
   @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
+  @Input() isInfinite = false;
+  @Input() isLastPage = false;
   @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
@@ -42,6 +44,11 @@ export class PluggularTablePaginationComponent implements OnInit {
 
   onNextPageClick(): void {
     const nextPage = this.currentPage + 1;
+    if (this.isInfinite) {
+      this.pages += 1;
+      this.numbersSet = this.generateItems();
+    }
+
     if (nextPage < this.pages) {
       if (this.numbersSet[this.currentSet].indexOf(nextPage) < 0) {
         this.onNextSetClick();
@@ -73,14 +80,21 @@ export class PluggularTablePaginationComponent implements OnInit {
     const numbersSet = [];
     const setCount = Math.floor(this.pages / this.perSet);
     let from = 0;
-    for (let currentSet = 0; currentSet < setCount; currentSet++) {
-      numbersSet.push([...Array(5)].map((_, i) => from + i * 1));
-      from += 5;
+
+    if (this.pages > this.perSet) {
+      for (let currentSet = 0; currentSet < setCount; currentSet++) {
+        numbersSet.push([...Array(this.perSet)].map((_, i) => from + i * 1));
+        from += this.perSet;
+      }
+
+      if (this.pages % this.perSet > 0) {
+        numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => this.pages - 1 + i * 1));
+      }
+    } else {
+      numbersSet.push([...Array(this.pages)].map((_, i) => from + i * 1));
     }
 
-    if (this.pages % this.perSet > 0) {
-      numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => this.pages - 1 + i * 1));
-    }
+    console.log(numbersSet);
 
     return numbersSet;
   }
