@@ -38,6 +38,11 @@ export type TSelectInputStyle = {
   optionItemStyle?: string;
 };
 
+export type TButtonStyle = {
+  buttonStyle?: string;
+  buttonIconStyle?: string;
+};
+
 @Component({
   selector: 'plg-forms',
   templateUrl: './forms.component.html',
@@ -53,6 +58,7 @@ export class PluggularFormsComponent {
   @Input() showSubmitButton: boolean | null | undefined = true;
   @Input() inputCustomStyle?: TInputStyle;
   @Input() selectInputCustomStyle?: TSelectInputStyle;
+  @Input() buttonCustomStyle?: TButtonStyle;
 
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);
