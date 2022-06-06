@@ -7,10 +7,6 @@ import {
   faEllipsis,
 } from '@fortawesome/free-solid-svg-icons';
 
-export type TPaginationResult = {
-  currentPage: number;
-  lastPage?: number;
-};
 @Component({
   selector: 'plg-table-pagination',
   templateUrl: './table-pagination.component.html',
@@ -21,7 +17,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
   @Input() isInfinite = false;
   @Input() isLastPage = false;
-  @Output() hasPageClicked = new EventEmitter<TPaginationResult>();
+  @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
   skip = 1;
@@ -41,7 +37,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.isLastPage?.currentValue === true) {
+    if (changes.isLastPage.currentValue === true) {
       this.lastPage = this.currentPage;
     }
   }
@@ -50,40 +46,25 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
     const nextSet = this.currentSet + 1;
     if (nextSet < this.numbersSet.length) {
       this.currentSet = nextSet;
+      this.scrollToTop();
     }
   }
 
   onNextPageClick(): void {
-    let result: TPaginationResult = { currentPage: this.currentPage };
-
-    if (!this.lastPage || this.currentPage + 1 <= this.lastPage) {
-      this.currentPage += 1;
-    }
-
-    if (!this.isLastPage) {
-      if (this.isInfinite) {
-        this.pages += 1;
-        this.numbersSet = this.generateItems();
-      }
-
-      if (this.currentPage < this.pages) {
-        if (this.numbersSet[this.currentSet].indexOf(this.currentPage) < 0) {
+    if (!this.isInfinite) {
+      const nextPage = this.currentPage + 1;
+      if (nextPage < this.pages) {
+        if (this.numbersSet[this.currentSet].indexOf(nextPage) < 0) {
           this.onNextSetClick();
         }
-        result = {
-          currentPage: this.currentPage,
-          lastPage: this.lastPage,
-        };
       }
-    } else {
-      this.lastPage = this.currentPage;
-      result = {
-        currentPage: this.currentPage,
-        lastPage: this.lastPage,
-      };
     }
-    this.hasPageClicked.emit(result);
-    this.scrollToTop();
+
+    if (!this.isLastPage || (this.lastPage && this.currentPage !== this.lastPage)) {
+      this.currentPage += 1;
+      this.hasPageClicked.emit(this.currentPage);
+      this.scrollToTop();
+    }
   }
 
   onPrevPageClick(): void {
@@ -93,11 +74,8 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
         this.onPrevSetClick();
       }
       this.currentPage = prevPage;
-      const result = {
-        currentPage: this.currentPage,
-        lastPage: this.lastPage,
-      };
-      this.hasPageClicked.emit(result);
+      this.hasPageClicked.emit(this.currentPage);
+      this.scrollToTop();
     }
   }
 
@@ -105,6 +83,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
     const prevSet = this.currentSet - 1;
     if (prevSet >= 0) {
       this.currentSet = prevSet;
+      this.scrollToTop();
     }
   }
 
@@ -127,14 +106,10 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
 
   onPageClick(page: number): void {
     this.currentPage = page;
-    const result = {
-      currentPage: this.currentPage,
-      lastPage: this.lastPage,
-    };
-    this.hasPageClicked.emit(result);
+    this.hasPageClicked.emit(this.currentPage);
   }
 
-  scrollToTop() {
+  scrollToTop(): void {
     window.scroll({
       top: 0,
       left: 0,
