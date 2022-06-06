@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
@@ -12,9 +12,11 @@ import {
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.css'],
 })
-export class PluggularTablePaginationComponent implements OnInit {
+export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() pages = 1;
   @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
+  @Input() isInfinite = false;
+  @Input() isLastPage = false;
   @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
@@ -22,6 +24,7 @@ export class PluggularTablePaginationComponent implements OnInit {
   currentSet = 0;
   numbersSet: number[][] = [];
   currentPage = 0;
+  lastPage = 0;
 
   angleDoubleLeftIcon = faAngleDoubleLeft;
   angleLeftIcon = faAngleLeft;
@@ -33,21 +36,34 @@ export class PluggularTablePaginationComponent implements OnInit {
     this.numbersSet = this.generateItems();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.isLastPage.currentValue === true) {
+      this.lastPage = this.currentPage;
+    }
+  }
+
   onNextSetClick(): void {
     const nextSet = this.currentSet + 1;
     if (nextSet < this.numbersSet.length) {
       this.currentSet = nextSet;
+      this.scrollToTop();
     }
   }
 
   onNextPageClick(): void {
-    const nextPage = this.currentPage + 1;
-    if (nextPage < this.pages) {
-      if (this.numbersSet[this.currentSet].indexOf(nextPage) < 0) {
-        this.onNextSetClick();
+    if (!this.isInfinite) {
+      const nextPage = this.currentPage + 1;
+      if (nextPage < this.pages) {
+        if (this.numbersSet[this.currentSet].indexOf(nextPage) < 0) {
+          this.onNextSetClick();
+        }
       }
+    }
+
+    if (!this.isLastPage || (this.lastPage && this.currentPage !== this.lastPage)) {
       this.currentPage += 1;
       this.hasPageClicked.emit(this.currentPage);
+      this.scrollToTop();
     }
   }
 
@@ -59,6 +75,7 @@ export class PluggularTablePaginationComponent implements OnInit {
       }
       this.currentPage = prevPage;
       this.hasPageClicked.emit(this.currentPage);
+      this.scrollToTop();
     }
   }
 
@@ -66,6 +83,7 @@ export class PluggularTablePaginationComponent implements OnInit {
     const prevSet = this.currentSet - 1;
     if (prevSet >= 0) {
       this.currentSet = prevSet;
+      this.scrollToTop();
     }
   }
 
@@ -79,7 +97,8 @@ export class PluggularTablePaginationComponent implements OnInit {
     }
 
     if (this.pages % this.perSet > 0) {
-      numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => this.pages - 1 + i * 1));
+      from = this.pages - (this.pages % this.perSet);
+      numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => from + i * 1));
     }
 
     return numbersSet;
@@ -88,5 +107,13 @@ export class PluggularTablePaginationComponent implements OnInit {
   onPageClick(page: number): void {
     this.currentPage = page;
     this.hasPageClicked.emit(this.currentPage);
+  }
+
+  scrollToTop(): void {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 }

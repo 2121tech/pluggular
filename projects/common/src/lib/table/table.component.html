@@ -95,6 +95,11 @@
   </div>
 
   <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0">
-    <plg-table-pagination [pages]="pages" (hasPageClicked)="onPageClick($event)"></plg-table-pagination>
+    <plg-table-pagination
+      [pages]="pages"
+      (hasPageClicked)="onPageClick($event)"
+      [isInfinite]="isInfinitePagination"
+      [isLastPage]="isLastPage"
+    ></plg-table-pagination>
   </div>
 </div>
