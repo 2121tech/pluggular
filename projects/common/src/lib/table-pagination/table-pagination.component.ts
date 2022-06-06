@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
@@ -7,23 +7,28 @@ import {
   faEllipsis,
 } from '@fortawesome/free-solid-svg-icons';
 
+export type TPaginationResult = {
+  currentPage: number;
+  lastPage?: number;
+};
 @Component({
   selector: 'plg-table-pagination',
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.css'],
 })
-export class PluggularTablePaginationComponent implements OnInit {
+export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() pages = 1;
   @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
   @Input() isInfinite = false;
   @Input() isLastPage = false;
-  @Output() hasPageClicked = new EventEmitter<number>();
+  @Output() hasPageClicked = new EventEmitter<TPaginationResult>();
 
   perSet = 5;
   skip = 1;
   currentSet = 0;
   numbersSet: number[][] = [];
   currentPage = 0;
+  lastPage = 0;
 
   angleDoubleLeftIcon = faAngleDoubleLeft;
   angleLeftIcon = faAngleLeft;
@@ -35,6 +40,12 @@ export class PluggularTablePaginationComponent implements OnInit {
     this.numbersSet = this.generateItems();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.isLastPage?.currentValue === true) {
+      this.lastPage = this.currentPage;
+    }
+  }
+
   onNextSetClick(): void {
     const nextSet = this.currentSet + 1;
     if (nextSet < this.numbersSet.length) {
@@ -43,19 +54,36 @@ export class PluggularTablePaginationComponent implements OnInit {
   }
 
   onNextPageClick(): void {
-    const nextPage = this.currentPage + 1;
-    if (this.isInfinite) {
-      this.pages += 1;
-      this.numbersSet = this.generateItems();
+    let result: TPaginationResult = { currentPage: this.currentPage };
+
+    if (!this.lastPage || this.currentPage + 1 <= this.lastPage) {
+      this.currentPage += 1;
     }
 
-    if (nextPage < this.pages) {
-      if (this.numbersSet[this.currentSet].indexOf(nextPage) < 0) {
-        this.onNextSetClick();
+    if (!this.isLastPage) {
+      if (this.isInfinite) {
+        this.pages += 1;
+        this.numbersSet = this.generateItems();
       }
-      this.currentPage += 1;
-      this.hasPageClicked.emit(this.currentPage);
+
+      if (this.currentPage < this.pages) {
+        if (this.numbersSet[this.currentSet].indexOf(this.currentPage) < 0) {
+          this.onNextSetClick();
+        }
+        result = {
+          currentPage: this.currentPage,
+          lastPage: this.lastPage,
+        };
+      }
+    } else {
+      this.lastPage = this.currentPage;
+      result = {
+        currentPage: this.currentPage,
+        lastPage: this.lastPage,
+      };
     }
+    this.hasPageClicked.emit(result);
+    this.scrollToTop();
   }
 
   onPrevPageClick(): void {
@@ -65,7 +93,11 @@ export class PluggularTablePaginationComponent implements OnInit {
         this.onPrevSetClick();
       }
       this.currentPage = prevPage;
-      this.hasPageClicked.emit(this.currentPage);
+      const result = {
+        currentPage: this.currentPage,
+        lastPage: this.lastPage,
+      };
+      this.hasPageClicked.emit(result);
     }
   }
 
@@ -80,27 +112,33 @@ export class PluggularTablePaginationComponent implements OnInit {
     const numbersSet = [];
     const setCount = Math.floor(this.pages / this.perSet);
     let from = 0;
-
-    if (this.pages > this.perSet) {
-      for (let currentSet = 0; currentSet < setCount; currentSet++) {
-        numbersSet.push([...Array(this.perSet)].map((_, i) => from + i * 1));
-        from += this.perSet;
-      }
-
-      if (this.pages % this.perSet > 0) {
-        numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => this.pages - 1 + i * 1));
-      }
-    } else {
-      numbersSet.push([...Array(this.pages)].map((_, i) => from + i * 1));
+    for (let currentSet = 0; currentSet < setCount; currentSet++) {
+      numbersSet.push([...Array(5)].map((_, i) => from + i * 1));
+      from += 5;
     }
 
-    console.log(numbersSet);
+    if (this.pages % this.perSet > 0) {
+      from = this.pages - (this.pages % this.perSet);
+      numbersSet.push([...Array(this.pages % this.perSet)].map((_, i) => from + i * 1));
+    }
 
     return numbersSet;
   }
 
   onPageClick(page: number): void {
     this.currentPage = page;
-    this.hasPageClicked.emit(this.currentPage);
+    const result = {
+      currentPage: this.currentPage,
+      lastPage: this.lastPage,
+    };
+    this.hasPageClicked.emit(result);
+  }
+
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 }

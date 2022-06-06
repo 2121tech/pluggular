@@ -3,6 +3,7 @@ import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
+import { TPaginationResult } from '../table-pagination/table-pagination.component';
 
 export type TField = {
   label: string;
@@ -47,7 +48,7 @@ export class PluggularTableComponent {
   @Input() isInfinitePagination = false;
   @Input() isLastPage = false;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
-  @Output() hasPageChanged = new EventEmitter<number>();
+  @Output() hasPageChanged = new EventEmitter<TPaginationResult>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
   @Output() hasTableSorted = new EventEmitter<TSortEvent>();
   pageLimit = '10';
@@ -73,7 +74,7 @@ export class PluggularTableComponent {
   activeSortField = '';
   isAscending = false;
 
-  onPageClick(event: number): void {
+  onPageClick(event: TPaginationResult): void {
     this.hasPageChanged.emit(event);
   }
 
