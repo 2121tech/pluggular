@@ -12,10 +12,11 @@ export type TField = {
 
 export type TTableButton = {
   text: string;
-  fill: TButtonFill;
+  fill?: TButtonFill;
   action: (data: Record<string, unknown>) => void;
   role?: TRole;
   icon?: IconDefinition;
+  buttonStyle?: string;
 };
 
 export type TSortEvent = {
@@ -41,11 +42,14 @@ export class PluggularTableComponent {
   @Input() showPageLimit = true;
   @Input() pages = 1;
   @Input() sortOptions?: TSortOption[] = [];
+  @Input() tableContainerStyle = '';
   @Input() headerContainerStyle = '';
   @Input() headerItemStyle = '';
   @Input() dataItemStyle = '';
   @Input() isInfinitePagination = false;
   @Input() isLastPage = false;
+  @Input() actionHeaderText = 'Actions';
+  @Input() showPagination = true;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
