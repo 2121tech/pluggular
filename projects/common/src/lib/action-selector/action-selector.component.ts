@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,9 +6,6 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './action-selector.component.html',
   styleUrls: ['./action-selector.component.css'],
 })
-export class PluggularActionSelectorComponent implements OnInit {
+export class PluggularActionSelectorComponent {
   downIcon = faChevronDown;
-  constructor() {}
-
-  ngOnInit(): void {}
 }
