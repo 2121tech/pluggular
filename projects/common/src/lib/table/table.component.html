@@ -68,9 +68,9 @@
                   <div [innerHtml]="item[field.key]"></div>
                 </td>
                 <td *ngIf="buttons && buttons.length > 0">
-                  <div class="flex justify-end">
+                  <div *ngFor="let button of buttons" class="flex justify-end">
                     <plg-button
-                      *ngFor="let button of buttons"
+                      *ngIf="checkActionValidity(item.actions, button.text)"
                       [fill]="button.fill"
                       (onClick)="button.action(item)"
                       [role]="button.role"

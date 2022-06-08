@@ -107,4 +107,14 @@ export class PluggularTableComponent {
     const element = event.currentTarget as HTMLSelectElement;
     this.hasSortOptionChanged.emit(element.value);
   }
+
+  checkActionValidity(actions: unknown, action: string): boolean {
+    if (actions) {
+      if (!(actions as string[]).includes(action)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
