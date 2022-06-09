@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { TButtonFill, TRole } from '../button/button.component';
@@ -77,6 +78,7 @@ export class PluggularTableComponent {
   activeSortField = '';
   isAscending = false;
 
+  @ContentChild(TemplateRef, { static: false }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
   onPageClick(event: number): void {
     this.hasPageChanged.emit(event);
   }
