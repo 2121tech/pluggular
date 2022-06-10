@@ -8,7 +8,7 @@
   <div class="flex-col">
     <div class="-my-2 overflow-x-auto">
       <div class="py-2 align-middle inline-block min-w-full">
-        <div class="shadow overflow-hidden border-b border-gray-200">
+        <div class="shadow overflow-hidden border-b border-gray-200" [ngClass]="[tableContainerStyle]">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50" [ngClass]="headerContainerStyle">
               <tr>
@@ -37,10 +37,11 @@
                 <th
                   scope="col"
                   class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  *ngIf="buttons && buttons.length > 0"
+                  *ngIf="(buttons && buttons.length > 0) || actionsTemplate"
                 >
-                  Actions
+                  {{ actionHeaderText }}
                 </th>
+
                 <th class="px-6 py-3 text-xs" *ngIf="sortOptions && sortOptions.length > 0">
                   <div class="flex flex-row justify-end">
                     <div class="text-gray-500">Sort By:</div>
@@ -68,18 +69,34 @@
                   <div [innerHtml]="item[field.key]"></div>
                 </td>
                 <td *ngIf="buttons && buttons.length > 0">
-                  <div class="flex">
-                    <plg-button
-                      *ngFor="let button of buttons"
-                      [fill]="button.fill"
-                      (onClick)="button.action(item)"
-                      [role]="button.role"
-                      class="ml-2"
-                      size="small"
-                      [icon]="button.icon"
-                      >{{ button.text }}</plg-button
-                    >
+                  <div class="flex flex-row justify-end items-center">
+                    <div *ngFor="let button of buttons" class="flex items-center">
+                      <plg-button
+                        *ngIf="!button.isActionSelector"
+                        [fill]="button.fill"
+                        (onClick)="button.action && button.action(item)"
+                        [role]="button.role"
+                        class="ml-2"
+                        size="small"
+                        [icon]="button.icon"
+                        [ngClass]="!button.fill ? 'bg-none' : ''"
+                        [buttonStyle]="button.buttonStyle || ''"
+                        >View Details</plg-button
+                      >
+
+                      <plg-action-selector
+                        *ngIf="button.isActionSelector"
+                        [options]="button.actionOptions"
+                        [context]="item"
+                      ></plg-action-selector>
+                    </div>
                   </div>
+                </td>
+
+                <td class="flex justify-end">
+                  <ng-container *ngIf="actionsTemplate">
+                    <ng-container *ngTemplateOutlet="actionsTemplate; context: { data: item }"> </ng-container>
+                  </ng-container>
                 </td>
               </tr>
             </tbody>
@@ -94,7 +111,7 @@
     </div>
   </div>
 
-  <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0">
+  <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0 && showPagination">
     <plg-table-pagination
       [pages]="pages"
       (hasPageClicked)="onPageClick($event)"

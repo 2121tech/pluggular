@@ -1,0 +1,24 @@
+<div class="relative">
+  <div
+    class="w-8 h-8 rounded-full border-2 border-[#3C6E71] flex justify-center items-center cursor-pointer"
+    (click)="onButtonClick()"
+    [ngClass]="{ 'border-[#3C6E71]': !showOptions, 'border-[#56BF72]': showOptions }"
+  >
+    <span><fa-icon [icon]="downIcon" [ngClass]="{ inactive: !showOptions, active: showOptions }"></fa-icon></span>
+  </div>
+
+  <div
+    class="w-[210px] absolute top-10 right-0 bg-white flex flex-col options-container py-3"
+    *ngIf="showOptions"
+    [ngClass]="{ 'animate-fade-in-down': showOptions }"
+  >
+    <div class="flex-1 border-b border-b-[#ECECEC] last:border-b-0 px-4 py-2" *ngFor="let option of options">
+      <div
+        class="flex-1 font-light py-2 cursor-pointer"
+        *ngFor="let item of option"
+        (click)="item.onClick && item.onClick(context)"
+        [innerHtml]="item.label"
+      ></div>
+    </div>
+  </div>
+</div>

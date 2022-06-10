@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { TActionOption } from '../action-selector/action-selector.component';
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
@@ -12,10 +13,13 @@ export type TField = {
 
 export type TTableButton = {
   text: string;
-  fill: TButtonFill;
-  action: (data: Record<string, unknown>) => void;
+  fill?: TButtonFill;
+  action?: (data: Record<string, unknown>) => void;
   role?: TRole;
   icon?: IconDefinition;
+  buttonStyle?: string;
+  isActionSelector?: boolean;
+  actionOptions?: TActionOption[][];
 };
 
 export type TSortEvent = {
@@ -41,11 +45,14 @@ export class PluggularTableComponent {
   @Input() showPageLimit = true;
   @Input() pages = 1;
   @Input() sortOptions?: TSortOption[] = [];
+  @Input() tableContainerStyle = '';
   @Input() headerContainerStyle = '';
   @Input() headerItemStyle = '';
   @Input() dataItemStyle = '';
   @Input() isInfinitePagination = false;
   @Input() isLastPage = false;
+  @Input() actionHeaderText = 'Actions';
+  @Input() showPagination = true;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
@@ -73,6 +80,7 @@ export class PluggularTableComponent {
   activeSortField = '';
   isAscending = false;
 
+  @ContentChild(TemplateRef, { static: false }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
   onPageClick(event: number): void {
     this.hasPageChanged.emit(event);
   }

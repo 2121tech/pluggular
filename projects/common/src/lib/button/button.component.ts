@@ -55,7 +55,7 @@ export enum EButtonFill {
 })
 export class PluggularButtonComponent implements OnInit {
   @Input() type: TButtonType = EButtonType.BUTTON;
-  @Input() fill: TButtonFill = EButtonFill.PRIMARY;
+  @Input() fill: TButtonFill = undefined;
   @Input() role: TRole = '';
   @Input() size: TButtonSize = 'default';
   @Input() expand: TButtonExpand = 'block';
