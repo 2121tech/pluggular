@@ -19,7 +19,7 @@ export class PluggularActionSelectorComponent {
 
   downIcon = faChevronDown;
 
-  onButtonClick() {
+  onButtonClick(): void {
     this.showOptions = !this.showOptions;
   }
 }
