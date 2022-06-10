@@ -1,6 +1,7 @@
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { TActionOption } from '../action-selector/action-selector.component';
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
@@ -14,10 +15,12 @@ export type TField = {
 export type TTableButton = {
   text: string;
   fill?: TButtonFill;
-  action: (data: Record<string, unknown>) => void;
+  action?: (data: Record<string, unknown>) => void;
   role?: TRole;
   icon?: IconDefinition;
   buttonStyle?: string;
+  isActionSelector?: boolean;
+  actionOptions?: TActionOption[][];
 };
 
 export type TSortEvent = {
@@ -108,15 +111,5 @@ export class PluggularTableComponent {
   onSortOptionChange(event: Event): void {
     const element = event.currentTarget as HTMLSelectElement;
     this.hasSortOptionChanged.emit(element.value);
-  }
-
-  checkActionValidity(actions: unknown, action: string): boolean {
-    if (actions) {
-      if (!(actions as string[]).includes(action)) {
-        return false;
-      }
-    }
-
-    return true;
   }
 }

@@ -1,0 +1,13 @@
+.options-container{
+    box-shadow: 0px 0px 5px #0000001A;
+    border: 1px solid #ECECEC;
+    border-radius: 10px;
+}
+
+fa-icon.inactive path {
+    fill: #3C6E71;
+}
+
+fa-icon.active path {
+    fill: #56BF72;
+}
