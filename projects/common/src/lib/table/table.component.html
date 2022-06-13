@@ -84,11 +84,13 @@
                         >View Details</plg-button
                       >
 
-                      <plg-action-selector
-                        *ngIf="button.isActionSelector"
-                        [options]="button.actionOptions"
-                        [context]="item"
-                      ></plg-action-selector>
+                      <div class="absolute">
+                        <plg-action-selector
+                          *ngIf="button.isActionSelector"
+                          [options]="button.actionOptions"
+                          [context]="item"
+                        ></plg-action-selector>
+                      </div>
                     </div>
                   </div>
                 </td>
