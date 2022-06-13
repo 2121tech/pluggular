@@ -79,17 +79,20 @@ export class PluggularTableComponent implements OnInit {
 
   activeSortField = '';
   isAscending = false;
-  theadStyle = {};
+  rowStyle = {};
 
-  @ContentChild(TemplateRef, { static: false }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
+  @ContentChild(TemplateRef, { static: true }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
 
   ngOnInit(): void {
-    this.theadStyle = this.constructGridRow();
+    this.rowStyle = this.constructGridCol();
   }
 
-  constructGridRow() {
+  private constructGridCol(): Record<string, string> {
+    console.log(this.actionsTemplate);
+    const colCount =
+      (this.buttons && this.buttons.length > 0) || this.actionsTemplate ? this.fields.length + 1 : this.fields.length;
     const obj = {
-      'grid-template-columns': `repeat(${this.fields.length + 1}, 1fr)`,
+      'grid-template-columns': `repeat(${colCount}, 1fr)`,
     };
 
     return obj;

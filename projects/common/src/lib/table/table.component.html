@@ -6,7 +6,7 @@
   </div>
 
   <div class="table w-full">
-    <div class="thead" [ngStyle]="theadStyle">
+    <div class="thead" [ngStyle]="rowStyle">
       <div
         *ngFor="let field of fields"
         [ngClass]="headerItemStyle"
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="tbody bg-white divide-y divide-gray-200 w-full">
-      <div class="tr" *ngFor="let item of data" [ngStyle]="theadStyle">
+      <div class="tr" *ngFor="let item of data" [ngStyle]="rowStyle">
         <div
           class="td flex items-center px-6 py-4 whitespace-normal text-sm text-gray-500"
           [ngClass]="dataItemStyle"
