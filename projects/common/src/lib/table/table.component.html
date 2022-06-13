@@ -5,109 +5,99 @@
     <span class="text-gray-500 font-medium">entries</span>
   </div>
 
-  <div class="flex-col">
-    <div class="-my-2 overflow-x-auto">
-      <div class="py-2 align-middle inline-block min-w-full">
-        <div class="shadow overflow-hidden border-b border-gray-200" [ngClass]="[tableContainerStyle]">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50" [ngClass]="headerContainerStyle">
-              <tr>
-                <th
-                  *ngFor="let field of fields"
-                  scope="col"
-                  [ngClass]="headerItemStyle"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer py-3 px-6"
-                  (click)="onHeaderSortClick(field)"
-                >
-                  {{ field.label }}
-                  <span class="ml-1 cursor-pointer" *ngIf="field.sortable"
-                    ><fa-icon [icon]="sortIcon" *ngIf="field.label !== activeSortField" class="text-sm"></fa-icon>
-                    <fa-icon
-                      [icon]="sortUpIcon"
-                      *ngIf="field.label === activeSortField && isAscending"
-                      class="text-green-400 text-sm"
-                    ></fa-icon>
-                    <fa-icon
-                      [icon]="sortDownIcon"
-                      *ngIf="field.label === activeSortField && !isAscending"
-                      class="text-green-400 text-sm"
-                    ></fa-icon>
-                  </span>
-                </th>
-                <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  *ngIf="(buttons && buttons.length > 0) || actionsTemplate"
-                >
-                  {{ actionHeaderText }}
-                </th>
+  <div class="table w-full">
+    <div class="thead" [ngStyle]="theadStyle">
+      <div
+        *ngFor="let field of fields"
+        [ngClass]="headerItemStyle"
+        class="th px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+      >
+        <div>
+          {{ field.label }}
+          <span class="ml-1 cursor-pointer" *ngIf="field.sortable"
+            ><fa-icon [icon]="sortIcon" *ngIf="field.label !== activeSortField" class="text-sm"></fa-icon>
+            <fa-icon
+              [icon]="sortUpIcon"
+              *ngIf="field.label === activeSortField && isAscending"
+              class="text-green-400 text-sm"
+            ></fa-icon>
+            <fa-icon
+              [icon]="sortDownIcon"
+              *ngIf="field.label === activeSortField && !isAscending"
+              class="text-green-400 text-sm"
+            ></fa-icon>
+          </span>
+        </div>
+      </div>
+      <div
+        class="th px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        *ngIf="(buttons && buttons.length > 0) || actionsTemplate"
+      >
+        {{ actionHeaderText }}
+      </div>
+      <div
+        class="th px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        *ngIf="sortOptions && sortOptions.length > 0"
+      >
+        <div class="flex flex-row justify-end">
+          <div class="text-gray-500">Sort By:</div>
+          <div>
+            <select
+              name="sort"
+              id="sortSelector"
+              class="bg-gray-50 text-gray-500 pl-1 pr-3"
+              (change)="onSortOptionChange($event)"
+            >
+              <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tbody bg-white divide-y divide-gray-200 w-full">
+      <div class="tr" *ngFor="let item of data" [ngStyle]="theadStyle">
+        <div
+          class="td flex items-center px-6 py-4 whitespace-normal text-sm text-gray-500"
+          [ngClass]="dataItemStyle"
+          *ngFor="let field of fields"
+        >
+          <div [innerHtml]="item[field.key]"></div>
+        </div>
+        <div class="td" *ngIf="buttons && buttons.length > 0">
+          <div class="flex flex-row justify-end items-center">
+            <div *ngFor="let button of buttons" class="flex items-center">
+              <plg-button
+                *ngIf="!button.isActionSelector"
+                [fill]="button.fill"
+                (onClick)="button.action && button.action(item)"
+                [role]="button.role"
+                class="ml-2"
+                size="small"
+                [icon]="button.icon"
+                [ngClass]="!button.fill ? 'bg-none' : ''"
+                [buttonStyle]="button.buttonStyle || ''"
+                >View Details</plg-button
+              >
 
-                <th class="px-6 py-3 text-xs" *ngIf="sortOptions && sortOptions.length > 0">
-                  <div class="flex flex-row justify-end">
-                    <div class="text-gray-500">Sort By:</div>
-                    <div>
-                      <select
-                        name="sort"
-                        id="sortSelector"
-                        class="bg-gray-50 text-gray-500 pl-1 pr-3"
-                        (change)="onSortOptionChange($event)"
-                      >
-                        <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
-                      </select>
-                    </div>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-              <tr *ngFor="let item of data">
-                <td
-                  class="px-6 py-4 whitespace-normal text-sm text-gray-500"
-                  [ngClass]="dataItemStyle"
-                  *ngFor="let field of fields"
-                >
-                  <div [innerHtml]="item[field.key]"></div>
-                </td>
-                <td *ngIf="buttons && buttons.length > 0">
-                  <div class="flex flex-row justify-end items-center">
-                    <div *ngFor="let button of buttons" class="flex items-center">
-                      <plg-button
-                        *ngIf="!button.isActionSelector"
-                        [fill]="button.fill"
-                        (onClick)="button.action && button.action(item)"
-                        [role]="button.role"
-                        class="ml-2"
-                        size="small"
-                        [icon]="button.icon"
-                        [ngClass]="!button.fill ? 'bg-none' : ''"
-                        [buttonStyle]="button.buttonStyle || ''"
-                        >View Details</plg-button
-                      >
-
-                      <div class="absolute">
-                        <plg-action-selector
-                          *ngIf="button.isActionSelector"
-                          [options]="button.actionOptions"
-                          [context]="item"
-                        ></plg-action-selector>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-
-                <td class="flex justify-end">
-                  <ng-container *ngIf="actionsTemplate">
-                    <ng-container *ngTemplateOutlet="actionsTemplate; context: { data: item }"> </ng-container>
-                  </ng-container>
-                </td>
-              </tr>
-            </tbody>
-            <tr *ngIf="data && data.length < 1" id="noDataAvailable">
-              <td class="text-center py-3 text-sm text-gray-400 uppercase" [colSpan]="fields.length + 1" id="noDataMsg">
-                {{ noDataMsg }}
-              </td>
-            </tr>
-          </table>
+              <div class="absolute">
+                <plg-action-selector
+                  *ngIf="button.isActionSelector"
+                  [options]="button.actionOptions"
+                  [context]="item"
+                ></plg-action-selector>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="td px-6 py-4 flex flex-row justify-end items-center" *ngIf="actionsTemplate">
+          <ng-container>
+            <ng-container *ngTemplateOutlet="actionsTemplate; context: { data: item }"> </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="tr" *ngIf="data && data.length < 1" id="noDataAvailable">
+        <div class="td text-center py-3 text-sm text-gray-400 uppercase" id="noDataMsg">
+          {{ noDataMsg }}
         </div>
       </div>
     </div>
