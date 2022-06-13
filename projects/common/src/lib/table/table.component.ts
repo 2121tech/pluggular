@@ -88,7 +88,6 @@ export class PluggularTableComponent implements OnInit {
   }
 
   private constructGridCol(): Record<string, string> {
-    console.log(this.actionsTemplate);
     const colCount =
       (this.buttons && this.buttons.length > 0) || this.actionsTemplate ? this.fields.length + 1 : this.fields.length;
     const obj = {
