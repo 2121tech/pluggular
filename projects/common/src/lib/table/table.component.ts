@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef, OnInit } from '@angular/core';
 import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { TActionOption } from '../action-selector/action-selector.component';
 
@@ -35,9 +35,9 @@ export type TSortOption = {
 @Component({
   selector: 'plg-table',
   templateUrl: './table.component.html',
-  styles: [],
+  styleUrls: ['./table.component.css'],
 })
-export class PluggularTableComponent {
+export class PluggularTableComponent implements OnInit {
   @Input() data: Record<string, unknown>[] = [];
   @Input() buttons: TTableButton[] = [];
   @Input() fields: TField[] = [];
@@ -79,8 +79,23 @@ export class PluggularTableComponent {
 
   activeSortField = '';
   isAscending = false;
+  rowStyle = {};
 
-  @ContentChild(TemplateRef, { static: false }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
+  @ContentChild(TemplateRef, { static: true }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
+
+  ngOnInit(): void {
+    this.rowStyle = this.constructGridCol();
+  }
+
+  private constructGridCol(): Record<string, string> {
+    const colCount =
+      (this.buttons && this.buttons.length > 0) || this.actionsTemplate ? this.fields.length + 1 : this.fields.length;
+    const obj = {
+      'grid-template-columns': `repeat(${colCount}, 1fr)`,
+    };
+
+    return obj;
+  }
   onPageClick(event: number): void {
     this.hasPageChanged.emit(event);
   }

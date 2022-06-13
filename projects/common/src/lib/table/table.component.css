@@ -1,0 +1,4 @@
+.thead, .tr {
+    width: 100%;
+    display: grid;
+}

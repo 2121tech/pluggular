@@ -61,7 +61,7 @@ describe('PluggularTableComponent', () => {
 
     fixture.detectChanges();
 
-    const firstHeader = fixture.debugElement.queryAll(By.css('th'))[0].nativeElement;
+    const firstHeader = fixture.debugElement.queryAll(By.css('.th'))[0].nativeElement;
 
     firstHeader.click();
 
