@@ -19,7 +19,8 @@ export class PluggularActionSelectorComponent {
 
   downIcon = faChevronDown;
 
-  onButtonClick(): void {
+  onButtonClick(event: Event): void {
+    event.stopPropagation();
     this.showOptions = !this.showOptions;
   }
 }

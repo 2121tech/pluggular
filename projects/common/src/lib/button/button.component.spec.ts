@@ -70,9 +70,10 @@ describe('PluggularButtonComponent', () => {
   });
 
   it('should call onClickEvent function', () => {
+    const event = new MouseEvent('click');
     spyOn(component, 'onClickEvent').and.callThrough();
 
-    component.onClickEvent();
+    component.onClickEvent(event);
 
     expect(component.onClickEvent).toHaveBeenCalled();
   });

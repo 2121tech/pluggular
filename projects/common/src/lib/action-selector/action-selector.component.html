@@ -1,7 +1,7 @@
 <div class="relative">
   <div
     class="w-8 h-8 rounded-full border-2 border-[#3C6E71] flex justify-center items-center cursor-pointer"
-    (click)="onButtonClick()"
+    (click)="onButtonClick($event)"
     [ngClass]="{ 'border-[#3C6E71]': !showOptions, 'border-[#56BF72]': showOptions }"
   >
     <span><fa-icon [icon]="downIcon" [ngClass]="{ inactive: !showOptions, active: showOptions }"></fa-icon></span>
