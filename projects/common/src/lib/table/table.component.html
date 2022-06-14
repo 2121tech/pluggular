@@ -59,10 +59,9 @@
       <div class="tr" *ngFor="let item of data" [ngStyle]="rowStyle">
         <div
           class="td flex items-center px-6 py-4 whitespace-normal text-sm text-gray-500"
-          [ngClass]="dataItemStyle"
           *ngFor="let field of fields"
         >
-          <div [innerHtml]="item[field.key]"></div>
+          <div [innerHtml]="item[field.key]" [ngClass]="dataItemStyle"></div>
         </div>
         <div class="td" *ngIf="buttons && buttons.length > 0">
           <div class="flex flex-row justify-end items-center">
