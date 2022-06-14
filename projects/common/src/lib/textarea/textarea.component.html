@@ -1,5 +1,9 @@
 <div class="w-full mb-6 md:mb-0">
-  <label class="block uppercase font-semibold tracking-wide text-gray-500 text-sm mb-1" for="grid-first-name">
+  <label
+    class="block uppercase font-semibold tracking-wide text-gray-500 text-sm mb-1"
+    for="grid-first-name"
+    [ngClass]="labelStyle"
+  >
     {{ label }}
   </label>
   <textarea
@@ -13,7 +17,7 @@
     [disabled]="disabled"
     [ngModelOptions]="{ standalone: true }"
     [rows]="rows"
-    [ngClass]="{ 'border-red-500': showError || value.length === maxLength }"
+    [ngClass]="[showError || value.length === maxLength ? 'border-red-500' : '', inputStyle]"
     [maxlength]="maxLength"
     [minlength]="minLength"
   >

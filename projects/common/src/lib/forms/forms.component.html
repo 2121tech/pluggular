@@ -41,6 +41,8 @@
               *ngIf="control.type === 'textarea'"
               [formControlName]="control.name"
               [placeholder]="control.placeholder"
+              [labelStyle]="textAreaCustomStyle?.labelStyle || ''"
+              [inputStyle]="textAreaCustomStyle?.inputStyle || ''"
             ></plg-textarea>
             <plg-radio
               *ngIf="control.type === 'radio'"

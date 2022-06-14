@@ -31,16 +31,12 @@
         </div>
       </div>
       <div
-        class="th px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+        class="th flex justify-end items-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
         *ngIf="(buttons && buttons.length > 0) || actionsTemplate"
       >
         {{ actionHeaderText }}
-      </div>
-      <div
-        class="th px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        *ngIf="sortOptions && sortOptions.length > 0"
-      >
-        <div class="flex flex-row justify-end">
+
+        <div class="flex flex-row justify-end" *ngIf="sortOptions && sortOptions.length > 0">
           <div class="text-gray-500">Sort By:</div>
           <div>
             <select
@@ -70,7 +66,7 @@
         >
           <div [innerHtml]="item[field.key]" class="text-inherit"></div>
         </div>
-        <div class="td" *ngIf="buttons && buttons.length > 0">
+        <div class="td px-6 py-4" *ngIf="buttons && buttons.length > 0">
           <div class="flex flex-row justify-end items-center">
             <div *ngFor="let button of buttons" class="flex items-center">
               <plg-button
@@ -83,16 +79,14 @@
                 [icon]="button.icon"
                 [ngClass]="!button.fill ? 'bg-none' : ''"
                 [buttonStyle]="button.buttonStyle || ''"
-                >View Details</plg-button
+                >{{ button.text }}</plg-button
               >
 
-              <div class="absolute">
-                <plg-action-selector
-                  *ngIf="button.isActionSelector"
-                  [options]="button.actionOptions"
-                  [context]="item"
-                ></plg-action-selector>
-              </div>
+              <plg-action-selector
+                *ngIf="button.isActionSelector"
+                [options]="button.actionOptions"
+                [context]="item"
+              ></plg-action-selector>
             </div>
           </div>
         </div>
