@@ -129,7 +129,7 @@ export class PluggularTableComponent implements OnInit {
     this.hasSortOptionChanged.emit(element.value);
   }
 
-  onRowClick(item: unknown) {
+  onRowClick(item: unknown): void {
     this.hasRowClicked.emit(item);
   }
 }
