@@ -53,10 +53,12 @@ export class PluggularTableComponent implements OnInit {
   @Input() isLastPage = false;
   @Input() actionHeaderText = 'Actions';
   @Input() showPagination = true;
+  @Input() tableRowStyle = '';
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
   @Output() hasTableSorted = new EventEmitter<TSortEvent>();
+  @Output() hasRowClicked = new EventEmitter();
   pageLimit = '10';
   pageLimitOptions: TSelectOption[] = [
     {
@@ -81,7 +83,7 @@ export class PluggularTableComponent implements OnInit {
   isAscending = false;
   rowStyle = {};
 
-  @ContentChild(TemplateRef, { static: true }) actionsTemplate!: TemplateRef<{ data: Record<string, unknown> }>;
+  @ContentChild(TemplateRef, { static: true }) actionsTemplate?: TemplateRef<{ data: Record<string, unknown> }>;
 
   ngOnInit(): void {
     this.rowStyle = this.constructGridCol();
@@ -125,5 +127,9 @@ export class PluggularTableComponent implements OnInit {
   onSortOptionChange(event: Event): void {
     const element = event.currentTarget as HTMLSelectElement;
     this.hasSortOptionChanged.emit(element.value);
+  }
+
+  onRowClick(item: unknown) {
+    this.hasRowClicked.emit(item);
   }
 }

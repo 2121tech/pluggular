@@ -204,7 +204,8 @@ export class PluggularButtonComponent implements OnInit {
     return disabled ? 'bg-gray-400' : '';
   }
 
-  onClickEvent(): void {
+  onClickEvent(event: Event): void {
+    event.stopPropagation();
     this.hasClicked.emit();
   }
 
