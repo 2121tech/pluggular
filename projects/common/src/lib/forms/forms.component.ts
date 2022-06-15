@@ -38,6 +38,11 @@ export type TSelectInputStyle = {
   optionItemStyle?: string;
 };
 
+export type TTextAreaStyle = {
+  labelStyle?: string;
+  inputStyle?: string;
+};
+
 export type TButtonStyle = {
   buttonStyle?: string;
   buttonIconStyle?: string;
@@ -58,6 +63,7 @@ export class PluggularFormsComponent {
   @Input() showSubmitButton: boolean | null | undefined = true;
   @Input() inputCustomStyle?: TInputStyle;
   @Input() selectInputCustomStyle?: TSelectInputStyle;
+  @Input() textAreaCustomStyle?: TTextAreaStyle;
   @Input() buttonCustomStyle?: TButtonStyle;
 
   onSubmit(): void {

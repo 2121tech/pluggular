@@ -16,7 +16,8 @@ export class PluggularTextAreaComponent implements ControlValueAccessor {
   @Input() rows: string | number | undefined;
   @Input() maxLength = 524288;
   @Input() minLength = 0;
-
+  @Input() labelStyle = '';
+  @Input() inputStyle = '';
   errorMessages = new Map<string, string>();
 
   @Output() hasBlurred: EventEmitter<boolean> = new EventEmitter();
