@@ -32,7 +32,7 @@
       </div>
       <div
         class="th flex justify-end items-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-        *ngIf="(buttons && buttons.length > 0) || actionsTemplate"
+        *ngIf="(buttons && buttons.length > 0) || actionsTemplate || (sortOptions && sortOptions.length > 0)"
       >
         {{ actionHeaderText }}
 
