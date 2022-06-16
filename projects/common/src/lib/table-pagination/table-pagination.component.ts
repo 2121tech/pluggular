@@ -17,6 +17,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
   @Input() isInfinite = false;
   @Input() isLastPage = false;
+  @Input() page = 0;
   @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
@@ -34,11 +35,18 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.numbersSet = this.generateItems();
+    if (this.page !== 0) {
+      this.currentPage = this.page;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.isLastPage.currentValue === true) {
+    if (changes.isLastPage?.currentValue === true) {
       this.lastPage = this.currentPage;
+    }
+
+    if (changes.page?.currentValue) {
+      this.currentPage = changes.page.currentValue;
     }
   }
 
