@@ -54,6 +54,7 @@ export class PluggularTableComponent implements OnInit {
   @Input() actionHeaderText = 'Actions';
   @Input() showPagination = true;
   @Input() tableRowStyle = '';
+  @Input() page = 0;
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();

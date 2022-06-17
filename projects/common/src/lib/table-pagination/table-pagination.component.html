@@ -64,18 +64,18 @@
     (click)="onPrevPageClick()"
     [ngClass]="{ 'text-gray-300': currentPage === 0 }"
   >
-    <fa-icon [icon]="angleLeftIcon"></fa-icon>
-    <div>Back</div>
+    <fa-icon class="text-inherit" [icon]="angleLeftIcon"></fa-icon>
+    <div class="text-inherit">Back</div>
   </div>
   <div
     id="nextPageBtn"
     class="flex flex-row gap-2 py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onNextPageClick()"
     [ngClass]="{
-      'text-gray-300': isLastPage && this.currentPage === this.lastPage
+      '!text-gray-300': isLastPage && this.currentPage === this.lastPage
     }"
   >
-    <div>Next</div>
-    <fa-icon [icon]="angleRightIcon"></fa-icon>
+    <div class="text-inherit">Next</div>
+    <fa-icon class="text-inherit" [icon]="angleRightIcon"></fa-icon>
   </div>
 </div>
