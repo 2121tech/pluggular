@@ -6,7 +6,7 @@
   </div>
 
   <div class="table w-full shadow" [ngClass]="[tableContainerStyle]">
-    <div class="thead" [ngStyle]="rowStyle" [ngClass]="[headerContainerStyle]">
+    <div class="thead" [ngStyle]="rowStyle" [ngClass]="[headerContainerStyle]" id="thead">
       <div
         *ngFor="let field of fields"
         [ngClass]="headerItemStyle"

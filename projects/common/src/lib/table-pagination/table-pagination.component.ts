@@ -118,9 +118,12 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   }
 
   scrollToTop(): void {
+    let elem = document.querySelector('#thead');
+    let rect = elem?.getBoundingClientRect();
+
     window.scroll({
-      top: 0,
-      left: 0,
+      top: rect?.top,
+      left: rect?.left,
       behavior: 'smooth',
     });
   }
