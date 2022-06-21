@@ -14,7 +14,8 @@
     <input
       class="block w-full py-2 px-3 bg-transparent focus:outline-none leading-tight max-h-9 focus:bg-white"
       [ngClass]="inputStyle"
-      type="date"
+      type="text"
+      onfocus="(this.type = 'date')"
       [placeholder]="placeholder"
       (input)="setValue()"
       (change)="setValue()"

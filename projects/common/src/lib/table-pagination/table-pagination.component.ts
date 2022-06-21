@@ -127,4 +127,8 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
       behavior: 'smooth',
     });
   }
+
+  setCurrentPage(currentPage: number) {
+    this.currentPage = currentPage;
+  }
 }
