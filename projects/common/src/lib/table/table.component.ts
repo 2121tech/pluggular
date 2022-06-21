@@ -137,7 +137,7 @@ export class PluggularTableComponent implements OnInit {
     this.hasRowClicked.emit(item);
   }
 
-  setCurrentPage(currentPage: number) {
+  setCurrentPage(currentPage: number): void {
     this.tablePagination?.setCurrentPage(currentPage);
   }
 }
