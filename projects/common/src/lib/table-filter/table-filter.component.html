@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (submit)="onSubmit()">
-  <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-5 gap-10">
+  <div *ngFor="let field of fields; let last = last" class="flex flex-row mb-5 gap-10">
     <div *ngFor="let column of field.row">
       <div class="flex flex-col">
         <div class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1" [ngClass]="labelStyle">
@@ -7,6 +7,28 @@
         </div>
         <div class="flex flex-row gap-5">
           <div *ngFor="let control of column.fields">
+            <div class="flex flex-row" *ngIf="control.type === 'daterange'">
+              <div>
+                <plg-datepicker
+                  placeholder="From"
+                  [formControlName]="control.dateRangeControls?.fromName || ''"
+                  [roundness]="inputRoundness"
+                  [containerStyle]="dateRangeCustomStyle?.fromInputStyle?.containerStyle || ''"
+                  [inputStyle]="dateRangeCustomStyle?.fromInputStyle?.inputStyle || ''"
+                  [labelStyle]="dateRangeCustomStyle?.fromInputStyle?.labelStyle || ''"
+                ></plg-datepicker>
+              </div>
+              <div>
+                <plg-datepicker
+                  placeholder="To"
+                  [formControlName]="control.dateRangeControls?.toName || ''"
+                  [roundness]="inputRoundness"
+                  [containerStyle]="dateRangeCustomStyle?.toInputStyle?.containerStyle || ''"
+                  [inputStyle]="dateRangeCustomStyle?.toInputStyle?.inputStyle || ''"
+                  [labelStyle]="dateRangeCustomStyle?.toInputStyle?.labelStyle || ''"
+                ></plg-datepicker>
+              </div>
+            </div>
             <plg-datepicker
               [formControlName]="control.name"
               *ngIf="control.type === 'date'"
@@ -39,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-end pb-1" *ngIf="last">
+    <div class="flex items-end pb-1" *ngIf="last && showSubmitButton">
       <plg-button
         fill="success"
         roundness="small"

@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef, OnInit, ViewChild } from '@angular/core';
 import { faSort, faSortDown, faSortUp, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { TActionOption } from '../action-selector/action-selector.component';
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
+import { PluggularTablePaginationComponent } from '../table-pagination/table-pagination.component';
 
 export type TField = {
   label: string;
@@ -86,6 +87,8 @@ export class PluggularTableComponent implements OnInit {
 
   @ContentChild(TemplateRef, { static: true }) actionsTemplate?: TemplateRef<{ data: Record<string, unknown> }>;
 
+  @ViewChild('tablePagination') tablePagination?: PluggularTablePaginationComponent;
+
   ngOnInit(): void {
     this.rowStyle = this.constructGridCol();
   }
@@ -132,5 +135,9 @@ export class PluggularTableComponent implements OnInit {
 
   onRowClick(item: unknown): void {
     this.hasRowClicked.emit(item);
+  }
+
+  setCurrentPage(currentPage: number): void {
+    this.tablePagination?.setCurrentPage(currentPage);
   }
 }

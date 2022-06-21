@@ -106,6 +106,7 @@
 
   <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0 && showPagination">
     <plg-table-pagination
+      #tablePagination
       [pages]="pages"
       (hasPageClicked)="onPageClick($event)"
       [isInfinite]="isInfinitePagination"

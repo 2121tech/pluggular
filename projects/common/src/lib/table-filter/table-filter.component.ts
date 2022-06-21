@@ -10,6 +10,10 @@ export type TFilterField = {
   options?: TSelectOption[];
   label?: string;
   placeholder?: string;
+  dateRangeControls?: {
+    fromName: string;
+    toName: string;
+  };
 };
 
 export type TFilterColumn = {
@@ -23,6 +27,10 @@ export type TFilterFields = {
 
 export type TTableFilterBody = Record<string, string | number>;
 
+export type TDateRangeStyle = {
+  fromInputStyle: TInputStyle;
+  toInputStyle: TInputStyle;
+};
 @Component({
   selector: 'plg-table-filter',
   templateUrl: './table-filter.component.html',
@@ -35,9 +43,10 @@ export class PluggularTableFilterComponent {
   @Input() inputRoundness: TRoundness = 'small';
   @Input() inputCustomStyle?: TInputStyle;
   @Input() selectInputCustomStyle?: TSelectInputStyle;
+  @Input() dateRangeCustomStyle?: TDateRangeStyle;
   @Input() buttonCustomStyle?: TButtonStyle;
   @Input() labelStyle = '';
-
+  @Input() showSubmitButton = true;
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);
   }
