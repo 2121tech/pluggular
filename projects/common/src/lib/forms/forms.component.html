@@ -1,5 +1,9 @@
 <form [formGroup]="formGroup" (submit)="onSubmit()">
-  <div *ngFor="let field of fields; let last = last" class="flex flex-row mt-0 md:mt-5 gap-2">
+  <div
+    *ngFor="let field of fields; let last = last"
+    class="flex flex-row mt-0 md:mt-5 gap-2"
+    [ngClass]="[rowCustomStyle]"
+  >
     <div *ngFor="let column of field.row" class="flex-1">
       <div class="flex flex-col">
         <div
