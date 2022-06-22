@@ -65,6 +65,7 @@ export class PluggularFormsComponent {
   @Input() selectInputCustomStyle?: TSelectInputStyle;
   @Input() textAreaCustomStyle?: TTextAreaStyle;
   @Input() buttonCustomStyle?: TButtonStyle;
+  @Input() rowCustomStyle? = '';
 
   onSubmit(): void {
     this.hasSubmitted.emit(this.formGroup.value);
