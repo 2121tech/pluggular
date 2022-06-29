@@ -1,13 +1,17 @@
-<div class="flex flex-row h-full py-8 px-5 mx-3 shadow-md gap-5 rounded-lg h-full cursor-pointer" [routerLink]="[link]">
+<div
+  class="flex flex-row h-full py-8 px-5 mx-3 gap-5 rounded-lg h-full cursor-pointer justify-between items-center counter-card-container"
+  [routerLink]="[link]"
+>
+  <div class="flex-flex-col text-gray-400">
+    <div class="text-4xl font-medium text-[#3C6E71]">{{ title }}</div>
+    <div class="text-base text-[#B2B4B8] font-medium">{{ subText }}</div>
+    <div class="text-sm italic text-[#B2B4B8]">{{ description }}</div>
+  </div>
+
   <div
-    class="inline-flex items-center justify-center shadow-md p-3 rounded-full bg-gray-400 overflow-hidden w-[60px] h-[60px] text-white"
+    class="inline-flex items-center justify-center p-3 rounded-full overflow-hidden w-[91px] h-[91px] text-white border-4 border-[#3C6E71]"
     [ngClass]="[bgClass]"
   >
-    <fa-icon [icon]="icon" class="font-bold text-2xl"></fa-icon>
-  </div>
-  <div class="flex-flex-col text-gray-400">
-    <div class="text-3xl font-medium">{{ title }}</div>
-    <div class="text-md">{{ subText }}</div>
-    <div class="text-sm italic">{{ description }}</div>
+    <fa-icon [icon]="icon" class="font-bold text-3xl text-[#3C6E71]"></fa-icon>
   </div>
 </div>
