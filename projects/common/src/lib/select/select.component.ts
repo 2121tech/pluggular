@@ -13,7 +13,7 @@ export type TSelectOption = {
   styleUrls: ['./select.component.css'],
 })
 export class PluggularSelectComponent extends SelectControlValueAccessor implements OnInit {
-  @Input() label = '';
+  @Input() label? = '';
   @Input() options: TSelectOption[] | null | undefined = [];
   @Input() required = false;
   @Input() disabled = false;
