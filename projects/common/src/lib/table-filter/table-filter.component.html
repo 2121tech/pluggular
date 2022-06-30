@@ -1,4 +1,77 @@
 <form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div class="flex flex-row mb-5 gap-10">
+    <div class="flex flex-row gap-5">
+      <div *ngFor="let field of fields; let last = last">
+        <div class="flex flex-row" *ngIf="field.type === 'daterange'">
+          <div>
+            <plg-datepicker
+              placeholder="From"
+              [formControlName]="field.dateRangeControls?.fromName || ''"
+              [roundness]="inputRoundness"
+              [containerStyle]="dateRangeCustomStyle?.fromInputStyle?.containerStyle || ''"
+              [inputStyle]="dateRangeCustomStyle?.fromInputStyle?.inputStyle || ''"
+              [labelStyle]="dateRangeCustomStyle?.fromInputStyle?.labelStyle || ''"
+              [label]="field.label"
+            ></plg-datepicker>
+          </div>
+          <div>
+            <plg-datepicker
+              placeholder="To"
+              [formControlName]="field.dateRangeControls?.toName || ''"
+              [roundness]="inputRoundness"
+              [containerStyle]="dateRangeCustomStyle?.toInputStyle?.containerStyle || ''"
+              [inputStyle]="dateRangeCustomStyle?.toInputStyle?.inputStyle || ''"
+              [labelStyle]="dateRangeCustomStyle?.toInputStyle?.labelStyle || ''"
+            ></plg-datepicker>
+          </div>
+        </div>
+        <plg-datepicker
+          [formControlName]="field.name"
+          *ngIf="field.type === 'date'"
+          [roundness]="inputRoundness"
+          [containerStyle]="inputCustomStyle?.containerStyle || ''"
+          [inputStyle]="inputCustomStyle?.inputStyle || ''"
+          [labelStyle]="inputCustomStyle?.labelStyle || ''"
+          [label]="field.label"
+        ></plg-datepicker>
+        <plg-input
+          *ngIf="field.type === 'text' || field.type === 'number'"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          [type]="field.type"
+          [roundness]="inputRoundness"
+          [containerStyle]="inputCustomStyle?.containerStyle || ''"
+          [inputStyle]="inputCustomStyle?.inputStyle || ''"
+          [labelStyle]="inputCustomStyle?.labelStyle || ''"
+          [label]="field.label"
+        ></plg-input>
+        <plg-select
+          *ngIf="field.type === 'select'"
+          [placeholder]="field.placeholder"
+          [options]="field.options"
+          [formControlName]="field.name"
+          [roundness]="inputRoundness"
+          [containerStyle]="selectInputCustomStyle?.containerStyle || ''"
+          [inputStyle]="selectInputCustomStyle?.inputStyle || ''"
+          [labelStyle]="selectInputCustomStyle?.labelStyle || ''"
+          [label]="field.label"
+        ></plg-select>
+        <div class="flex items-end pb-1" *ngIf="last && showSubmitButton">
+          <plg-button
+            fill="success"
+            roundness="small"
+            type="submit"
+            [buttonStyle]="buttonCustomStyle?.buttonStyle || ''"
+            [buttonIconStyle]="buttonCustomStyle?.buttonIconStyle || ''"
+            >Search</plg-button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <form [formGroup]="formGroup" (submit)="onSubmit()">
   <div *ngFor="let field of fields; let last = last" class="flex flex-row mb-5 gap-10">
     <div *ngFor="let column of field.row">
       <div class="flex flex-col">
@@ -72,4 +145,4 @@
       >
     </div>
   </div>
-</form>
+</form> -->

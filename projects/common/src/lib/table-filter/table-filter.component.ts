@@ -38,7 +38,7 @@ export type TDateRangeStyle = {
 })
 export class PluggularTableFilterComponent {
   @Output() hasSubmitted = new EventEmitter<Record<string, string | number>>();
-  @Input() fields?: TFilterFields[] = undefined;
+  @Input() fields?: TFilterField[] = undefined;
   @Input() formGroup!: FormGroup;
   @Input() inputRoundness: TRoundness = 'small';
   @Input() inputCustomStyle?: TInputStyle;
