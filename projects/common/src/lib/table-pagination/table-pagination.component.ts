@@ -123,7 +123,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
     const rect = elem?.getBoundingClientRect();
 
     if (elem) {
-      const isVisible = this.checkIfElementIsStillInViewpor(elem);
+      const isVisible = this.checkIfElementIsStillInViewport(elem);
 
       if (rect && !isVisible) {
         window.scroll({
@@ -135,7 +135,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  checkIfElementIsStillInViewpor(element: Element): boolean {
+  checkIfElementIsStillInViewport(element: Element): boolean {
     const rect = element.getBoundingClientRect();
     if (
       rect.top >= 0 &&
