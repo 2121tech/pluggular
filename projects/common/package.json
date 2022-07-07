@@ -1,6 +1,6 @@
 {
   "name": "@pluggular/common",
-  "version": "0.0.3-alpha.4",
+  "version": "0.0.3-alpha.6",
   "scripts": {
     "build": "ng build common --prod",
     "postpublish": "rm -rf dist/"
@@ -24,5 +24,5 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "gitHead": "5f646b78cff7e40abf3b3ef78d6c4bdd63cdc1fb"
+  "gitHead": "2ea3e65e00cb7cabc16f7a35e2d4d46482aba092"
 }

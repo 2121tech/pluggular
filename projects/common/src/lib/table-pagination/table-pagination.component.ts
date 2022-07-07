@@ -18,6 +18,7 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() isInfinite = false;
   @Input() isLastPage = false;
   @Input() page = 0;
+  @Input() tableId = '';
   @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
@@ -118,14 +119,34 @@ export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   }
 
   scrollToTop(): void {
-    const elem = document.querySelector('#thead');
+    const elem = document.querySelector(`#${this.tableId}-thead`);
     const rect = elem?.getBoundingClientRect();
 
-    window.scroll({
-      top: rect?.top,
-      left: rect?.left,
-      behavior: 'smooth',
-    });
+    if (elem) {
+      const isVisible = this.checkIfElementIsStillInViewport(elem);
+
+      if (rect && !isVisible) {
+        window.scroll({
+          top: rect.top - (rect.top - 2),
+          left: rect?.left,
+          behavior: 'smooth',
+        });
+      }
+    }
+  }
+
+  checkIfElementIsStillInViewport(element: Element): boolean {
+    const rect = element.getBoundingClientRect();
+    if (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   setCurrentPage(currentPage: number): void {

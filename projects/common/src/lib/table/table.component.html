@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col" [id]="id">
   <div class="inline-flex flex-row items-center gap-1" *ngIf="showPageLimit">
     <span class="text-gray-500 font-medium">Show</span>
     <plg-select [options]="pageLimitOptions" [(ngModel)]="pageLimit" (ngModelChange)="onPageLimitChange()"></plg-select>
@@ -6,7 +6,7 @@
   </div>
 
   <div class="table w-full shadow" [ngClass]="[tableContainerStyle]">
-    <div class="thead" [ngStyle]="rowStyle" [ngClass]="[headerContainerStyle]" id="thead">
+    <div class="thead" [ngStyle]="rowStyle" [ngClass]="[headerContainerStyle]" [id]="id + '-thead'">
       <div
         *ngFor="let field of fields"
         [ngClass]="headerItemStyle"
@@ -112,6 +112,7 @@
       [isInfinite]="isInfinitePagination"
       [isLastPage]="isLastPage"
       [page]="page"
+      [tableId]="id"
     ></plg-table-pagination>
   </div>
 </div>
