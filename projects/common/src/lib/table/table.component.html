@@ -16,15 +16,15 @@
         <div>
           {{ field.label }}
           <span class="ml-1 cursor-pointer" *ngIf="field.sortable"
-            ><fa-icon [icon]="sortIcon" *ngIf="field.label !== activeSortField" class="text-sm"></fa-icon>
+            ><fa-icon [icon]="sortIcon" *ngIf="field.key !== activeSortField" class="text-sm"></fa-icon>
             <fa-icon
               [icon]="sortUpIcon"
-              *ngIf="field.label === activeSortField && isAscending"
+              *ngIf="field.key === activeSortField && isAscending"
               class="text-green-400 text-sm"
             ></fa-icon>
             <fa-icon
               [icon]="sortDownIcon"
-              *ngIf="field.label === activeSortField && !isAscending"
+              *ngIf="field.key === activeSortField && !isAscending"
               class="text-green-400 text-sm"
             ></fa-icon>
           </span>
