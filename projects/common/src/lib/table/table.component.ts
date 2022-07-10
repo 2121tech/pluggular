@@ -113,8 +113,8 @@ export class PluggularTableComponent implements OnInit {
 
   onHeaderSortClick(event: TField): void {
     if (event.sortable) {
-      if (event.label !== this.activeSortField) {
-        this.activeSortField = event.label;
+      if (event.key !== this.activeSortField) {
+        this.activeSortField = event.key;
         this.isAscending = true;
       } else {
         this.isAscending = !this.isAscending;

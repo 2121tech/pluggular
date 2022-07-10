@@ -201,7 +201,7 @@ export class PluggularButtonComponent implements OnInit {
   }
 
   constructDisabledClass(disabled: boolean): string {
-    return disabled ? 'bg-gray-400' : '';
+    return disabled ? '!bg-gray-400' : '';
   }
 
   onClickEvent(event: Event): void {
