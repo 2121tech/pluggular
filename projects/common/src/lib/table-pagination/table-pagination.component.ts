@@ -7,6 +7,11 @@ import {
   faEllipsis,
 } from '@fortawesome/free-solid-svg-icons';
 
+export type TPaginationCustomStyle = {
+  containerStyle?: string;
+  pageItemStyle?: string;
+};
+
 @Component({
   selector: 'plg-table-pagination',
   templateUrl: './table-pagination.component.html',
@@ -14,11 +19,14 @@ import {
 })
 export class PluggularTablePaginationComponent implements OnInit, OnChanges {
   @Input() pages = 1;
-  @Input() activeClass = 'text-white bg-green-400 hover:bg-green-400';
+  @Input() activeClass = '!text-white !bg-green-400 hover:!bg-green-400';
   @Input() isInfinite = false;
   @Input() isLastPage = false;
   @Input() page = 0;
   @Input() tableId = '';
+  @Input() containerStyle = '';
+  @Input() pageItemStyle = '';
+
   @Output() hasPageClicked = new EventEmitter<number>();
 
   perSet = 5;
