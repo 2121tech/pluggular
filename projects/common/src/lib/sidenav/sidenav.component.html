@@ -29,6 +29,8 @@
           [label]="item.label"
           [link]="item.link"
           [icon]="item.icon"
+          [itemStyle]="itemStyle"
+          [activeItemStyle]="activeItemStyle"
         ></plg-sidenav-item>
 
         <plg-sidenav-dropdown
@@ -38,6 +40,8 @@
           [icon]="item.icon"
           [isSelected]="item.isSelected"
           (hasSelected)="onDropDownSelected(groupIndex, itemIndex)"
+          [itemStyle]="itemStyle"
+          [activeItemStyle]="activeItemStyle"
         >
         </plg-sidenav-dropdown>
       </div>

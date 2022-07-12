@@ -20,6 +20,8 @@ export class PluggularSideNavDropdownComponent implements OnChanges {
   @Input() isChild = false;
   @Input() icon: IconDefinition | null | undefined = faCircleDot;
   @Input() isSelected: boolean | undefined = false;
+  @Input() itemStyle = '';
+  @Input() activeItemStyle = '';
   @Output() hasSelected = new EventEmitter<boolean>();
 
   onClick(): void {

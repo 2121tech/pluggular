@@ -25,6 +25,8 @@ export class PluggularSideNavComponent {
   @Input() closeIconClass = '';
   @Input() showCloseIcon = false;
   @Input() items: ISideNavGroup[] = [];
+  @Input() itemStyle = '';
+  @Input() activeItemStyle = '';
   @Output() hasClosed: EventEmitter<boolean> = new EventEmitter();
 
   handleClose(): void {

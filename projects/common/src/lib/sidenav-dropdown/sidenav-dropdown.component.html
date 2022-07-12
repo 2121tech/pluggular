@@ -1,29 +1,29 @@
 <div [ngClass]="{ 'py-3 px-4': !isChild }">
-  <div class="flex-row w-full relative cursor-pointer" (click)="onClick()">
-    <div class="flex items-center">
+  <div class="flex-row w-full relative cursor-pointer z-10" (click)="onClick()">
+    <div class="flex flex-row items-center" [ngClass]="[itemStyle]">
       <span class="mr-2" *ngIf="!isChild && icon">
         <fa-icon
           [icon]="icon"
           class="w-6 h-6 transition-all duration-500"
-          [ngClass]="{ 'text-green-500': isSelected && show, 'text-gray-500': !isSelected && !show }"
+          [ngClass]="[isSelected && show ? activeItemStyle : '', !isSelected && !show ? itemStyle : '']"
         ></fa-icon>
       </span>
-      <span>
-        <a class="text-sm cursor-pointer w-full inline-block text-gray-500"> {{ label }}</a>
+      <span class="flex-1">
+        <a class="text-sm cursor-pointer w-full inline-block"> {{ label }}</a>
       </span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5 absolute top-[3px] right-0 transition-all duration-500 text-gray-500"
-        [ngClass]="{ '-rotate-90': show }"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
+      <span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-[20px] h-[20px] transition-all duration-500"
+          [ngClass]="{ 'rotate-90': show }"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </span>
     </div>
   </div>
 
@@ -34,9 +34,10 @@
   >
     <div class="py-2" *ngFor="let item of items">
       <a
-        class="w-full inline-block cursor-pointer text-gray-500"
+        class="w-full inline-block cursor-pointer"
+        [ngClass]="itemStyle"
         [routerLink]="[item.link]"
-        [routerLinkActive]="['text-green-500']"
+        [routerLinkActive]="activeItemStyle"
         *ngIf="!item.items"
         >{{ item.label }}</a
       >

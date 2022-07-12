@@ -1,14 +1,23 @@
-<div class="flex items-center relative px-4 py-3">
-  <span class="flex-1 z-10">
-    <a
-      class="text-sm cursor-pointer w-full inline-block text-gray-500"
-      [routerLink]="[link]"
-      [routerLinkActive]="['text-green-500']"
-    >
+<div class="flex items-center px-4 py-3">
+  <div class="flex-1 flex flex-row items-center z-10 cursor-pointer" [ngClass]="[itemStyle]">
+    <a class="text-sm w-full inline-block" [routerLink]="[link]" [routerLinkActive]="activeItemStyle">
       <span class="mr-2" *ngIf="icon">
         <fa-icon [icon]="icon" class="w-6 h-6"></fa-icon>
       </span>
       {{ label }}</a
     >
-  </span>
+
+    <span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </span>
+  </div>
 </div>
