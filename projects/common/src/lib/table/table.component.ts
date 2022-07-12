@@ -112,7 +112,7 @@ export class PluggularTableComponent implements OnInit {
     return obj;
   }
 
-  private constructPaginationAlignment(alignment?: TPaginationAlignment) {
+  private constructPaginationAlignment(alignment?: TPaginationAlignment): string {
     let paginationAlignmentClass = '';
     switch (alignment) {
       case 'left':
