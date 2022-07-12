@@ -65,7 +65,7 @@ describe('PluggularTableComponent', () => {
 
     firstHeader.click();
 
-    expect(component.activeSortField).toEqual('Apple');
+    expect(component.activeSortField).toEqual('apple');
     expect(component.isAscending).toEqual(true);
 
     firstHeader.click();
