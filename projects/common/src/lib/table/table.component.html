@@ -104,7 +104,11 @@
     </div>
   </div>
 
-  <div class="mt-20 flex justify-center" *ngIf="data && data.length > 0 && showPagination">
+  <div
+    class="plg-table-pagination-container mt-8 flex"
+    [ngClass]="[paginationAlignmentClass]"
+    *ngIf="data && data.length > 0 && showPagination"
+  >
     <plg-table-pagination
       #tablePagination
       [pages]="pages"
@@ -113,6 +117,8 @@
       [isLastPage]="isLastPage"
       [page]="page"
       [tableId]="id"
+      [containerStyle]="paginationCustomStyle.containerStyle || ''"
+      [pageItemStyle]="paginationCustomStyle.pageItemStyle || ''"
     ></plg-table-pagination>
   </div>
 </div>

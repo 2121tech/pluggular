@@ -4,7 +4,10 @@ import { TActionOption } from '../action-selector/action-selector.component';
 
 import { TButtonFill, TRole } from '../button/button.component';
 import { TSelectOption } from '../select/select.component';
-import { PluggularTablePaginationComponent } from '../table-pagination/table-pagination.component';
+import {
+  PluggularTablePaginationComponent,
+  TPaginationCustomStyle,
+} from '../table-pagination/table-pagination.component';
 
 export type TField = {
   label: string;
@@ -33,6 +36,7 @@ export type TSortOption = {
   value: string;
 };
 
+export type TPaginationAlignment = 'left' | 'center' | 'right';
 @Component({
   selector: 'plg-table',
   templateUrl: './table.component.html',
@@ -57,6 +61,7 @@ export class PluggularTableComponent implements OnInit {
   @Input() tableRowStyle = '';
   @Input() page = 0;
   @Input() id = 'plg-table';
+  @Input() paginationCustomStyle: TPaginationCustomStyle = {};
   @Output() hasSortOptionChanged = new EventEmitter<string>();
   @Output() hasPageChanged = new EventEmitter<number>();
   @Output() hasPageLimitChanged = new EventEmitter<string>();
@@ -85,6 +90,8 @@ export class PluggularTableComponent implements OnInit {
   activeSortField = '';
   isAscending = false;
   rowStyle = {};
+  paginationAlignmentClass = '';
+  @Input() paginationAlignment?: TPaginationAlignment = 'center';
 
   @ContentChild(TemplateRef, { static: true }) actionsTemplate?: TemplateRef<{ data: Record<string, unknown> }>;
 
@@ -92,6 +99,7 @@ export class PluggularTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.rowStyle = this.constructGridCol();
+    this.paginationAlignmentClass = this.constructPaginationAlignment(this.paginationAlignment);
   }
 
   private constructGridCol(): Record<string, string> {
@@ -102,6 +110,25 @@ export class PluggularTableComponent implements OnInit {
     };
 
     return obj;
+  }
+
+  private constructPaginationAlignment(alignment?: TPaginationAlignment) {
+    let paginationAlignmentClass = '';
+    switch (alignment) {
+      case 'left':
+        paginationAlignmentClass = 'justify-start';
+        break;
+      case 'center':
+        paginationAlignmentClass = 'justify-center';
+        break;
+      case 'right':
+        paginationAlignmentClass = 'justify-end';
+        break;
+      default:
+        break;
+    }
+
+    return paginationAlignmentClass;
   }
   onPageClick(event: number): void {
     this.hasPageChanged.emit(event);

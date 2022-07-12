@@ -1,12 +1,13 @@
 <div
   class="inline-flex flex-row divide-x divide-gray-300 rounded-md shadow-sm border border-gray-300 overflow-hidden"
+  [ngClass]="[containerStyle]"
   *ngIf="!isInfinite"
 >
   <div
     id="prevSetBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onPrevSetClick()"
-    [ngClass]="{ 'text-gray-300': currentSet === 0 }"
+    [ngClass]="[currentSet === 0 ? '!text-gray-300' : '', pageItemStyle]"
   >
     <fa-icon [icon]="angleDoubleLeftIcon"></fa-icon>
   </div>
@@ -14,14 +15,14 @@
     id="prevPageBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onPrevPageClick()"
-    [ngClass]="{ 'text-gray-300': currentPage === 0 }"
+    [ngClass]="[currentPage === 0 ? '!text-gray-300' : pageItemStyle]"
   >
     <fa-icon [icon]="angleLeftIcon"></fa-icon>
   </div>
   <div
     class="pages py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     *ngFor="let number of numbersSet[currentSet]"
-    [ngClass]="[number === currentPage ? activeClass : '']"
+    [ngClass]="[number === currentPage ? activeClass : '', pageItemStyle]"
     (click)="onPageClick(number)"
   >
     <span>{{ number + 1 }}</span>
@@ -29,6 +30,7 @@
   <div
     id="ellipsisBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
+    [ngClass]="[pageItemStyle]"
     *ngIf="currentSet < numbersSet.length - 1"
     (click)="onNextSetClick()"
   >
@@ -38,9 +40,7 @@
     id="nextPageBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onNextPageClick()"
-    [ngClass]="{
-      'text-gray-300': currentSet === this.numbersSet.length - 1
-    }"
+    [ngClass]="[currentSet === this.numbersSet.length - 1 ? '!text-gray-300' : '', pageItemStyle]"
   >
     <fa-icon [icon]="angleRightIcon"></fa-icon>
   </div>
@@ -48,7 +48,7 @@
     id="nextSetBtn"
     class="py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onNextSetClick()"
-    [ngClass]="{ 'text-gray-300': currentSet === this.numbersSet.length - 1 || isLastPage }"
+    [ngClass]="[currentSet === this.numbersSet.length - 1 || isLastPage ? '!text-gray-300' : '', pageItemStyle]"
   >
     <fa-icon [icon]="angleDoubleRightIcon"></fa-icon>
   </div>
@@ -57,23 +57,22 @@
 <div
   class="inline-flex flex-row divide-x divide-gray-300 rounded-md shadow-sm border border-gray-300 overflow-hidden"
   *ngIf="isInfinite"
+  [ngClass]="[containerStyle]"
 >
   <div
     id="prevPageBtn"
     class="flex flex-row gap-2 py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onPrevPageClick()"
-    [ngClass]="{ 'text-gray-300': currentPage === 0 }"
+    [ngClass]="[currentPage === 0 ? '!text-gray-300' : '', pageItemStyle]"
   >
     <fa-icon class="text-inherit" [icon]="angleLeftIcon"></fa-icon>
-    <div class="text-inherit">Back</div>
+    <div class="text-inherit">Prev</div>
   </div>
   <div
     id="nextPageBtn"
     class="flex flex-row gap-2 py-2 px-4 text-center text-sm cursor-pointer text-gray-500 font-medium hover:bg-gray-50"
     (click)="onNextPageClick()"
-    [ngClass]="{
-      '!text-gray-300': isLastPage && this.currentPage === this.lastPage
-    }"
+    [ngClass]="[isLastPage && this.currentPage === this.lastPage ? '!text-gray-300' : '', pageItemStyle]"
   >
     <div class="text-inherit">Next</div>
     <fa-icon class="text-inherit" [icon]="angleRightIcon"></fa-icon>
