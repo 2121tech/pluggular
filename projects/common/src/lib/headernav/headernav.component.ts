@@ -12,6 +12,7 @@ export class PluggularHeaderNavComponent implements OnInit {
   menuIcon = faBars;
   alignClass = '';
   @Input() alignItems: TAlignment = 'right';
+  @Input() navStyle = '';
   @Output() menuClicked = new EventEmitter<boolean>();
   showSideNav = false;
 

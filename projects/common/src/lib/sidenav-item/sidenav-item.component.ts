@@ -10,4 +10,6 @@ export class PluggularSideNavItemComponent {
   @Input() label = '';
   @Input() icon: IconDefinition | null | undefined = faCircleDot;
   @Input() link = '#';
+  @Input() itemStyle = '';
+  @Input() activeItemStyle = '';
 }
