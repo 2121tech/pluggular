@@ -1,65 +1,71 @@
 <form [formGroup]="formGroup" (submit)="onSubmit()">
-  <div class="flex flex-row w-full flex-wrap float-left">
-    <div
-      *ngFor="let field of fields; let last = last"
-      class="w-full mt-0 md:mt-5 gap-2"
-      [ngClass]="[rowCustomStyle, field.containerStyle || '']"
-    >
-      <plg-input
-        *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'file'"
-        [formControlName]="field.name"
-        [placeholder]="field.placeholder"
-        [type]="field.type"
-        [label]="field.label"
-        [roundness]="inputRoundness"
-        [containerStyle]="inputCustomStyle?.containerStyle || ''"
-        [inputStyle]="inputCustomStyle?.inputStyle || ''"
-        [labelStyle]="inputCustomStyle?.labelStyle || ''"
-      ></plg-input>
+  <div class="w-full flex flex-col">
+    <div class="flex flex-row w-full flex-wrap float-left">
+      <div
+        *ngFor="let field of fields; let last = last"
+        class="w-full mt-0 md:mt-5 gap-2"
+        [ngClass]="[rowCustomStyle, field.containerStyle || '']"
+      >
+        <plg-input
+          *ngIf="field.type === 'text' || field.type === 'number' || field.type === 'file'"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          [type]="field.type"
+          [label]="field.label"
+          [roundness]="inputRoundness"
+          [containerStyle]="inputCustomStyle?.containerStyle || ''"
+          [inputStyle]="inputCustomStyle?.inputStyle || ''"
+          [labelStyle]="inputCustomStyle?.labelStyle || ''"
+        ></plg-input>
 
-      <plg-datepicker
-        [formControlName]="field.name"
-        *ngIf="field.type === 'date'"
-        [containerStyle]="inputCustomStyle?.containerStyle || ''"
-        [inputStyle]="inputCustomStyle?.inputStyle || ''"
-        [labelStyle]="inputCustomStyle?.labelStyle || ''"
-        [label]="field.label"
-      ></plg-datepicker>
+        <plg-datepicker
+          [formControlName]="field.name"
+          *ngIf="field.type === 'date'"
+          [containerStyle]="inputCustomStyle?.containerStyle || ''"
+          [inputStyle]="inputCustomStyle?.inputStyle || ''"
+          [labelStyle]="inputCustomStyle?.labelStyle || ''"
+          [label]="field.label"
+        ></plg-datepicker>
 
-      <plg-select
-        [label]="field.label"
-        *ngIf="field.type === 'select'"
-        [placeholder]="field.placeholder"
-        [options]="field.options"
-        [formControlName]="field.name"
-        [roundness]="inputRoundness"
-        [containerStyle]="selectInputCustomStyle?.containerStyle || ''"
-        [inputStyle]="selectInputCustomStyle?.inputStyle || ''"
-        [labelStyle]="selectInputCustomStyle?.labelStyle || ''"
-      ></plg-select>
+        <plg-select
+          [label]="field.label"
+          *ngIf="field.type === 'select'"
+          [placeholder]="field.placeholder"
+          [options]="field.options"
+          [formControlName]="field.name"
+          [roundness]="inputRoundness"
+          [containerStyle]="selectInputCustomStyle?.containerStyle || ''"
+          [inputStyle]="selectInputCustomStyle?.inputStyle || ''"
+          [labelStyle]="selectInputCustomStyle?.labelStyle || ''"
+        ></plg-select>
 
-      <plg-textarea
-        *ngIf="field.type === 'textarea'"
-        [formControlName]="field.name"
-        [placeholder]="field.placeholder"
-        [labelStyle]="textAreaCustomStyle?.labelStyle || ''"
-        [inputStyle]="textAreaCustomStyle?.inputStyle || ''"
-        [label]="field.label"
-      ></plg-textarea>
+        <plg-textarea
+          *ngIf="field.type === 'textarea'"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder"
+          [labelStyle]="textAreaCustomStyle?.labelStyle || ''"
+          [inputStyle]="textAreaCustomStyle?.inputStyle || ''"
+          [label]="field.label"
+        ></plg-textarea>
 
-      <plg-radio *ngIf="field.type === 'radio'" [formControlName]="field.name" [items]="field.radioOptions"></plg-radio>
+        <plg-radio
+          *ngIf="field.type === 'radio'"
+          [formControlName]="field.name"
+          [items]="field.radioOptions"
+        ></plg-radio>
+      </div>
     </div>
-  </div>
 
-  <div class="flex items-end pb-1" *ngIf="showSubmitButton">
-    <plg-button
-      fill="success"
-      roundness="medium"
-      type="submit"
-      [disabled]="formGroup?.invalid ? true : false"
-      [buttonStyle]="buttonCustomStyle?.buttonStyle || ''"
-      [buttonIconStyle]="buttonCustomStyle?.buttonIconStyle || ''"
-      >{{ submitText }}</plg-button
-    >
+    <div class="flex items-end pb-1" *ngIf="showSubmitButton">
+      <plg-button
+        fill="success"
+        roundness="medium"
+        type="submit"
+        [disabled]="formGroup?.invalid ? true : false"
+        [buttonStyle]="buttonCustomStyle?.buttonStyle || ''"
+        [buttonIconStyle]="buttonCustomStyle?.buttonIconStyle || ''"
+        >{{ submitText }}</plg-button
+      >
+    </div>
   </div>
 </form>
