@@ -8,7 +8,7 @@ import { TInputType } from '../input/input.component';
   styleUrls: ['./textarea.component.css'],
 })
 export class PluggularTextAreaComponent implements ControlValueAccessor {
-  @Input() label = '';
+  @Input() label: string | undefined = '';
   @Input() type: TInputType = 'text';
   @Input() required = false;
   @Input() placeholder: string | undefined | null = '';
