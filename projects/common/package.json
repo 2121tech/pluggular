@@ -1,6 +1,6 @@
 {
   "name": "@pluggular/common",
-  "version": "0.0.3-alpha.10",
+  "version": "0.0.3-alpha.11",
   "scripts": {
     "build": "ng build common --prod",
     "postpublish": "rm -rf dist/"
