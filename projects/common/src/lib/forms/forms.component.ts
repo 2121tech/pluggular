@@ -12,6 +12,7 @@ export type TFormField = {
   label?: string;
   placeholder?: string;
   disabled?: boolean;
+  containerStyle?: string;
 };
 
 export type TFormColumn = {
@@ -55,7 +56,7 @@ export type TButtonStyle = {
 })
 export class PluggularFormsComponent {
   @Output() hasSubmitted = new EventEmitter<TFormBody>();
-  @Input() fields?: TFormFields[] = undefined;
+  @Input() fields?: TFormField[] = [];
   @Input() formGroup!: FormGroup;
   @Input() submitText? = 'Submit';
   @Input() labelStyle? = '';
