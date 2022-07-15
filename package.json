@@ -7,6 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
+    "prepack": "lerna run compile",
+    "postinstall": "lerna link",
     "commit": "git add . & npx git-cz",
     "lerna:build": "npx lerna run build",
     "lerna:publish": "npx lerna publish --contents dist",
