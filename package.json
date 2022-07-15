@@ -11,7 +11,8 @@
     "postinstall": "lerna link",
     "commit": "git add . & npx git-cz",
     "lerna:build": "npx lerna run build",
-    "lerna:publish": "npx lerna publish --contents dist",
+    "lerna:version": "npx lerna version --force-publish",
+    "lerna:publish": "npx lerna publish from-package",
     "prepare": "husky install"
   },
   "private": false,
