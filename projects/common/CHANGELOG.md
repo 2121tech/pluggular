@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.3-alpha.16](https://github.com/2121tech/pluggular/compare/@pluggular/common@0.0.3-alpha.15...@pluggular/common@0.0.3-alpha.16) (2022-07-19)
+
+**Note:** Version bump only for package @pluggular/common
+
+
+
+
+
 ## [0.0.3-alpha.15](https://github.com/2121tech/pluggular/compare/@pluggular/common@0.0.3-alpha.14...@pluggular/common@0.0.3-alpha.15) (2022-07-17)
 
 **Note:** Version bump only for package @pluggular/common
