@@ -5,7 +5,6 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 export type TInputType = 'text' | 'number' | 'password' | 'file';
 export type TRoundness = 'small' | 'medium' | 'large' | 'full' | undefined | null;
 
-
 @Component({
   selector: 'plg-input',
   templateUrl: './input.component.html',
@@ -17,6 +16,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() required = false;
   @Input() placeholder: string | undefined | null = '';
   @Input() disabled = false;
+  @Input() readonly = false;
   @Input() maxLength = 524288;
   @Input() minLength = 0;
   @Input() labelStyle = 'text-gray-500';
