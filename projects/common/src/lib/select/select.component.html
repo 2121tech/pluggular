@@ -1,6 +1,9 @@
 <div class="w-full mb-6 md:mb-0">
-  <label class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1 min-h-[20px]" [ngClass]="labelStyle">
-    {{ label }}
+  <label
+    class="block uppercase font-bold tracking-wide text-gray-500 text-sm mb-1 min-h-[20px]"
+    [ngClass]="labelStyle"
+    [innerHtml]="label"
+  >
   </label>
   <div class="relative min-h-10" [ngClass]="containerStyle">
     <select
