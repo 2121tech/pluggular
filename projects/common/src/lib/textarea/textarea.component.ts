@@ -13,6 +13,7 @@ export class PluggularTextAreaComponent implements ControlValueAccessor {
   @Input() required = false;
   @Input() placeholder: string | undefined | null = '';
   @Input() disabled = false;
+  @Input() readonly = false;
   @Input() rows: string | number | undefined;
   @Input() maxLength = 524288;
   @Input() minLength = 0;

@@ -16,6 +16,8 @@
           [containerStyle]="inputCustomStyle?.containerStyle || ''"
           [inputStyle]="inputCustomStyle?.inputStyle || ''"
           [labelStyle]="inputCustomStyle?.labelStyle || ''"
+          [disabled]="field.disabled!"
+          [readonly]="field.readonly!"
         ></plg-input>
 
         <plg-datepicker
@@ -25,6 +27,8 @@
           [inputStyle]="inputCustomStyle?.inputStyle || ''"
           [labelStyle]="inputCustomStyle?.labelStyle || ''"
           [label]="field.label"
+          [disabled]="field.disabled!"
+          [readonly]="field.readonly!"
         ></plg-datepicker>
 
         <plg-select
@@ -46,6 +50,8 @@
           [labelStyle]="textAreaCustomStyle?.labelStyle || ''"
           [inputStyle]="textAreaCustomStyle?.inputStyle || ''"
           [label]="field.label"
+          [disabled]="field.disabled!"
+          [readonly]="field.readonly!"
         ></plg-textarea>
 
         <plg-radio

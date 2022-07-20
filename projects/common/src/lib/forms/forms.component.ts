@@ -13,6 +13,7 @@ export type TFormField = {
   placeholder?: string;
   disabled?: boolean;
   containerStyle?: string;
+  readonly?: boolean;
 };
 
 export type TFormColumn = {
