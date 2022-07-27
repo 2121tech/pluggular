@@ -25,6 +25,7 @@
       [ngModelOptions]="{ standalone: true }"
       [maxlength]="maxLength"
       [minLength]="minLength"
+      [accept]="accept"
     />
     <span *ngIf="type === 'password'" class="pl-5 pr-3 cursor-pointer" (click)="onEyeClick()"
       ><fa-icon [icon]="icon"></fa-icon
