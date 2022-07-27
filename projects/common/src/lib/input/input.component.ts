@@ -23,6 +23,7 @@ export class PluggularInputComponent implements ControlValueAccessor, OnInit {
   @Input() containerStyle = '';
   @Input() inputStyle = '';
   @Input() roundness: TRoundness = 'small';
+  @Input() accept = '';
 
   errorMessages = new Map<string, string>();
   roundedClass = '';
