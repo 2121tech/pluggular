@@ -18,7 +18,7 @@
     [readonly]="readonly"
     [ngModelOptions]="{ standalone: true }"
     [rows]="rows"
-    [ngClass]="[showError || value.length === maxLength ? 'border-red-500' : '', inputStyle]"
+    [ngClass]="[showError || (value && value.length === maxLength) ? 'border-red-500' : '', inputStyle]"
     [maxlength]="maxLength"
     [minlength]="minLength"
   >
