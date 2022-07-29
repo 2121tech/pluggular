@@ -8,7 +8,7 @@
   </label>
   <div
     class="appearance-none flex flex-row items-center w-full bg-gray-100 text-gray-700 border rounded mb-3 overflow-hidden"
-    [ngClass]="[containerStyle, showError || value.length === maxLength ? 'border-red-500' : '']"
+    [ngClass]="[containerStyle, showError || (value && value.length === maxLength) ? 'border-red-500' : '']"
     [class]="roundedClass"
   >
     <input
